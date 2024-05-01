@@ -52,6 +52,16 @@ class ProfileController extends Controller
   }
 
   /**
+   * Display the new student's profile.
+   */
+  public function getNewStudent(Request $request): View
+  {
+    return view('profile.new-student', [
+      'user' => $request->user(),
+    ]);
+  }
+
+  /**
    * Display the change password.
    */
   public function getChangePassword(Request $request): View
