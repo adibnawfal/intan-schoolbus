@@ -7,9 +7,11 @@
       alt="Profile Picture">
   </div>
   <div class="w-full">
-    <span class="text-sm text-gray-500">Parent</span>
+    @if ($userDetails->role == 'customer')
+      <span class="text-sm text-gray-500 uppercase">{{ $userDetails->status }}</span>
+    @endif
     <p class="mt-3 mb-1 text-3xl font-bold leading-6 text-gray-800">
-      {{ $user->first_name }} {{ $user->last_name }}
+      {{ $userDetails->first_name }} {{ $userDetails->last_name }}
     </p>
     <p>{{ $user->email }}</p>
 

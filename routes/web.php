@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransportationController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\CustomerController;
@@ -27,9 +29,12 @@ Route::get('/', function () {
 //   return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+  // Dashboard
+  Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');
+
   // Profile
   Route::get('/profile/my-profile', [ProfileController::class, 'getMyProfile'])->name('profile.my-profile');
   Route::get('/profile/driver-profile', [ProfileController::class, 'getDriverProfile'])->name('profile.driver-profile');
@@ -43,6 +48,13 @@ Route::middleware('auth')->group(function () {
 
   // Transportation
   Route::get('/transportation', [TransportationController::class, 'getTransportation'])->name('transportation.view');
+  Route::get('/transportation/request-bus', [TransportationController::class, 'getRequestBus'])->name('transportation.request-bus');
+  Route::get('/transportation/request-submitted', [TransportationController::class, 'getRequestSubmitted'])->name('transportation.request-submitted');
+  Route::get('/transportation/request-status', [TransportationController::class, 'getRequestStatus'])->name('transportation.request-status');
+
+  //Payment
+  Route::get('/payment', [PaymentController::class, 'getPayment'])->name('payment.view');
+  Route::get('/payment/record', [PaymentController::class, 'getRecord'])->name('payment.record');
 });
 
 // Admin routes

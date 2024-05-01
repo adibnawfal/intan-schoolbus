@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserDetails;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -41,21 +42,26 @@ class RegisteredUserController extends Controller
     ]);
 
     $user = User::create([
-      'first_name' => $request->first_name,
-      'last_name' => $request->last_name,
       'email' => $request->email,
-      'role' => "customer",
-      'status' => $request->role,
-      'gender' => $request->gender,
       'password' => Hash::make($request->password),
     ]);
+
+    $userDetails = new UserDetails();
+    $userDetails->user_id = $user->id;
+    $userDetails->first_name = $request->first_name;
+    $userDetails->last_name = $request->last_name;
+    $userDetails->role = "customer";
+    $userDetails->status = $request->role;
+    $userDetails->gender = $request->gender;
+    $userDetails->default = true;
+    $userDetails->save();
 
     event(new Registered($user));
 
     Auth::login($user);
 
-    return redirect()->intended('customer/dashboard');
+    // return redirect()->intended('customer/dashboard');
 
-    // return redirect(RouteServiceProvider::HOME);
+    return redirect(RouteServiceProvider::HOME);
   }
 }

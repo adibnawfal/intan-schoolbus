@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -28,7 +29,9 @@ class Role
 
       // return redirect($url);
 
-      return redirect('/dashboard');
+      // return redirect('/dashboard');
+
+      return redirect(RouteServiceProvider::HOME);
     }
 
     return $next($request);

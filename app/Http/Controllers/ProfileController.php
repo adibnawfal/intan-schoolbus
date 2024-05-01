@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserDetails;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,8 +17,13 @@ class ProfileController extends Controller
    */
   public function getMyProfile(Request $request): View
   {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
     return view('profile.my-profile', [
       'user' => $request->user(),
+      'userDetails' => $userDetails,
     ]);
   }
 
@@ -26,8 +32,13 @@ class ProfileController extends Controller
    */
   public function getDriverProfile(Request $request): View
   {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
     return view('profile.driver-profile', [
       'user' => $request->user(),
+      'userDetails' => $userDetails,
     ]);
   }
 
@@ -36,8 +47,13 @@ class ProfileController extends Controller
    */
   public function getNewDriver(Request $request): View
   {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
     return view('profile.new-driver', [
       'user' => $request->user(),
+      'userDetails' => $userDetails,
     ]);
   }
 
@@ -46,8 +62,13 @@ class ProfileController extends Controller
    */
   public function getStudentProfile(Request $request): View
   {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
     return view('profile.student-profile', [
       'user' => $request->user(),
+      'userDetails' => $userDetails,
     ]);
   }
 
@@ -56,8 +77,13 @@ class ProfileController extends Controller
    */
   public function getNewStudent(Request $request): View
   {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
     return view('profile.new-student', [
       'user' => $request->user(),
+      'userDetails' => $userDetails,
     ]);
   }
 
@@ -66,8 +92,13 @@ class ProfileController extends Controller
    */
   public function getChangePassword(Request $request): View
   {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
     return view('profile.change-password', [
       'user' => $request->user(),
+      'userDetails' => $userDetails,
     ]);
   }
 
@@ -76,8 +107,13 @@ class ProfileController extends Controller
    */
   public function getDeleteProfile(Request $request): View
   {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
     return view('profile.delete-profile', [
       'user' => $request->user(),
+      'userDetails' => $userDetails,
     ]);
   }
 
