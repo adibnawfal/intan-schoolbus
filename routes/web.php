@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function () {
 
   // Profile
   Route::get('/profile/my-profile', [ProfileController::class, 'getMyProfile'])->name('profile.my-profile');
+  Route::patch('/profile/my-profile/about-me', [ProfileController::class, 'patchAboutMe'])->name('profile.patch-about-me');
+  Route::get('/profile/my-profile/new-parent-guardian', [ProfileController::class, 'getNewParentGuardian'])->name('profile.new-parent-guardian');
+  Route::get('/profile/my-profile/new-address', [ProfileController::class, 'getNewAddress'])->name('profile.new-address');
   Route::get('/profile/driver-profile', [ProfileController::class, 'getDriverProfile'])->name('profile.driver-profile');
   Route::get('/profile/driver-profile/new-driver', [ProfileController::class, 'getNewDriver'])->name('profile.new-driver');
   Route::get('/profile/student-profile', [ProfileController::class, 'getStudentProfile'])->name('profile.student-profile');

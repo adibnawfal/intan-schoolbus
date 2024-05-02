@@ -1,19 +1,21 @@
-<!-- Driver Information -->
+<!-- Parent/Guardian Information -->
 <div class="flex flex-col w-full">
-  <h1 class="text-xl font-bold">Driver Information</h1>
+  <h1 class="text-xl font-bold">Parent/Guardian Information</h1>
   <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 </div>
 
 <div class="flex flex-wrap -m-2">
-  <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <a class="flex items-center p-6 border border-gray-200 rounded gap-x-4 hover:shadow" href="#">
+  <div class="relative w-full p-2 lg:w-1/3 md:w-1/2">
+    <span
+      class="absolute px-3 py-1 text-xs tracking-widest border border-gray-300 rounded-tr rounded-bl top-2 right-2">Parent</span>
+    <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
       <p class="self-start font-medium">1.</p>
       <div class="flex-grow">
         <h2 class="font-medium line-clamp-1">
-          Adib Nawfal
+          Fatin Syafiqah
         </h2>
-        <p class="text-xs text-gray-500 line-clamp-1">
-          adibnawfal1999@gmail.com
+        <p class="text-xs text-gray-500 uppercase">
+          +60174701159
         </p>
       </div>
       <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -23,15 +25,17 @@
       </svg>
     </a>
   </div>
-  <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <a class="flex items-center p-6 border border-gray-200 rounded gap-x-4 hover:shadow" href="#">
+  <div class="relative w-full p-2 lg:w-1/3 md:w-1/2">
+    <span
+      class="absolute px-3 py-1 text-xs tracking-widest border border-gray-300 rounded-tr rounded-bl top-2 right-2">Guardian</span>
+    <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
       <p class="self-start font-medium">2.</p>
       <div class="flex-grow">
         <h2 class="font-medium line-clamp-1">
-          Ahmad Abu
+          Capikah
         </h2>
-        <p class="text-xs text-gray-500 line-clamp-1">
-          ahmadabu@gmail.com
+        <p class="text-xs text-gray-500 uppercase">
+          +60174701159
         </p>
       </div>
       <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -44,8 +48,8 @@
 </div>
 
 <a class="flex items-center justify-between px-6 py-3 mt-2 font-semibold border border-gray-300 rounded hover:shadow"
-  href="{{ route('profile.new-driver') }}">
-  Add New Driver Information
+  href="{{ route('profile.new-parent-guardian') }}">
+  Add New Parent/Guardian Information
   <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
     class="lucide lucide-circle-plus">
@@ -54,4 +58,4 @@
     <path d="M12 8v8" />
   </svg>
 </a>
-<!-- End Driver Information -->
+<!-- End Parent/Guardian Information -->

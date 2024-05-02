@@ -24,11 +24,17 @@
     </div>
     <!-- End About Me -->
 
-    <!-- Address -->
+    <!-- Parent/Guardian Information -->
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
-      @include('profile.partials.address')
+      @include('profile.partials.parent-guardian-information')
     </div>
-    <!-- End Address -->
+    <!-- End Parent/Guardian Information -->
+
+    <!-- Address Information -->
+    <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
+      @include('profile.partials.address-information')
+    </div>
+    <!-- End Address Information -->
 
     {{-- <div class="mx-auto space-y-6 max-w-7xl sm:px-6 lg:px-8">
       <div class="p-4 bg-white shadow sm:p-8 sm:rounded-lg">

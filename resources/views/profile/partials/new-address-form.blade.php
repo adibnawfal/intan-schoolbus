@@ -1,6 +1,6 @@
-<!-- Address -->
+<!-- New Address Form -->
 <div class="flex flex-col w-full">
-  <h1 class="text-xl font-bold">Address</h1>
+  <h1 class="text-xl font-bold">New Address Information</h1>
   <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 </div>
 <div class="flex flex-wrap -m-2">
@@ -37,18 +37,11 @@
 </div>
 <div class="flex items-center mt-2 gap-x-4">
   <button class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
-    Update Address
+    Add Address
   </button>
-  <a class="flex items-center px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded gap-x-2 focus:outline-none hover:bg-gray-100"
-    href="#">
-    Add Another Address
-    <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round" class="lucide lucide-circle-plus">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M8 12h8" />
-      <path d="M12 8v8" />
-    </svg>
+  <a class="px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded focus:outline-none hover:bg-gray-100"
+    href="{{ route('profile.my-profile') }}">
+    Cancel
   </a>
 </div>
-<!-- End Address -->
+<!-- End New Address Form -->

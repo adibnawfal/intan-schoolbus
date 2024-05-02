@@ -6,58 +6,44 @@
 
 <div class="flex flex-wrap -m-2">
   <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-      <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-        src="https://dummyimage.com/80x80">
+    <a class="flex items-center p-6 border border-gray-200 rounded gap-x-4 hover:shadow" href="#">
+      <p class="self-start font-medium">1.</p>
       <div class="flex-grow">
-        <h2 class="font-medium text-gray-900 title-font">Holden Caulfield</h2>
-        <p class="text-gray-500">UI Designer</p>
+        <h2 class="font-medium line-clamp-1">
+          Nur Reyna
+        </h2>
+        <p class="text-xs text-gray-500 uppercase">
+          Standard 3
+        </p>
       </div>
-    </div>
+      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" class="lucide lucide-chevron-right">
+        <path d="m9 18 6-6-6-6" />
+      </svg>
+    </a>
   </div>
   <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-      <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-        src="https://dummyimage.com/84x84">
+    <a class="flex items-center p-6 border border-gray-200 rounded gap-x-4 hover:shadow" href="#">
+      <p class="self-start font-medium">2.</p>
       <div class="flex-grow">
-        <h2 class="font-medium text-gray-900 title-font">Henry Letham</h2>
-        <p class="text-gray-500">CTO</p>
+        <h2 class="font-medium line-clamp-1">
+          Siti Aminah
+        </h2>
+        <p class="text-xs text-gray-500 uppercase">
+          Standard 2
+        </p>
       </div>
-    </div>
-  </div>
-  <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-      <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-        src="https://dummyimage.com/88x88">
-      <div class="flex-grow">
-        <h2 class="font-medium text-gray-900 title-font">Oskar Blinde</h2>
-        <p class="text-gray-500">Founder</p>
-      </div>
-    </div>
-  </div>
-  <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-      <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-        src="https://dummyimage.com/90x90">
-      <div class="flex-grow">
-        <h2 class="font-medium text-gray-900 title-font">John Doe</h2>
-        <p class="text-gray-500">DevOps</p>
-      </div>
-    </div>
-  </div>
-  <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-      <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-        src="https://dummyimage.com/94x94">
-      <div class="flex-grow">
-        <h2 class="font-medium text-gray-900 title-font">Martin Eden</h2>
-        <p class="text-gray-500">Software Engineer</p>
-      </div>
-    </div>
+      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" class="lucide lucide-chevron-right">
+        <path d="m9 18 6-6-6-6" />
+      </svg>
+    </a>
   </div>
 </div>
 
-<a class="flex items-center justify-between px-8 py-3 mt-2 font-semibold border border-gray-300 shadow sm:rounded"
+<a class="flex items-center justify-between px-6 py-3 mt-2 font-semibold border border-gray-300 rounded hover:shadow"
   href="{{ route('profile.new-student') }}">
   Add New Student Information
   <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
