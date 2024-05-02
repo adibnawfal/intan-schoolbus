@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Profile\UserUpdateRequest;
+use App\Http\Requests\Profile\UserDetailsUpdateRequest;
 use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Http\RedirectResponse;
@@ -21,21 +23,23 @@ class ProfileController extends Controller
     $userDetails = UserDetails::where('user_id', $request->user()->id)
       ->where('default', 1)
       ->first();
+    $userDetailsArr = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 0)
+      ->get();
 
     return view('profile.my-profile', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
+      'userDetailsArr' => $userDetailsArr,
     ]);
   }
 
   /**
    * Update the user's about me.
    */
-  public function patchAboutMe(Request $request): RedirectResponse
+  public function patchAboutMe(Request $request, string $id): RedirectResponse
   {
-    $userData = $request->validate([
-      'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id)],
-    ]);
+    $userDetails = UserDetails::findOrFail($id);
 
     $userDetailsData = $request->validate([
       'first_name' => ['required', 'string', 'max:255'],
@@ -46,21 +50,19 @@ class ProfileController extends Controller
       'bio' => ['nullable', 'string', 'max:255'],
     ]);
 
-    // $request->user()->fill($request->validated());
+    $userDetails->update($userDetailsData);
+
+    $userData = $request->validate([
+      'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id)],
+    ]);
 
     if ($request->user()->isDirty('email')) {
       $request->user()->email_verified_at = null;
     }
 
-    // $request->user()->save();
+    $userDetails->user()->update($userData);
 
-    $user = User::findOrFail($request->user()->id);
-    //$userDetails = User::findOrFail(4);
-
-    $user->update($userData);
-    //$userDetails->update($userDetailsData);
-
-    return Redirect::route('profile.my-profile')->with('status', 'about-me-updated');
+    return Redirect::route('profile.my-profile')->with('status', 'profile-updated');
   }
 
   /**
@@ -76,6 +78,36 @@ class ProfileController extends Controller
       'user' => $request->user(),
       'userDetails' => $userDetails,
     ]);
+  }
+
+  /**
+   * Submit the new parent/guradian.
+   */
+  public function postNewParentGuardian(Request $request)
+  {
+    $userDetails = new UserDetails();
+    $userId = auth()->user()->id;
+
+    $this->validate($request, [
+      'first_name' => ['required', 'string', 'max:255'],
+      'last_name' => ['nullable', 'string', 'max:255'],
+      'status' => ['nullable', 'string', 'max:255'],
+      'gender' => ['nullable', 'string', 'max:255'],
+      'phone_no' => ['nullable', 'string', 'max:255'],
+      'bio' => ['nullable', 'string', 'max:255'],
+    ]);
+
+    $userDetails->user_id = $userId;
+    $userDetails->first_name = $request['first_name'];
+    $userDetails->last_name = $request['last_name'];
+    $userDetails->status = $request['status'];
+    $userDetails->gender = $request['gender'];
+    $userDetails->phone_no = $request['phone_no'];
+    $userDetails->bio = $request['bio'];
+    $userDetails->default = false;
+    $userDetails->save();
+
+    return Redirect::route('profile.my-profile')->with('status', 'parent-guardian-submitted');
   }
 
   /**

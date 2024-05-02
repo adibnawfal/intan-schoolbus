@@ -69,16 +69,16 @@
 
             <!-- Role -->
             <div>
-              <label for="role" class="block mb-2 text-sm dark:text-white">Role</label>
+              <label for="status" class="block mb-2 text-sm dark:text-white">Role</label>
               <div class="relative">
-                <select name="role" id="role"
+                <select name="status" id="status"
                   class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg pe-9 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                  <option @selected(old('role') == '') disabled value="">Select your role</option>
-                  <option @selected(old('role') == 'parent') value="parent">Parent</option>
-                  <option @selected(old('role') == 'guardian') value="guardian">Guardian</option>
+                  <option @selected(old('status') == '') disabled value="">Select your role</option>
+                  <option @selected(old('status') == 'parent') value="parent">Parent</option>
+                  <option @selected(old('status') == 'guardian') value="guardian">Guardian</option>
                 </select>
               </div>
-              <x-input-error :messages="$errors->get('role')" class="mt-2" />
+              <x-input-error :messages="$errors->get('status')" class="mt-2" />
             </div>
             <!-- End Role -->
 

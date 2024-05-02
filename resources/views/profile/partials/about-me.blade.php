@@ -8,24 +8,28 @@
   @csrf
 </form>
 
-<form method="post" action="{{ route('profile.patch-about-me') }}" class="flex flex-wrap -m-2">
+<form method="post" action="{{ route('profile.patch-about-me', $userDetails->id) }}" enctype="multipart/form-data"
+  class="flex flex-wrap -m-2">
   @csrf
   @method('patch')
 
   <div class="w-1/2 p-2">
-    <label for="first-name" class="text-sm leading-7">First Name</label>
-    <input type="text" id="first-name" name="first-name" value="{{ old('first-name', $userDetails->first_name) }}"
-      class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+    <label for="first_name" class="text-sm leading-7">First Name</label>
+    <input type="text" id="first_name" name="first_name" value="{{ old('first_name', $userDetails->first_name) }}"
+      class="w-full px-3 py-1 text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+    <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
   </div>
   <div class="w-1/2 p-2">
-    <label for="last-name" class="text-sm leading-7">Last Name</label>
-    <input type="text" id="last-name" name="last-name" value="{{ old('last-name', $userDetails->last_name) }}"
-      class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+    <label for="last_name" class="text-sm leading-7">Last Name</label>
+    <input type="text" id="last_name" name="last_name" value="{{ old('last_name', $userDetails->last_name) }}"
+      class="w-full px-3 py-1 text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+    <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
   </div>
   <div class="w-1/2 p-2">
     <label for="email" class="text-sm leading-7">Email</label>
     <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}"
-      class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+      class="w-full px-3 py-1 text-base leading-8 text-gray-700 lowercase transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+    <x-input-error class="mt-2" :messages="$errors->get('email')" />
   </div>
   @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
     <div>
@@ -45,11 +49,6 @@
       @endif
     </div>
   @endif
-  {{-- <div class="w-1/2 p-2">
-    <label for="gender" class="text-sm leading-7">Gender</label>
-    <input type="text" id="gender" name="gender" value="{{ old('gender', $userDetails->gender) }}"
-      class="w-full px-3 py-1 text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
-  </div> --}}
   <div class="w-1/2 p-2">
     <label for="gender" class="text-sm leading-7">Gender</label>
     <div class="relative">
@@ -62,11 +61,6 @@
     </div>
     <x-input-error :messages="$errors->get('gender')" class="mt-2" />
   </div>
-  {{-- <div class="w-1/2 p-2">
-    <label for="role" class="text-sm leading-7">Role</label>
-    <input type="text" id="role" name="role" value="{{ old('role', $userDetails->status) }}"
-      class="w-full px-3 py-1 text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
-  </div> --}}
   <div class="w-1/2 p-2">
     <label for="status" class="text-sm leading-7">Role</label>
     <div class="relative">
@@ -77,19 +71,24 @@
         <option @selected(old('status', $userDetails->status) == 'guardian') value="guardian">Guardian</option>
       </select>
     </div>
-    <x-input-error :messages="$errors->get('role')" class="mt-2" />
+    <x-input-error :messages="$errors->get('status')" class="mt-2" />
   </div>
   <div class="w-1/2 p-2">
-    <label for="phone-no" class="text-sm leading-7">Phone Number</label>
-    <input type="text" id="phone-no" name="phone-no" value="{{ old('phone-no', $userDetails->phone_no) }}"
-      class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+    <label for="phone_no" class="text-sm leading-7">Phone Number</label>
+    <div class="flex w-full rounded-lg shadow-sm">
+      <span
+        class="inline-flex items-center px-4 text-sm bg-gray-100 bg-opacity-50 border border-gray-300 min-w-fit rounded-s border-e-0">+60</span>
+      <input type="text" id="phone_no" name="phone_no" value="{{ old('phone_no', $userDetails->phone_no) }}"
+        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 outline-none rounded-e focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+    </div>
+    <x-input-error :messages="$errors->get('phone_no')" class="mt-2" />
   </div>
   <div class="w-full p-2">
     <label for="bio" class="text-sm leading-7">Bio</label>
-    <textarea id="bio" name="bio" value="{{ old('bio', $userDetails->bio) }}"
-      class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"></textarea>
+    <textarea id="bio" name="bio"
+      class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">{{ old('bio', $userDetails->bio) }}</textarea>
+    <x-input-error :messages="$errors->get('bio')" class="mt-2" />
   </div>
-
   <div class="flex items-center p-2 mt-2 gap-x-4">
     <button type="submit"
       class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
@@ -97,5 +96,4 @@
     </button>
   </div>
 </form>
-
 <!-- End About Me -->

@@ -9,6 +9,23 @@ class UserDetails extends Model
 {
   use HasFactory;
 
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = [
+    'user_id',
+    'first_name',
+    'last_name',
+    'status',
+    'gender',
+    'phone_no',
+    'bio',
+    'profile_img',
+    'default',
+  ];
+
   public function user()
   {
     return $this->belongsTo('App\Models\User');

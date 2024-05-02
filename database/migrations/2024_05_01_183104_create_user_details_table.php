@@ -16,7 +16,6 @@ return new class extends Migration {
       $table->foreign('user_id')->references('id')->on('users');
       $table->string('first_name');
       $table->string('last_name')->nullable();
-      $table->string('role')->default('customer');
       $table->string('status')->default('parent')->nullable();
       $table->string('gender')->nullable();
       $table->string('phone_no')->nullable();

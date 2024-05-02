@@ -7,7 +7,7 @@
       alt="Profile Picture">
   </div>
   <div class="w-full">
-    @if ($userDetails->role == 'customer')
+    @if ($user->role == 'customer')
       <span class="text-sm text-gray-500 uppercase">{{ $userDetails->status }}</span>
     @endif
     <p class="mt-3 mb-1 text-3xl font-bold leading-6 text-gray-800">

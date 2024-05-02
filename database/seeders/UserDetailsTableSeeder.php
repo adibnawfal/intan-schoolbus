@@ -21,7 +21,6 @@ class UserDetailsTableSeeder extends Seeder
       [
         'user_id' => 1,
         'first_name' => 'Admin',
-        'role' => 'admin',
         'status' => null,
         'default' => true,
         'created_at' => $datetime,
@@ -32,7 +31,6 @@ class UserDetailsTableSeeder extends Seeder
       [
         'user_id' => 2,
         'first_name' => 'Driver',
-        'role' => 'driver',
         'status' => null,
         'default' => true,
         'created_at' => $datetime,
@@ -43,7 +41,6 @@ class UserDetailsTableSeeder extends Seeder
       [
         'user_id' => 3,
         'first_name' => 'Customer',
-        'role' => 'customer',
         'status' => 'parent',
         'default' => true,
         'created_at' => $datetime,

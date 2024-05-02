@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
       'first_name' => ['required', 'string', 'max:255'],
       'last_name' => ['required', 'string', 'max:255'],
       'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-      'role' => ['required', 'string', 'max:255'],
+      'status' => ['required', 'string', 'max:255'],
       'gender' => ['required', 'string', 'max:255'],
       'password' => ['required', 'confirmed', Rules\Password::defaults()],
       'terms_and_conditions' => ['accepted'],
@@ -44,15 +44,15 @@ class RegisteredUserController extends Controller
     $user = User::create([
       'email' => $request->email,
       'password' => Hash::make($request->password),
+      'role' => "customer",
     ]);
 
     $userDetails = new UserDetails();
     $userDetails->user_id = $user->id;
-    $userDetails->first_name = $request->first_name;
-    $userDetails->last_name = $request->last_name;
-    $userDetails->role = "customer";
-    $userDetails->status = $request->role;
-    $userDetails->gender = $request->gender;
+    $userDetails->first_name = $request['first_name'];
+    $userDetails->last_name = $request['last_name'];
+    $userDetails->status = $request['status'];
+    $userDetails->gender = $request['gender'];
     $userDetails->default = true;
     $userDetails->save();
 

@@ -5,7 +5,29 @@
 </div>
 
 <div class="flex flex-wrap -m-2">
-  <div class="relative w-full p-2 lg:w-1/3 md:w-1/2">
+  @foreach ($userDetailsArr as $userDetailsData)
+    <div class="relative w-full p-2 lg:w-1/3 md:w-1/2">
+      <span
+        class="absolute px-3 py-1 text-xs tracking-widest capitalize border border-gray-300 rounded-tr rounded-bl top-2 right-2">{{ $userDetailsData->status }}</span>
+      <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
+        <p class="self-start font-medium">{{ $loop->iteration }}.</p>
+        <div class="flex-grow">
+          <h2 class="font-medium line-clamp-1">
+            {{ $userDetailsData->first_name }} {{ $userDetailsData->last_name }}
+          </h2>
+          <p class="text-xs text-gray-500 uppercase line-clamp-1">
+            +60{{ $userDetailsData->phone_no }}
+          </p>
+        </div>
+        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="lucide lucide-chevron-right">
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </a>
+    </div>
+  @endforeach
+  {{-- <div class="relative w-full p-2 lg:w-1/3 md:w-1/2">
     <span
       class="absolute px-3 py-1 text-xs tracking-widest border border-gray-300 rounded-tr rounded-bl top-2 right-2">Parent</span>
     <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
@@ -44,7 +66,7 @@
         <path d="m9 18 6-6-6-6" />
       </svg>
     </a>
-  </div>
+  </div> --}}
 </div>
 
 <a class="flex items-center justify-between px-6 py-3 mt-2 font-semibold border border-gray-300 rounded hover:shadow"

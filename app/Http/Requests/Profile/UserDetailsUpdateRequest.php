@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserDetailsUpdateRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UserDetailsUpdateRequest extends FormRequest
    */
   public function authorize(): bool
   {
-    return false;
+    return Auth::check();
   }
 
   /**

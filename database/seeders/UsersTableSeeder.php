@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
       [
         'email' => 'admin@gmail.com',
         'password' => Hash::make('admin12345'),
+        'role' => 'admin',
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
       [
         'email' => 'driver@gmail.com',
         'password' => Hash::make('driver12345'),
+        'role' => 'driver',
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],
@@ -38,6 +40,7 @@ class UsersTableSeeder extends Seeder
       [
         'email' => 'customer@gmail.com',
         'password' => Hash::make('customer12345'),
+        'role' => 'customer',
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ]
