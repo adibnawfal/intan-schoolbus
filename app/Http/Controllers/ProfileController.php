@@ -6,6 +6,7 @@ use App\Http\Requests\Profile\UserUpdateRequest;
 use App\Http\Requests\Profile\UserDetailsUpdateRequest;
 use App\Models\User;
 use App\Models\UserDetails;
+use App\Models\Address;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,14 +24,19 @@ class ProfileController extends Controller
     $userDetails = UserDetails::where('user_id', $request->user()->id)
       ->where('default', 1)
       ->first();
-    $userDetailsArr = UserDetails::where('user_id', $request->user()->id)
+
+    $parentGuardian = UserDetails::where('user_id', $request->user()->id)
       ->where('default', 0)
+      ->get();
+
+    $address = Address::where('user_id', $request->user()->id)
       ->get();
 
     return view('profile.my-profile', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
-      'userDetailsArr' => $userDetailsArr,
+      'parentGuardian' => $parentGuardian,
+      'address' => $address,
     ]);
   }
 
@@ -126,6 +132,35 @@ class ProfileController extends Controller
   }
 
   /**
+   * Submit the new parent/guradian.
+   */
+  public function postNewAddress(Request $request)
+  {
+    $address = new Address();
+    $userId = auth()->user()->id;
+
+    $this->validate($request, [
+      'address_1' => ['required', 'string', 'max:255'],
+      'address_2' => ['required', 'string', 'max:255'],
+      'postal_code' => ['required', 'string', 'max:255'],
+      'city' => ['required', 'string', 'max:255'],
+      'state' => ['required', 'string', 'max:255'],
+      'area' => ['required', 'string', 'max:255'],
+    ]);
+
+    $address->user_id = $userId;
+    $address->address_1 = $request['address_1'];
+    $address->address_2 = $request['address_2'];
+    $address->postal_code = $request['postal_code'];
+    $address->city = $request['city'];
+    $address->state = $request['state'];
+    $address->area = $request['area'];
+    $address->save();
+
+    return Redirect::route('profile.my-profile')->with('status', 'address-submitted');
+  }
+
+  /**
    * Display the driver's profile.
    */
   public function getDriverProfile(Request $request): View
@@ -179,9 +214,17 @@ class ProfileController extends Controller
       ->where('default', 1)
       ->first();
 
+    $parentGuardian = UserDetails::where('user_id', $request->user()->id)
+      ->get();
+
+    $address = Address::where('user_id', $request->user()->id)
+      ->get();
+
     return view('profile.new-student', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
+      'parentGuardian' => $parentGuardian,
+      'address' => $address,
     ]);
   }
 

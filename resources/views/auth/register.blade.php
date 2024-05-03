@@ -67,34 +67,19 @@
             </div>
             <!-- End Email Address -->
 
-            <!-- Role -->
-            <div>
-              <label for="status" class="block mb-2 text-sm dark:text-white">Role</label>
-              <div class="relative">
-                <select name="status" id="status"
-                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg pe-9 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                  <option @selected(old('status') == '') disabled value="">Select your role</option>
-                  <option @selected(old('status') == 'parent') value="parent">Parent</option>
-                  <option @selected(old('status') == 'guardian') value="guardian">Guardian</option>
-                </select>
-              </div>
-              <x-input-error :messages="$errors->get('status')" class="mt-2" />
-            </div>
-            <!-- End Role -->
-
             <!-- Gender -->
             <div>
               <label for="gender" class="block mb-2 text-sm dark:text-white">Gender</label>
               <div class="flex gap-x-6">
                 <div class="flex">
-                  <input type="radio" name="gender" id="male" value="male" @checked(old('gender') == 'male')
+                  <input type="radio" name="gender" id="male" value="Male" @checked(old('gender') == 'Male')
                     class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                     checked>
                   <label for="male" class="text-sm text-gray-800 ms-2 dark:text-gray-400">Male</label>
                 </div>
 
                 <div class="flex">
-                  <input type="radio" name="gender" id="female" value="female" @checked(old('gender') == 'female')
+                  <input type="radio" name="gender" id="female" value="Female" @checked(old('gender') == 'Female')
                     class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
                   <label for="female" class="text-sm text-gray-800 ms-2 dark:text-gray-400">Female</label>
                 </div>
@@ -102,6 +87,21 @@
               <x-input-error :messages="$errors->get('gender')" class="mt-2" />
             </div>
             <!-- End Gender -->
+
+            <!-- Role -->
+            <div>
+              <label for="status" class="block mb-2 text-sm dark:text-white">Role</label>
+              <div class="relative">
+                <select name="status" id="status"
+                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg pe-9 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                  <option @selected(old('status') == '') disabled value="">Select your role</option>
+                  <option @selected(old('status') == 'Parent') value="Parent">Parent</option>
+                  <option @selected(old('status') == 'Guardian') value="Guardian">Guardian</option>
+                </select>
+              </div>
+              <x-input-error :messages="$errors->get('status')" class="mt-2" />
+            </div>
+            <!-- End Role -->
 
             <!-- Password -->
             <div>

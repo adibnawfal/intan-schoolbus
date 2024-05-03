@@ -53,10 +53,10 @@
     <label for="gender" class="text-sm leading-7">Gender</label>
     <div class="relative">
       <select id="gender" name="gender"
-        class="w-full px-3 py-1 text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
         <option @selected(old('gender', $userDetails->gender) == '') value="" disabled>Select your gender</option>
-        <option @selected(old('gender', $userDetails->gender) == 'male') value="male">Male</option>
-        <option @selected(old('gender', $userDetails->gender) == 'female') value="female">Female</option>
+        <option @selected(old('gender', $userDetails->gender) == 'Male') value="Male">Male</option>
+        <option @selected(old('gender', $userDetails->gender) == 'Female') value="Female">Female</option>
       </select>
     </div>
     <x-input-error :messages="$errors->get('gender')" class="mt-2" />
@@ -65,10 +65,10 @@
     <label for="status" class="text-sm leading-7">Role</label>
     <div class="relative">
       <select id="status" name="status"
-        class="w-full px-3 py-1 text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
         <option @selected(old('status', $userDetails->status) == '') value="" disabled>Select your role</option>
-        <option @selected(old('status', $userDetails->status) == 'parent') value="parent">Parent</option>
-        <option @selected(old('status', $userDetails->status) == 'guardian') value="guardian">Guardian</option>
+        <option @selected(old('status', $userDetails->status) == 'Parent') value="Parent">Parent</option>
+        <option @selected(old('status', $userDetails->status) == 'Guardian') value="Guardian">Guardian</option>
       </select>
     </div>
     <x-input-error :messages="$errors->get('status')" class="mt-2" />

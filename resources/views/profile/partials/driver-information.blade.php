@@ -6,7 +6,7 @@
 
 <div class="flex flex-wrap -m-2">
   <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <a class="flex items-center p-6 border border-gray-200 rounded gap-x-4 hover:shadow" href="#">
+    <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
       <p class="self-start font-medium">1.</p>
       <div class="flex-grow">
         <h2 class="font-medium line-clamp-1">
@@ -24,7 +24,7 @@
     </a>
   </div>
   <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <a class="flex items-center p-6 border border-gray-200 rounded gap-x-4 hover:shadow" href="#">
+    <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
       <p class="self-start font-medium">2.</p>
       <div class="flex-grow">
         <h2 class="font-medium line-clamp-1">
