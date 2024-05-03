@@ -22,13 +22,28 @@ class Student extends Model
     'standard',
     'gender',
     'date_of_birth',
-    'parent_guardian',
-    'pickup_address',
-    'dropoff_address',
+    'parent_guardian_id',
+    'pickup_address_id',
+    'dropoff_address_id',
   ];
 
   public function user()
   {
-    return $this->belongsTo('App\Models\User');
+    return $this->belongsTo('App\Models\User', 'user_id');
+  }
+
+  public function parent_guardian()
+  {
+    return $this->belongsTo('App\Models\UserDetails', 'parent_guardian_id');
+  }
+
+  public function pickup_address()
+  {
+    return $this->belongsTo('App\Models\Address', 'pickup_address_id');
+  }
+
+  public function dropoff_address()
+  {
+    return $this->belongsTo('App\Models\Address', 'dropoff_address_id');
   }
 }

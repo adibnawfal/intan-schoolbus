@@ -16,7 +16,7 @@ return new class extends Migration {
       $table->foreign('user_id')->references('id')->on('users');
       $table->string('address_1')->nullable();
       $table->string('address_2')->nullable();
-      $table->string('postal_code')->nullable();
+      $table->integer('postal_code')->nullable();
       $table->string('city')->nullable();
       $table->string('state')->nullable();
       $table->string('area')->nullable();

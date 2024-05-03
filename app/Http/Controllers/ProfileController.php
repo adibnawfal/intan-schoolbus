@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Profile\UserUpdateRequest;
-use App\Http\Requests\Profile\UserDetailsUpdateRequest;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\Address;
+use App\Models\Student;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +40,7 @@ class ProfileController extends Controller
   }
 
   /**
-   * Update the user's about me.
+   * Update the user's profile.
    */
   public function patchAboutMe(Request $request, string $id): RedirectResponse
   {
@@ -132,7 +131,7 @@ class ProfileController extends Controller
   }
 
   /**
-   * Submit the new parent/guradian.
+   * Submit the new address.
    */
   public function postNewAddress(Request $request)
   {
@@ -142,7 +141,7 @@ class ProfileController extends Controller
     $this->validate($request, [
       'address_1' => ['required', 'string', 'max:255'],
       'address_2' => ['required', 'string', 'max:255'],
-      'postal_code' => ['required', 'string', 'max:255'],
+      'postal_code' => ['required', 'integer', 'min:0'],
       'city' => ['required', 'string', 'max:255'],
       'state' => ['required', 'string', 'max:255'],
       'area' => ['required', 'string', 'max:255'],
@@ -226,6 +225,40 @@ class ProfileController extends Controller
       'parentGuardian' => $parentGuardian,
       'address' => $address,
     ]);
+  }
+
+  /**
+   * Submit the new student's profile.
+   */
+  public function postNewStudent(Request $request)
+  {
+    $student = new Student();
+    $userId = auth()->user()->id;
+
+    $this->validate($request, [
+      'first_name' => ['required', 'string', 'max:255'],
+      'last_name' => ['required', 'string', 'max:255'],
+      'standard' => ['required', 'integer', 'max:6', 'min:1'],
+      'gender' => ['required', 'string', 'max:255'],
+      'date_of_birth' => ['required', 'date'],
+      'parent_guardian_id' => ['required', 'exists:user_details,id'],
+      'pickup_address_id' => ['required', 'exists:addresses,id'],
+      'dropoff_address_id' => ['required', 'exists:addresses,id'],
+    ]);
+
+    $student->user_id = $userId;
+    $student->first_name = $request['first_name'];
+    $student->last_name = $request['last_name'];
+    $student->school = 'Sekolah Kebangsaan Setiawangsa';
+    $student->standard = $request['standard'];
+    $student->gender = $request['gender'];
+    $student->date_of_birth = $request['date_of_birth'];
+    $student->parent_guardian_id = $request['parent_guardian_id'];
+    $student->pickup_address_id = $request['pickup_address_id'];
+    $student->dropoff_address_id = $request['dropoff_address_id'];
+    $student->save();
+
+    return Redirect::route('profile.student-profile')->with('status', 'address-submitted');
   }
 
   /**

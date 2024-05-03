@@ -17,12 +17,15 @@ return new class extends Migration {
       $table->string('first_name');
       $table->string('last_name');
       $table->string('school');
-      $table->string('standard');
+      $table->integer('standard');
       $table->string('gender');
-      $table->string('date_of_birth');
-      $table->string('parent_guardian');
-      $table->boolean('pickup_address');
-      $table->boolean('dropoff_address');
+      $table->date('date_of_birth');
+      $table->bigInteger('parent_guardian_id')->unsigned();
+      $table->foreign('parent_guardian_id')->references('id')->on('user_details');
+      $table->bigInteger('pickup_address_id')->unsigned();
+      $table->foreign('pickup_address_id')->references('id')->on('addresses');
+      $table->bigInteger('dropoff_address_id')->unsigned();
+      $table->foreign('dropoff_address_id')->references('id')->on('addresses');
       $table->timestamps();
     });
   }

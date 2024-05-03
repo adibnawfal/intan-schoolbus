@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/profile/driver-profile/new-driver', [ProfileController::class, 'getNewDriver'])->name('profile.new-driver');
   Route::get('/profile/student-profile', [ProfileController::class, 'getStudentProfile'])->name('profile.student-profile');
   Route::get('/profile/student-profile/new-student', [ProfileController::class, 'getNewStudent'])->name('profile.new-student');
+  Route::post('/profile/student-profile/new-student', [ProfileController::class, 'postNewStudent'])->name('profile.post-new-student');
   Route::get('/profile/change-password', [ProfileController::class, 'getChangePassword'])->name('profile.change-password');
   Route::get('/profile/delete-profile', [ProfileController::class, 'getDeleteProfile'])->name('profile.delete-profile');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
