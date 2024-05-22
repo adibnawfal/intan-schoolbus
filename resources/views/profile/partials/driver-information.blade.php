@@ -5,42 +5,31 @@
 </div>
 
 <div class="flex flex-wrap -m-2">
-  <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
-      <p class="self-start font-medium">1.</p>
-      <div class="flex-grow">
-        <h2 class="font-medium line-clamp-1">
-          Adib Nawfal
-        </h2>
-        <p class="text-xs text-gray-500 line-clamp-1">
-          adibnawfal1999@gmail.com
-        </p>
+  @php
+    $count = 1;
+  @endphp
+  @foreach ($driverDetails as $driverDetailsData)
+    @if ($driverDetailsData->user->role === 'driver' && $driverDetailsData->default === 1)
+      <div class="w-full p-2 lg:w-1/3 md:w-1/2">
+        <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
+          <p class="self-start font-medium">{{ $count++ }}.</p>
+          <div class="flex-grow">
+            <h2 class="font-medium line-clamp-1">
+              {{ $driverDetailsData->first_name }} {{ $driverDetailsData->last_name }}
+            </h2>
+            <p class="text-xs text-gray-500 line-clamp-1">
+              {{ $driverDetailsData->user->email }}
+            </p>
+          </div>
+          <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-chevron-right">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </a>
       </div>
-      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round" class="lucide lucide-chevron-right">
-        <path d="m9 18 6-6-6-6" />
-      </svg>
-    </a>
-  </div>
-  <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-    <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
-      <p class="self-start font-medium">2.</p>
-      <div class="flex-grow">
-        <h2 class="font-medium line-clamp-1">
-          Ahmad Abu
-        </h2>
-        <p class="text-xs text-gray-500 line-clamp-1">
-          ahmadabu@gmail.com
-        </p>
-      </div>
-      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round" class="lucide lucide-chevron-right">
-        <path d="m9 18 6-6-6-6" />
-      </svg>
-    </a>
-  </div>
+    @endif
+  @endforeach
 </div>
 
 <a class="flex items-center justify-between px-6 py-3 mt-2 font-semibold border border-gray-300 rounded hover:shadow"

@@ -19,7 +19,7 @@
     <!-- End Profile Header -->
 
     <!-- New Driver Form -->
-    <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
+    <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded">
       @include('profile.partials.new-driver-form')
     </div>
     <!-- End New Driver Form -->

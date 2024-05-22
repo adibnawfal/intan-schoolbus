@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\Address;
+use App\Models\DrivingLicense;
 use App\Models\Student;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -50,8 +53,8 @@ class ProfileController extends Controller
       'first_name' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
       'status' => ['nullable', 'string', 'max:255'],
-      'gender' => ['nullable', 'string', 'max:255'],
       'phone_no' => ['nullable', 'string', 'max:255'],
+      'gender' => ['nullable', 'string', 'max:255'],
       'bio' => ['nullable', 'string', 'max:255'],
     ]);
 
@@ -96,9 +99,9 @@ class ProfileController extends Controller
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
-      'status' => ['nullable', 'string', 'max:255'],
-      'gender' => ['nullable', 'string', 'max:255'],
-      'phone_no' => ['nullable', 'string', 'max:255'],
+      'status' => ['required', 'string', 'max:255'],
+      'phone_no' => ['required', 'string', 'max:255'],
+      'gender' => ['required', 'string', 'max:255'],
       'bio' => ['nullable', 'string', 'max:255'],
     ]);
 
@@ -106,8 +109,8 @@ class ProfileController extends Controller
     $userDetails->first_name = $request['first_name'];
     $userDetails->last_name = $request['last_name'];
     $userDetails->status = $request['status'];
-    $userDetails->gender = $request['gender'];
     $userDetails->phone_no = $request['phone_no'];
+    $userDetails->gender = $request['gender'];
     $userDetails->bio = $request['bio'];
     $userDetails->default = false;
     $userDetails->save();
@@ -140,8 +143,8 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'address_1' => ['required', 'string', 'max:255'],
-      'address_2' => ['required', 'string', 'max:255'],
-      'postal_code' => ['required', 'integer', 'min:0'],
+      'address_2' => ['nullable', 'string', 'max:255'],
+      'postal_code' => ['required', 'integer', 'digits:5'],
       'city' => ['required', 'string', 'max:255'],
       'state' => ['required', 'string', 'max:255'],
       'area' => ['required', 'string', 'max:255'],
@@ -168,9 +171,15 @@ class ProfileController extends Controller
       ->where('default', 1)
       ->first();
 
+    $driverDetails = UserDetails::all();
+
+    $drivingLicense = DrivingLicense::all();
+
     return view('profile.driver-profile', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
+      'driverDetails' => $driverDetails,
+      'drivingLicense' => $drivingLicense,
     ]);
   }
 
@@ -190,6 +199,75 @@ class ProfileController extends Controller
   }
 
   /**
+   * Submit the new driver's profile.
+   */
+  public function postNewDriver(Request $request)
+  {
+    $this->validate($request, [
+      'first_name' => ['required', 'string', 'max:255'],
+      'last_name' => ['nullable', 'string', 'max:255'],
+      'phone_no' => ['required', 'string', 'max:255'],
+      'gender' => ['required', 'string', 'max:255'],
+      'date_of_birth' => ['required', 'date'],
+      'ec_first_name' => ['required', 'string', 'max:255'],
+      'ec_last_name' => ['nullable', 'string', 'max:255'],
+      'ec_address_1' => ['required', 'string', 'max:255'],
+      'ec_address_2' => ['nullable', 'string', 'max:255'],
+      'ec_postal_code' => ['required', 'integer', 'digits:5'],
+      'ec_city' => ['required', 'string', 'max:255'],
+      'ec_state' => ['required', 'string', 'max:255'],
+      'ec_phone_no' => ['required', 'string', 'max:255'],
+      'class' => ['required', 'string', 'max:255'],
+      'expiry_date' => ['required', 'date'],
+      'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+      'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    ]);
+
+    $user = User::create([
+      'email' => $request->email,
+      'password' => Hash::make($request->password),
+      'role' => "driver",
+    ]);
+
+    $userDetails1 = new UserDetails();
+    $userDetails1->user_id = $user->id;
+    $userDetails1->first_name = $request['first_name'];
+    $userDetails1->last_name = $request['last_name'];
+    $userDetails1->phone_no = $request['phone_no'];
+    $userDetails1->gender = $request['gender'];
+    $userDetails1->date_of_birth = $request['date_of_birth'];
+    $userDetails1->default = true;
+    $userDetails1->save();
+
+    $driverLicense = new DrivingLicense();
+    $driverLicense->user_id = $user->id;
+    $driverLicense->type = 'Vocational Driving License (VDL)';
+    $driverLicense->class = $request['class'];
+    $driverLicense->expiry_date = $request['expiry_date'];
+    $driverLicense->save();
+
+    $userDetails2 = new UserDetails();
+    $userDetails2->user_id = $user->id;
+    $userDetails2->first_name = $request['ec_first_name'];
+    $userDetails2->last_name = $request['ec_last_name'];
+    $userDetails2->phone_no = $request['ec_phone_no'];
+    $userDetails2->default = false;
+    $userDetails2->save();
+
+    $address = new Address();
+    $address->user_id = $user->id;
+    $address->address_1 = $request['ec_address_1'];
+    $address->address_2 = $request['ec_address_2'];
+    $address->postal_code = $request['ec_postal_code'];
+    $address->city = $request['ec_city'];
+    $address->state = $request['ec_state'];
+    $address->default = false;
+    $address->save();
+
+    return Redirect::route('profile.driver-profile')->with('status', 'driver-registered');
+  }
+
+  /**
    * Display the student's profile.
    */
   public function getStudentProfile(Request $request): View
@@ -198,9 +276,13 @@ class ProfileController extends Controller
       ->where('default', 1)
       ->first();
 
+    $student = Student::where('user_id', $request->user()->id)
+      ->get();
+
     return view('profile.student-profile', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
+      'student' => $student
     ]);
   }
 
@@ -237,7 +319,7 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
-      'last_name' => ['required', 'string', 'max:255'],
+      'last_name' => ['nullable', 'string', 'max:255'],
       'standard' => ['required', 'integer', 'max:6', 'min:1'],
       'gender' => ['required', 'string', 'max:255'],
       'date_of_birth' => ['required', 'date'],

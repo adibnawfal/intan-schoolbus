@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AddressesTableSeeder extends Seeder
+class DrivingLicensesTableSeeder extends Seeder
 {
   /**
    * Run the database seeds.
@@ -16,17 +16,13 @@ class AddressesTableSeeder extends Seeder
   {
     $datetime = Carbon::now()->toDateTimeString();
 
-    DB::table('addresses')->insert([
-      // Address 1
+    DB::table('driving_licenses')->insert([
+      // Driving License 1
       [
-        'user_id' => 3,
-        'address_1' => '33, Jalan AU 4/4',
-        'address_2' => 'Taman Seri Keramat Tengah',
-        'postal_code' => 54200,
-        'city' => 'Kuala Lumpur',
-        'state' => 'Selangor',
-        'area' => 'Taman Keramat AU4',
-        'default' => false,
+        'user_id' => 2,
+        'type' => 'Vocational Driving License (VDL)',
+        'class' => 'E',
+        'expiry_date' => Carbon::create('2030', '02', '29'),
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],

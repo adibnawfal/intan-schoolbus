@@ -14,12 +14,13 @@ return new class extends Migration {
       $table->id();
       $table->bigInteger('user_id')->unsigned();
       $table->foreign('user_id')->references('id')->on('users');
-      $table->string('address_1')->nullable();
+      $table->string('address_1');
       $table->string('address_2')->nullable();
-      $table->integer('postal_code')->nullable();
-      $table->string('city')->nullable();
-      $table->string('state')->nullable();
+      $table->integer('postal_code');
+      $table->string('city');
+      $table->string('state');
       $table->string('area')->nullable();
+      $table->boolean('default');
       $table->timestamps();
     });
   }

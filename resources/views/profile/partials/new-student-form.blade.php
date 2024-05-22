@@ -3,7 +3,7 @@
   <h1 class="text-xl font-bold">About Student</h1>
   <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 </div>
-<form method="post" action="{{ route('profile.post-new-student') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('profile.post-new-student') }}">
   @csrf
   <div class="flex flex-wrap -m-2">
     <div class="w-1/2 p-2">

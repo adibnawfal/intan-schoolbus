@@ -5,10 +5,13 @@
 </div>
 
 <div class="flex flex-wrap -m-2">
+  @php
+    $count = 1;
+  @endphp
   @foreach ($address as $addressData)
     <div class="w-full p-2 lg:w-1/3 md:w-1/2 ">
       <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
-        <p class="self-start font-medium">{{ $loop->iteration }}.</p>
+        <p class="self-start font-medium">{{ $count++ }}.</p>
         <div class="flex-grow">
           <h2 class="font-medium line-clamp-1">
             {{ $addressData->address_1 }}

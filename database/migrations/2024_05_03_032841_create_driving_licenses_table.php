@@ -10,19 +10,13 @@ return new class extends Migration {
    */
   public function up(): void
   {
-    Schema::create('user_details', function (Blueprint $table) {
+    Schema::create('driving_licenses', function (Blueprint $table) {
       $table->id();
       $table->bigInteger('user_id')->unsigned();
       $table->foreign('user_id')->references('id')->on('users');
-      $table->string('first_name');
-      $table->string('last_name')->nullable();
-      $table->string('status')->nullable();
-      $table->string('phone_no')->nullable();
-      $table->string('gender')->nullable();
-      $table->date('date_of_birth')->nullable();
-      $table->string('bio')->nullable();
-      $table->string('profile_img')->nullable();
-      $table->boolean('default');
+      $table->string('type');
+      $table->string('class');
+      $table->date('expiry_date');
       $table->timestamps();
     });
   }
@@ -32,6 +26,6 @@ return new class extends Migration {
    */
   public function down(): void
   {
-    Schema::dropIfExists('user_details');
+    Schema::dropIfExists('driving_licenses');
   }
 };

@@ -5,12 +5,15 @@
 </div>
 
 <div class="flex flex-wrap -m-2">
+  @php
+    $count = 1;
+  @endphp
   @foreach ($parentGuardian as $parentGuardianData)
     <div class="relative w-full p-2 lg:w-1/3 md:w-1/2">
       <span
         class="absolute px-3 py-1 text-xs tracking-widest border border-gray-300 rounded-tr rounded-bl top-2 right-2">{{ $parentGuardianData->status }}</span>
       <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
-        <p class="self-start font-medium">{{ $loop->iteration }}.</p>
+        <p class="self-start font-medium">{{ $count++ }}.</p>
         <div class="flex-grow">
           <h2 class="font-medium line-clamp-1">
             {{ $parentGuardianData->first_name }} {{ $parentGuardianData->last_name }}

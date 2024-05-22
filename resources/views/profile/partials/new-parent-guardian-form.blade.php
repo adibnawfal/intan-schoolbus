@@ -20,18 +20,6 @@
     <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
   </div>
   <div class="w-1/2 p-2">
-    <label for="gender" class="text-sm leading-7">Gender</label>
-    <div class="relative">
-      <select id="gender" name="gender"
-        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
-        <option @selected(old('gender') == '') value="" disabled>Select your gender</option>
-        <option @selected(old('gender') == 'Male') value="Male">Male</option>
-        <option @selected(old('gender') == 'Female') value="Female">Female</option>
-      </select>
-    </div>
-    <x-input-error :messages="$errors->get('gender')" class="mt-2" />
-  </div>
-  <div class="w-1/2 p-2">
     <label for="status" class="text-sm leading-7">Role</label>
     <div class="relative">
       <select id="status" name="status"
@@ -52,6 +40,18 @@
         class="w-full px-3 py-1 text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 outline-none rounded-e focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
     </div>
     <x-input-error :messages="$errors->get('phone_no')" class="mt-2" />
+  </div>
+  <div class="w-1/2 p-2">
+    <label for="gender" class="text-sm leading-7">Gender</label>
+    <div class="relative">
+      <select id="gender" name="gender"
+        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+        <option @selected(old('gender') == '') value="" disabled>Select your gender</option>
+        <option @selected(old('gender') == 'Male') value="Male">Male</option>
+        <option @selected(old('gender') == 'Female') value="Female">Female</option>
+      </select>
+    </div>
+    <x-input-error :messages="$errors->get('gender')" class="mt-2" />
   </div>
   <div class="w-full p-2">
     <label for="bio" class="text-sm leading-7">Bio</label>

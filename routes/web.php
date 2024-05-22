@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
   Route::post('/profile/my-profile/new-address', [ProfileController::class, 'postNewAddress'])->name('profile.post-new-address');
   Route::get('/profile/driver-profile', [ProfileController::class, 'getDriverProfile'])->name('profile.driver-profile');
   Route::get('/profile/driver-profile/new-driver', [ProfileController::class, 'getNewDriver'])->name('profile.new-driver');
+  Route::post('/profile/driver-profile/new-driver', [ProfileController::class, 'postNewDriver'])->name('profile.post-new-driver');
   Route::get('/profile/student-profile', [ProfileController::class, 'getStudentProfile'])->name('profile.student-profile');
   Route::get('/profile/student-profile/new-student', [ProfileController::class, 'getNewStudent'])->name('profile.new-student');
   Route::post('/profile/student-profile/new-student', [ProfileController::class, 'postNewStudent'])->name('profile.post-new-student');

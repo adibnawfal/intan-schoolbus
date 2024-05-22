@@ -21,7 +21,7 @@
   </div>
   <div class="w-1/2 p-2">
     <label for="postal_code" class="text-sm leading-7">Postal Code</label>
-    <input type="text" id="postal_code" name="postal_code" value="{{ old('postal_code') }}"
+    <input type="number" id="postal_code" name="postal_code" value="{{ old('postal_code') }}"
       class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
     <x-input-error class="mt-2" :messages="$errors->get('postal_code')" />
   </div>
@@ -38,7 +38,7 @@
         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
         <option @selected(old('state') == '') value="" disabled>Select your state</option>
         <option @selected(old('state') == 'Selangor') value="Selangor">Selangor</option>
-        <option @selected(old('state') == 'Kuala Lumpur') value="Kuala Lumpur">Kuala Lumpur</option>
+        <option @selected(old('state') == 'W.P. Kuala Lumpur') value="W.P. Kuala Lumpur">W.P. Kuala Lumpur</option>
       </select>
     </div>
     <x-input-error :messages="$errors->get('state')" class="mt-2" />
