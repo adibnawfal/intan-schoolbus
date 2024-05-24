@@ -22,6 +22,7 @@ class Address extends Model
     'city',
     'state',
     'area',
+    'default',
   ];
 
   public function user()

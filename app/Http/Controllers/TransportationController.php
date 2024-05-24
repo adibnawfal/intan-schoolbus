@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserDetails;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -32,9 +33,13 @@ class TransportationController extends Controller
       ->where('default', 1)
       ->first();
 
+    $student = Student::where('user_id', $request->user()->id)
+      ->get();
+
     return view('transportation.request-bus', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
+      'student' => $student
     ]);
   }
 

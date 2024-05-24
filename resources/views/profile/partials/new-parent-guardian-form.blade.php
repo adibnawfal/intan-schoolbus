@@ -3,8 +3,7 @@
   <h1 class="text-xl font-bold">About Parent/Guardian</h1>
   <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 </div>
-<form method="post" action="{{ route('profile.post-new-parent-guardian') }}" enctype="multipart/form-data"
-  class="flex flex-wrap -m-2">
+<form method="post" action="{{ route('profile.post-new-parent-guardian') }}" class="flex flex-wrap -m-2">
   @csrf
 
   <div class="w-1/2 p-2">
@@ -14,7 +13,7 @@
     <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
   </div>
   <div class="w-1/2 p-2">
-    <label for="last_name" class="text-sm leading-7">Last Name</label>
+    <label for="last_name" class="text-sm leading-7">Last Name (Optional)</label>
     <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}"
       class="w-full px-3 py-1 text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
     <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
@@ -54,7 +53,7 @@
     <x-input-error :messages="$errors->get('gender')" class="mt-2" />
   </div>
   <div class="w-full p-2">
-    <label for="bio" class="text-sm leading-7">Bio</label>
+    <label for="bio" class="text-sm leading-7">Bio (Optional)</label>
     <textarea id="bio" name="bio" value="{{ old('bio') }}"
       class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"></textarea>
     <x-input-error :messages="$errors->get('bio')" class="mt-2" />

@@ -13,7 +13,7 @@ return new class extends Migration {
     Schema::create('students', function (Blueprint $table) {
       $table->id();
       $table->bigInteger('user_id')->unsigned();
-      $table->foreign('user_id')->references('id')->on('users');
+      $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       $table->string('first_name');
       $table->string('last_name');
       $table->string('school');
@@ -21,11 +21,11 @@ return new class extends Migration {
       $table->string('gender');
       $table->date('date_of_birth');
       $table->bigInteger('parent_guardian_id')->unsigned();
-      $table->foreign('parent_guardian_id')->references('id')->on('user_details');
+      $table->foreign('parent_guardian_id')->references('id')->on('user_details')->onDelete('cascade');
       $table->bigInteger('pickup_address_id')->unsigned();
-      $table->foreign('pickup_address_id')->references('id')->on('addresses');
+      $table->foreign('pickup_address_id')->references('id')->on('addresses')->onDelete('cascade');
       $table->bigInteger('dropoff_address_id')->unsigned();
-      $table->foreign('dropoff_address_id')->references('id')->on('addresses');
+      $table->foreign('dropoff_address_id')->references('id')->on('addresses')->onDelete('cascade');
       $table->timestamps();
     });
   }

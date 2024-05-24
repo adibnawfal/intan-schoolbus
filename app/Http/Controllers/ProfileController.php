@@ -157,6 +157,7 @@ class ProfileController extends Controller
     $address->city = $request['city'];
     $address->state = $request['state'];
     $address->area = $request['area'];
+    $address->default = 0;
     $address->save();
 
     return Redirect::route('profile.my-profile')->with('status', 'address-submitted');

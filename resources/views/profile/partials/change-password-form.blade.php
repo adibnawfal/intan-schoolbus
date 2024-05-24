@@ -8,27 +8,31 @@
   @method('put')
 
   <div class="w-full p-2">
-    <label for="current-password" class="text-sm leading-7">Current Password</label>
-    <input type="password" id="current-password" name="current-password" autocomplete="current-password"
+    <label for="update_password_current_password" class="text-sm leading-7">Current Password</label>
+    <input type="password" id="update_password_current_password" name="current_password" autocomplete="current-password"
       class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
     <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
   </div>
   <div class="w-full p-2">
-    <label for="new-password" class="text-sm leading-7">New Password</label>
-    <input type="password" id="new-password" name="new-password" autocomplete="new-password"
+    <label for="update_password_password" class="text-sm leading-7">New Password</label>
+    <input type="password" id="update_password_password" name="password" autocomplete="new-password"
       class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
     <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
   </div>
   <div class="w-full p-2">
-    <label for="confirm-password" class="text-sm leading-7">Confirm Password</label>
-    <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password"
+    <label for="update_password_password_confirmation-password" class="text-sm leading-7">Confirm Password</label>
+    <input type="password" id="update_password_password_confirmation-password" name="password_confirmation"
+      autocomplete="new-password"
       class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
     <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
   </div>
+  <div class="w-full p-2">
+    <button type="submit"
+      class="px-8 py-2 mt-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
+      Change Password
+    </button>
+  </div>
 </form>
-<button class="px-8 py-2 mt-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
-  Change Password
-</button>
 <!-- End Change Password Form -->
 
 {{-- <section>

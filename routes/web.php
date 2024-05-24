@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\RequestBus;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,7 @@ Route::middleware('auth')->group(function () {
   // Transportation
   Route::get('/transportation', [TransportationController::class, 'getTransportation'])->name('transportation.view');
   Route::get('/transportation/request-bus', [TransportationController::class, 'getRequestBus'])->name('transportation.request-bus');
+  // Route::get('/transportation/request-bus', RequestBus::class)->name('transportation.request-bus');
   Route::get('/transportation/request-submitted', [TransportationController::class, 'getRequestSubmitted'])->name('transportation.request-submitted');
   Route::get('/transportation/request-status', [TransportationController::class, 'getRequestStatus'])->name('transportation.request-status');
 

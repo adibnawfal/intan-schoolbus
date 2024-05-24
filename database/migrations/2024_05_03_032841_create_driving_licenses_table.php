@@ -13,7 +13,7 @@ return new class extends Migration {
     Schema::create('driving_licenses', function (Blueprint $table) {
       $table->id();
       $table->bigInteger('user_id')->unsigned();
-      $table->foreign('user_id')->references('id')->on('users');
+      $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       $table->string('type');
       $table->string('class');
       $table->date('expiry_date');

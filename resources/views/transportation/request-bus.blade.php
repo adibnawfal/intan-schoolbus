@@ -4,63 +4,33 @@
   </x-slot>
 
   <div class="flex flex-col w-full px-6 py-8 gap-y-6">
-    <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
+    {{-- <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full">
         <h1 class="text-xl font-bold">Select Student Profile</h1>
         <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
-
       <div class="flex flex-wrap -m-2">
-        <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-          <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-            <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-              src="https://dummyimage.com/80x80">
-            <div class="flex-grow">
-              <h2 class="font-medium text-gray-900 title-font">Holden Caulfield</h2>
-              <p class="text-gray-500">UI Designer</p>
-            </div>
+        @php
+          $count = 1;
+        @endphp
+        @foreach ($student as $studentData)
+          <div class="w-full p-2 lg:w-1/3 md:w-1/2">
+            <label for="student{{ $studentData->id }}"
+              class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
+              <p class="self-start font-medium">{{ $count++ }}.</p>
+              <div class="flex-grow">
+                <h2 class="font-medium line-clamp-1">
+                  {{ $studentData->first_name }} {{ $studentData->last_name }}
+                </h2>
+                <p class="text-xs text-gray-500 uppercase">
+                  Standard {{ $studentData->standard }}
+                </p>
+              </div>
+              <input type="checkbox" name="student" id="student{{ $studentData->id }}" value="{{ $studentData->id }}"
+                class="text-blue-600 mt-0.5 border-gray-300 rounded shrink-0 ms-auto focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+            </label>
           </div>
-        </div>
-        <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-          <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-            <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-              src="https://dummyimage.com/84x84">
-            <div class="flex-grow">
-              <h2 class="font-medium text-gray-900 title-font">Henry Letham</h2>
-              <p class="text-gray-500">CTO</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-          <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-            <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-              src="https://dummyimage.com/88x88">
-            <div class="flex-grow">
-              <h2 class="font-medium text-gray-900 title-font">Oskar Blinde</h2>
-              <p class="text-gray-500">Founder</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-          <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-            <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-              src="https://dummyimage.com/90x90">
-            <div class="flex-grow">
-              <h2 class="font-medium text-gray-900 title-font">John Doe</h2>
-              <p class="text-gray-500">DevOps</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-          <div class="flex items-center h-full p-4 border border-gray-200 rounded-lg">
-            <img alt="team" class="flex-shrink-0 object-cover object-center w-16 h-16 mr-4 bg-gray-100 rounded-full"
-              src="https://dummyimage.com/94x94">
-            <div class="flex-grow">
-              <h2 class="font-medium text-gray-900 title-font">Martin Eden</h2>
-              <p class="text-gray-500">Software Engineer</p>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
 
       <div class="flex flex-col w-full mt-4">
@@ -79,6 +49,14 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($student->where('id', $selectedStudent) as $studentData)
+              <tr class="border-b-2 border-gray-200">
+                <td class="px-4 py-3 text-left">1.</td>
+                <td class="px-4 py-3">Nur Reyna</td>
+                <td class="px-4 py-3">Taman Keramat AU1</td>
+                <td class="px-4 py-3 text-right">50.00</td>
+              </tr>
+            @endforeach
             <tr class="border-b-2 border-gray-200">
               <td class="px-4 py-3 text-left">1.</td>
               <td class="px-4 py-3">Nur Reyna</td>
@@ -111,6 +89,8 @@
           Cancel
         </a>
       </div>
-    </div>
+    </div> --}}
+
+    <livewire:requestbus />
   </div>
 </x-app-layout>

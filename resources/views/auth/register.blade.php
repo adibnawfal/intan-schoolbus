@@ -8,7 +8,7 @@
 
       <div class="mt-6">
         <!-- Form -->
-        <form method="POST" action="{{ route('register') }}">
+        <form method="post" action="{{ route('register') }}">
           @csrf
 
           <div class="grid gap-y-4">
