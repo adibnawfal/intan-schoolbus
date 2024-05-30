@@ -1,4 +1,3 @@
-<!-- Driver Information -->
 <div class="flex flex-col w-full">
   <h1 class="text-xl font-bold">Driver Information</h1>
   <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -43,4 +42,3 @@
     <path d="M12 8v8" />
   </svg>
 </a>
-<!-- End Driver Information -->

@@ -1,4 +1,3 @@
-<!-- Profile Header -->
 <div class="sm:flex lg:items-end group">
   <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
     <img
@@ -14,7 +13,6 @@
       {{ $userDetails->first_name }} {{ $userDetails->last_name }}
     </p>
     <p>{{ $user->email }}</p>
-
     <nav class="flex-col flex-grow hidden w-full pt-4 mt-2 border-t-2 md:flex md:justify-start md:flex-row">
       <ul class="space-x-6 list-none lg:space-y-0 lg:items-center lg:inline-flex">
         <li class="flex items-center gap-x-3">
@@ -104,4 +102,3 @@
     </nav>
   </div>
 </div>
-<!-- End Profile Header -->

@@ -119,6 +119,52 @@ class ProfileController extends Controller
   }
 
   /**
+   * Display update parent/guardian page.
+   */
+  public function getUpdateParentGuardian(Request $request, string $id): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $parentGuardianData = UserDetails::findOrFail($id);
+
+    return view('profile.update-parent-guardian', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'parentGuardianData' => $parentGuardianData,
+    ]);
+  }
+
+  /**
+   * Submit the update parent/guradian.
+   */
+  public function patchUpdateParentGuardian(Request $request, string $id)
+  {
+    $userDetailsData = UserDetails::findOrFail($id);
+
+    $this->validate($request, [
+      'first_name' => ['required', 'string', 'max:255'],
+      'last_name' => ['nullable', 'string', 'max:255'],
+      'status' => ['required', 'string', 'max:255'],
+      'phone_no' => ['required', 'string', 'max:255'],
+      'gender' => ['required', 'string', 'max:255'],
+      'bio' => ['nullable', 'string', 'max:255'],
+    ]);
+
+    $userDetailsData->update([
+      'first_name' => $request['first_name'],
+      'last_name' => $request['last_name'],
+      'status' => $request['status'],
+      'phone_no' => $request['phone_no'],
+      'gender' => $request['gender'],
+      'bio' => $request['bio'],
+    ]);
+
+    return Redirect::route('profile.my-profile')->with('status', 'parent-guardian-updated');
+  }
+
+  /**
    * Display the new address.
    */
   public function getNewAddress(Request $request): View
@@ -161,6 +207,52 @@ class ProfileController extends Controller
     $address->save();
 
     return Redirect::route('profile.my-profile')->with('status', 'address-submitted');
+  }
+
+  /**
+   * Display update address page.
+   */
+  public function getUpdateAddress(Request $request, string $id): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $addressData = Address::findOrFail($id);
+
+    return view('profile.update-address', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'addressData' => $addressData,
+    ]);
+  }
+
+  /**
+   * Submit the update address.
+   */
+  public function patchUpdateAddress(Request $request, string $id)
+  {
+    $addressData = Address::findOrFail($id);
+
+    $this->validate($request, [
+      'address_1' => ['required', 'string', 'max:255'],
+      'address_2' => ['nullable', 'string', 'max:255'],
+      'postal_code' => ['required', 'integer', 'digits:5'],
+      'city' => ['required', 'string', 'max:255'],
+      'state' => ['required', 'string', 'max:255'],
+      'area' => ['required', 'string', 'max:255'],
+    ]);
+
+    $addressData->update([
+      'address_1' => $request['address_1'],
+      'address_2' => $request['address_2'],
+      'postal_code' => $request['postal_code'],
+      'city' => $request['city'],
+      'state' => $request['state'],
+      'area' => $request['area'],
+    ]);
+
+    return Redirect::route('profile.my-profile')->with('status', 'parent-guardian-updated');
   }
 
   /**
@@ -342,6 +434,64 @@ class ProfileController extends Controller
     $student->save();
 
     return Redirect::route('profile.student-profile')->with('status', 'address-submitted');
+  }
+
+  /**
+   * Display update student page.
+   */
+  public function getUpdateStudent(Request $request, string $id): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $parentGuardian = UserDetails::where('user_id', $request->user()->id)
+      ->get();
+
+    $address = Address::where('user_id', $request->user()->id)
+      ->get();
+
+    $studentData = Student::findOrFail($id);
+
+    return view('profile.update-student', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'parentGuardian' => $parentGuardian,
+      'address' => $address,
+      'studentData' => $studentData,
+    ]);
+  }
+
+  /**
+   * Submit the update student.
+   */
+  public function patchUpdateStudent(Request $request, string $id)
+  {
+    $studentData = Student::findOrFail($id);
+
+    $this->validate($request, [
+      'first_name' => ['required', 'string', 'max:255'],
+      'last_name' => ['nullable', 'string', 'max:255'],
+      'standard' => ['required', 'integer', 'max:6', 'min:1'],
+      'gender' => ['required', 'string', 'max:255'],
+      'date_of_birth' => ['required', 'date'],
+      'parent_guardian_id' => ['required', 'exists:user_details,id'],
+      'pickup_address_id' => ['required', 'exists:addresses,id'],
+      'dropoff_address_id' => ['required', 'exists:addresses,id'],
+    ]);
+
+    $studentData->update([
+      'first_name' => $request['first_name'],
+      'last_name' => $request['last_name'],
+      'standard' => $request['standard'],
+      'gender' => $request['gender'],
+      'date_of_birth' => $request['date_of_birth'],
+      'parent_guardian_id' => $request['parent_guardian_id'],
+      'pickup_address_id' => $request['pickup_address_id'],
+      'dropoff_address_id' => $request['dropoff_address_id'],
+    ]);
+
+    return Redirect::route('profile.student-profile')->with('status', 'student-updated');
   }
 
   /**

@@ -1,8 +1,8 @@
-<!-- Change Password Form -->
 <div class="flex flex-col w-full">
   <h1 class="text-xl font-bold">Change Password</h1>
   <p class="text-sm leading-relaxed lg:w-2/3">Ensure your account is using a long, random password to stay secure.</p>
 </div>
+
 <form method="post" action="{{ route('password.update') }}" class="flex flex-wrap -m-2">
   @csrf
   @method('put')
@@ -33,7 +33,6 @@
     </button>
   </div>
 </form>
-<!-- End Change Password Form -->
 
 {{-- <section>
   <header>

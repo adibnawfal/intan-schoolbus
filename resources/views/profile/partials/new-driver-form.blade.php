@@ -1,6 +1,6 @@
-<!-- New Driver Form -->
 <form method="post" action="{{ route('profile.post-new-driver') }}" class="flex flex-col gap-y-4">
   @csrf
+
   <div class="flex flex-col w-full">
     <h1 class="text-xl font-bold">About Driver</h1>
     <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -191,4 +191,3 @@
     </a>
   </div>
 </form>
-<!-- End New Driver Form -->

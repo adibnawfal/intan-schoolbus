@@ -1,4 +1,3 @@
-<!-- About Me -->
 <div class="flex flex-col w-full">
   <h1 class="text-xl font-bold">About Me</h1>
   <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -41,7 +40,6 @@
           {{ __('Click here to re-send the verification email.') }}
         </button>
       </p>
-
       @if (session('status') === 'verification-link-sent')
         <p class="mt-2 text-sm font-medium text-green-600">
           {{ __('A new verification link has been sent to your email address.') }}
@@ -96,4 +94,3 @@
     </button>
   </div>
 </form>
-<!-- End About Me -->

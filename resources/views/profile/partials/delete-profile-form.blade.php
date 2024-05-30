@@ -1,14 +1,15 @@
-<!-- Delete Profile Form -->
 <div class="flex flex-col w-full">
   <h1 class="text-xl font-bold">Delete Profile</h1>
   <p class="text-sm leading-relaxed">Once your profile is deleted, all of its resources and data will be
     permanently deleted. Before deleting your profile, please download any data or information that you wish to retain.
   </p>
 </div>
+
 <button type="submit" x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
   class="px-8 py-2 mt-2 text-sm text-white bg-red-600 rounded w-max focus:outline-none hover:bg-red-700">
   Delete Profile
 </button>
+
 <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
   <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
     @csrf
@@ -42,7 +43,6 @@
     </div>
   </form>
 </x-modal>
-<!-- End Delete Profile Form -->
 
 {{-- <section class="space-y-6">
   <header>
