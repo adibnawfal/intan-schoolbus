@@ -10,35 +10,42 @@
         <h1 class="flex items-center pb-4 mb-4 text-4xl leading-none text-gray-900 border-b border-gray-200">
           <span>{{ $parentGuardianData->first_name }} {{ $parentGuardianData->last_name }}</span>
         </h1>
-        <p class="flex items-center mb-2 text-gray-600">
-          <span
-            class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-              class="w-3 h-3" viewBox="0 0 24 24">
-              <path d="M20 6L9 17l-5-5"></path>
-            </svg>
-          </span>{{ $parentGuardianData->gender }}
-        </p>
-        <p class="flex items-center mb-2 text-gray-600">
-          <span
-            class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-              class="w-3 h-3" viewBox="0 0 24 24">
-              <path d="M20 6L9 17l-5-5"></path>
-            </svg>
-          </span>+60{{ $parentGuardianData->phone_no }}
-        </p>
-        @if ($parentGuardianData->bio)
-          <p class="flex text-gray-600">
-            <span
-              class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mt-1 mr-2 text-white bg-blue-500 rounded-full">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                <path d="M20 6L9 17l-5-5"></path>
-              </svg>
-            </span>{{ $parentGuardianData->bio }}
-          </p>
-        @endif
+        <div class="w-full">
+          <nav class="flex flex-col items-center -mb-1 text-center sm:items-start sm:text-left">
+            <p class="flex items-center">
+              <span
+                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-chevron-right">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </span>{{ $parentGuardianData->gender }}
+            </p>
+            <p class="flex items-center">
+              <span
+                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-chevron-right">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </span>+60{{ $parentGuardianData->phone_no }}
+            </p>
+            @if ($parentGuardianData->bio)
+              <p class="flex">
+                <span
+                  class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mt-1 mr-2 text-white bg-blue-500 rounded-full">
+                  <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-chevron-right">
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </span>{{ $parentGuardianData->bio }}
+              </p>
+            @endif
+          </nav>
+        </div>
         <a class="flex items-center w-full px-4 py-2 mt-6 text-white bg-blue-500 border-0 rounded focus:outline-none hover:bg-blue-600"
           href="{{ route('profile.update-parent-guardian', $parentGuardianData->id) }}">
           Update

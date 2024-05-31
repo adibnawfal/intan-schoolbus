@@ -29,18 +29,6 @@ class AuthenticatedSessionController extends Controller
 
     $request->session()->regenerate();
 
-    // $url = '';
-
-    // if ($request->user()->role === 'admin') {
-    //   $url = 'admin/dashboard';
-    // } elseif ($request->user()->role === 'driver') {
-    //   $url = 'driver/dashboard';
-    // } else {
-    //   $url = 'customer/dashboard';
-    // }
-
-    // return redirect()->intended($url);
-
     return redirect()->intended(RouteServiceProvider::HOME);
   }
 

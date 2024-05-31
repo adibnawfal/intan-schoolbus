@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -119,7 +120,7 @@ class ProfileController extends Controller
   }
 
   /**
-   * Display update parent/guardian page.
+   * Display the update parent/guardian.
    */
   public function getUpdateParentGuardian(Request $request, string $id): View
   {
@@ -210,7 +211,7 @@ class ProfileController extends Controller
   }
 
   /**
-   * Display update address page.
+   * Display the update address.
    */
   public function getUpdateAddress(Request $request, string $id): View
   {
@@ -264,14 +265,23 @@ class ProfileController extends Controller
       ->where('default', 1)
       ->first();
 
+    $driver = User::all();
+
     $driverDetails = UserDetails::all();
+
+    $ecDetails = UserDetails::all();
+
+    $ecAddress = Address::all();
 
     $drivingLicense = DrivingLicense::all();
 
     return view('profile.driver-profile', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
+      'driver' => $driver,
       'driverDetails' => $driverDetails,
+      'ecDetails' => $ecDetails,
+      'ecAddress' => $ecAddress,
       'drivingLicense' => $drivingLicense,
     ]);
   }
@@ -332,13 +342,6 @@ class ProfileController extends Controller
     $userDetails1->default = true;
     $userDetails1->save();
 
-    $driverLicense = new DrivingLicense();
-    $driverLicense->user_id = $user->id;
-    $driverLicense->type = 'Vocational Driving License (VDL)';
-    $driverLicense->class = $request['class'];
-    $driverLicense->expiry_date = $request['expiry_date'];
-    $driverLicense->save();
-
     $userDetails2 = new UserDetails();
     $userDetails2->user_id = $user->id;
     $userDetails2->first_name = $request['ec_first_name'];
@@ -357,7 +360,165 @@ class ProfileController extends Controller
     $address->default = false;
     $address->save();
 
+    $driverLicense = new DrivingLicense();
+    $driverLicense->user_id = $user->id;
+    $driverLicense->type = 'Vocational Driving License (VDL)';
+    $driverLicense->class = $request['class'];
+    $driverLicense->expiry_date = $request['expiry_date'];
+    $driverLicense->save();
+
     return Redirect::route('profile.driver-profile')->with('status', 'driver-registered');
+  }
+
+  /**
+   * Display the update driver's.
+   */
+  public function getUpdateDriver(Request $request, string $id): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $driverData = User::findOrFail($id);
+
+    $driverDetailsData = UserDetails::where('user_id', $id)
+      ->where('default', 1)
+      ->first();
+
+    $ecDetailsData = UserDetails::where('user_id', $id)
+      ->where('default', 0)
+      ->first();
+
+    $ecAddressData = Address::where('user_id', $id)
+      ->where('default', 0)
+      ->first();
+
+    $drivingLicenseData = DrivingLicense::where('user_id', $id)->first();
+
+    return view('profile.update-driver', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'driverData' => $driverData,
+      'driverDetailsData' => $driverDetailsData,
+      'ecDetailsData' => $ecDetailsData,
+      'ecAddressData' => $ecAddressData,
+      'drivingLicenseData' => $drivingLicenseData,
+    ]);
+  }
+
+  /**
+   * Submit the update driver's.
+   */
+  public function patchUpdateDriver(Request $request, string $id)
+  {
+    $driverDetailsData = UserDetails::where('user_id', $id)
+      ->where('default', 1)
+      ->first();
+
+    $ecDetailsData = UserDetails::where('user_id', $id)
+      ->where('default', 0)
+      ->first();
+
+    $ecAddressData = Address::where('user_id', $id)
+      ->where('default', 0)
+      ->first();
+
+    $drivingLicenseData = DrivingLicense::where('user_id', $id)->first();
+
+    $this->validate($request, [
+      'first_name' => ['required', 'string', 'max:255'],
+      'last_name' => ['nullable', 'string', 'max:255'],
+      'phone_no' => ['required', 'string', 'max:255'],
+      'gender' => ['required', 'string', 'max:255'],
+      'date_of_birth' => ['required', 'date'],
+      'ec_first_name' => ['required', 'string', 'max:255'],
+      'ec_last_name' => ['nullable', 'string', 'max:255'],
+      'ec_address_1' => ['required', 'string', 'max:255'],
+      'ec_address_2' => ['nullable', 'string', 'max:255'],
+      'ec_postal_code' => ['required', 'integer', 'digits:5'],
+      'ec_city' => ['required', 'string', 'max:255'],
+      'ec_state' => ['required', 'string', 'max:255'],
+      'ec_phone_no' => ['required', 'string', 'max:255'],
+      'class' => ['required', 'string', 'max:255'],
+      'expiry_date' => ['required', 'date'],
+      'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($driverDetailsData->user->id)],
+    ]);
+
+    if ($driverDetailsData->user->isDirty('email')) {
+      $driverDetailsData->user->email_verified_at = null;
+    }
+
+    $driverDetailsData->user()->update([
+      'email' => $request['email'],
+    ]);
+
+    $driverDetailsData->update([
+      'first_name' => $request['first_name'],
+      'last_name' => $request['last_name'],
+      'phone_no' => $request['phone_no'],
+      'gender' => $request['gender'],
+      'date_of_birth' => $request['date_of_birth'],
+    ]);
+
+    $ecDetailsData->update([
+      'first_name' => $request['ec_first_name'],
+      'last_name' => $request['ec_last_name'],
+      'phone_no' => $request['ec_phone_no'],
+    ]);
+
+    $ecAddressData->update([
+      'address_1' => $request['ec_address_1'],
+      'address_2' => $request['ec_address_2'],
+      'postal_code' => $request['ec_postal_code'],
+      'city' => $request['ec_city'],
+      'state' => $request['ec_state'],
+    ]);
+
+    $drivingLicenseData->update([
+      'class' => $request['class'],
+      'expiry_date' => $request['expiry_date'],
+    ]);
+
+    return Redirect::route('profile.driver-profile')->with('status', 'driver-updated');
+  }
+
+  /**
+   * Display the change driver's password.
+   */
+  public function getChangeDriverPassword(Request $request, string $id): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $driverDetailsData = UserDetails::where('user_id', $id)
+      ->where('default', 1)
+      ->first();
+
+    return view('profile.change-driver-password', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'driverDetailsData' => $driverDetailsData,
+    ]);
+  }
+
+  /**
+   * Update the driver's password.
+   */
+  public function putChangeDriverPassword(Request $request, string $id): RedirectResponse
+  {
+    $driverData = User::findOrFail($id);
+
+    $validated = $request->validateWithBag('updatePassword', [
+      'current_password' => ['required', 'current_password'],
+      'password' => ['required', Password::defaults(), 'confirmed'],
+    ]);
+
+    $driverData->update([
+      'password' => Hash::make($validated['password']),
+    ]);
+
+    return Redirect::route('profile.driver-profile')->with('status', 'driver-password-updated');
   }
 
   /**
@@ -437,7 +598,7 @@ class ProfileController extends Controller
   }
 
   /**
-   * Display update student page.
+   * Display the update student's.
    */
   public function getUpdateStudent(Request $request, string $id): View
   {
@@ -463,7 +624,7 @@ class ProfileController extends Controller
   }
 
   /**
-   * Submit the update student.
+   * Submit the update student's.
    */
   public function patchUpdateStudent(Request $request, string $id)
   {

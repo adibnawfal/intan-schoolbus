@@ -9,24 +9,28 @@
   @endphp
   @foreach ($driverDetails as $driverDetailsData)
     @if ($driverDetailsData->user->role === 'driver' && $driverDetailsData->default === 1)
-      <div class="w-full p-2 lg:w-1/3 md:w-1/2">
-        <a class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow" href="#">
-          <p class="self-start font-medium">{{ $count++ }}.</p>
-          <div class="flex-grow">
-            <h2 class="font-medium line-clamp-1">
-              {{ $driverDetailsData->first_name }} {{ $driverDetailsData->last_name }}
-            </h2>
-            <p class="text-xs text-gray-500 line-clamp-1">
-              {{ $driverDetailsData->user->email }}
-            </p>
+      <button type="button" data-hs-overlay="#hs-driver-{{ $driverDetailsData->id }}-modal"
+        class="relative w-full p-2 lg:w-1/3 md:w-1/2">
+        <div class="flex items-center justify-between p-6 border border-gray-300 rounded gap-x-4 hover:shadow">
+          <div class="flex gap-x-4">
+            <p class="font-medium">{{ $count++ }}.</p>
+            <div class="flex flex-col items-start">
+              <h2 class="font-medium line-clamp-1">
+                {{ $driverDetailsData->first_name }} {{ $driverDetailsData->last_name }}
+              </h2>
+              <p class="text-xs text-gray-500 line-clamp-1">
+                {{ $driverDetailsData->user->email }}
+              </p>
+            </div>
           </div>
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" class="lucide lucide-chevron-right">
             <path d="m9 18 6-6-6-6" />
           </svg>
-        </a>
-      </div>
+        </div>
+      </button>
+      @include('profile.partials.modal.hs-driver-modal')
     @endif
   @endforeach
 </div>

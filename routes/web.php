@@ -1,15 +1,10 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransportationController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DriverController;
-use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\RequestBus;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +20,6 @@ use App\Livewire\RequestBus;
 Route::get('/', function () {
   return view('welcome');
 })->name('welcome');
-
-// Route::get('/dashboard', function () {
-//   return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
   // Dashboard
@@ -50,6 +39,10 @@ Route::middleware('auth')->group(function () {
   Route::get('/profile/driver-profile', [ProfileController::class, 'getDriverProfile'])->name('profile.driver-profile');
   Route::get('/profile/driver-profile/new-driver', [ProfileController::class, 'getNewDriver'])->name('profile.new-driver');
   Route::post('/profile/driver-profile/new-driver', [ProfileController::class, 'postNewDriver'])->name('profile.post-new-driver');
+  Route::get('/profile/driver-profile/update-driver/{id}', [ProfileController::class, 'getUpdateDriver'])->name('profile.update-driver');
+  Route::patch('/profile/driver-profile/update-driver/{id}', [ProfileController::class, 'patchUpdateDriver'])->name('profile.patch-update-driver');
+  Route::get('/profile/driver-profile/change-password/{id}', [ProfileController::class, 'getChangeDriverPassword'])->name('profile.change-driver-password');
+  Route::put('/profile/driver-profile/change-password/{id}', [ProfileController::class, 'putChangeDriverPassword'])->name('profile.put-change-driver-password');
   Route::get('/profile/student-profile', [ProfileController::class, 'getStudentProfile'])->name('profile.student-profile');
   Route::get('/profile/student-profile/new-student', [ProfileController::class, 'getNewStudent'])->name('profile.new-student');
   Route::post('/profile/student-profile/new-student', [ProfileController::class, 'postNewStudent'])->name('profile.post-new-student');
@@ -63,28 +56,12 @@ Route::middleware('auth')->group(function () {
   // Transportation
   Route::get('/transportation', [TransportationController::class, 'getTransportation'])->name('transportation.view');
   Route::get('/transportation/request-bus', [TransportationController::class, 'getRequestBus'])->name('transportation.request-bus');
-  // Route::get('/transportation/request-bus', RequestBus::class)->name('transportation.request-bus');
   Route::get('/transportation/request-submitted', [TransportationController::class, 'getRequestSubmitted'])->name('transportation.request-submitted');
   Route::get('/transportation/request-status', [TransportationController::class, 'getRequestStatus'])->name('transportation.request-status');
 
   //Payment
   Route::get('/payment', [PaymentController::class, 'getPayment'])->name('payment.view');
   Route::get('/payment/record', [PaymentController::class, 'getRecord'])->name('payment.record');
-});
-
-// Admin routes
-Route::middleware(['auth', 'role:admin'])->group(function () {
-  // Route::get('/admin/dashboard', [AdminController::class, 'getDashboard'])->name('admin.dashboard');
-});
-
-// Driver routes
-Route::middleware(['auth', 'role:driver'])->group(function () {
-  // Route::get('/driver/dashboard', [DriverController::class, 'getDashboard'])->name('driver.dashboard');
-});
-
-// Customer routes
-Route::middleware(['auth', 'role:customer'])->group(function () {
-  // Route::get('/customer/dashboard', [CustomerController::class, 'getDashboard'])->name('customer.dashboard');
 });
 
 require __DIR__ . '/auth.php';
