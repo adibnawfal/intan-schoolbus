@@ -55,13 +55,14 @@ Route::middleware('auth')->group(function () {
 
   // Transportation
   Route::get('/transportation', [TransportationController::class, 'getTransportation'])->name('transportation.view');
-  Route::get('/transportation/request-bus', [TransportationController::class, 'getRequestBus'])->name('transportation.request-bus');
+  Route::get('/transportation/request-bus', [TransportationController::class, 'getRequestBus'])->name('transportation.get-request-bus');
+  Route::post('/transportation/request-bus', [TransportationController::class, 'postRequestBus'])->name('transportation.post-request-bus');
   Route::get('/transportation/request-submitted', [TransportationController::class, 'getRequestSubmitted'])->name('transportation.request-submitted');
   Route::get('/transportation/request-status', [TransportationController::class, 'getRequestStatus'])->name('transportation.request-status');
 
   //Payment
   Route::get('/payment', [PaymentController::class, 'getPayment'])->name('payment.view');
-  Route::get('/payment/record', [PaymentController::class, 'getRecord'])->name('payment.record');
+  Route::get('/payment/record/{id}', [PaymentController::class, 'getRecord'])->name('payment.get-record');
 });
 
 require __DIR__ . '/auth.php';

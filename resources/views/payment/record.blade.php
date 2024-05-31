@@ -28,7 +28,13 @@
       </div>
 
       <div class="flex flex-col w-full mt-4">
-        <h1 class="text-xl font-bold">Nur Reyna Payment Record</h1>
+        @foreach ($busService as $busServiceData)
+          @if ($busServiceData->id === $payment[0]->bus_service_id)
+            <h1 class="text-xl font-bold">
+              {{ $busServiceData->student->first_name }} {{ $busServiceData->student->last_name }} Payment Record
+            </h1>
+          @endif
+        @endforeach
         <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
 
@@ -45,182 +51,40 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">January</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-teal-800 bg-teal-100 rounded-full">
-                  Paid
-                </span>
-              </td>
-              <td class="px-4 py-3">4 Jan 2023</td>
-              <td class="px-4 py-3">Cash</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox" checked disabled>
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">February</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-teal-800 bg-teal-100 rounded-full">
-                  Paid
-                </span>
-              </td>
-              <td class="px-4 py-3">29 Jan 2023</td>
-              <td class="px-4 py-3">Debit Card</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox" checked disabled>
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">March</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">April</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">May</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">June</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">July</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">August</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">September</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">October</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">November</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="border-b-2 border-gray-200">
-              <td class="px-4 py-3 text-left">December</td>
-              <td class="px-4 py-3">
-                <span class="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full">
-                  Pending
-                </span>
-              </td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">-</td>
-              <td class="px-4 py-3">50.00</td>
-              <td class="px-4 py-3 text-right">
-                <input type="checkbox">
-              </td>
-            </tr>
-            <tr class="font-bold tracking-wider">
-              <td class="px-4 py-3 text-lg text-left">Total Payment</td>
-              <td class="px-4 py-3"></td>
-              <td class="px-4 py-3"></td>
-              <td class="px-4 py-3"></td>
-              <td class="px-4 py-3"></td>
-              <td class="px-4 py-3 text-lg text-right">150.00</td>
-            </tr>
+            @foreach ($payment as $paymentData)
+              <tr class="border-b-2 border-gray-200">
+                <td class="px-4 py-3 text-left">{{ $paymentData->month }}</td>
+                <td class="px-4 py-3">
+                  @if ($paymentData->status === 'Pending')
+                    <span class="px-3 py-1 text-xs font-medium text-yellow-800 bg-yellow-100 rounded-full">
+                      {{ $paymentData->status }}
+                    </span>
+                  @elseif ($busServiceData->status === 'Paid')
+                    <span class="px-3 py-1 text-xs font-medium text-teal-800 bg-teal-100 rounded-full">
+                      {{ $paymentData->status }}
+                    </span>
+                  @endif
+                </td>
+                <td class="px-4 py-3">
+                  @if ($paymentData->date)
+                    {{ Carbon\Carbon::parse($paymentData->date)->format('d/m/Y') }}
+                  @else
+                    -
+                  @endif
+                </td>
+                <td class="px-4 py-3">
+                  @if ($paymentData->method)
+                    {{ $paymentData->method }}
+                  @else
+                    -
+                  @endif
+                </td>
+                <td class="px-4 py-3">{{ number_format($paymentData->fee, 2, '.') }}</td>
+                <td class="px-4 py-3 text-right">
+                  <input type="checkbox">
+                </td>
+              </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

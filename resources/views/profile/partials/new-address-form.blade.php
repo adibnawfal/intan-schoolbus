@@ -3,8 +3,7 @@
   <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 </div>
 
-<form method="post" action="{{ route('profile.post-new-address') }}" enctype="multipart/form-data"
-  class="flex flex-wrap -m-2">
+<form method="post" action="{{ route('profile.post-new-address') }}" class="flex flex-wrap -m-2">
   @csrf
 
   <div class="w-1/2 p-2">
