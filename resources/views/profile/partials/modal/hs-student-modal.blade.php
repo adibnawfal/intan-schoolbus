@@ -89,45 +89,17 @@
           <h2 class="mb-2 text-sm font-medium tracking-widest text-center text-gray-900 title-font sm:text-left">
             PICK-UP ADDRESS</h2>
           <nav class="flex flex-col items-center -mb-1 text-center sm:items-start sm:text-left">
-            <p class="flex items-center">
+            <p class="flex">
               <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mt-1 mr-2 text-white bg-blue-500 rounded-full">
                 <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" class="lucide lucide-chevron-right">
                   <path d="m9 18 6-6-6-6" />
                 </svg>
-              </span>{{ $studentData->pickup_address->address_1 }}
-            </p>
-            <p class="flex items-center">
-              <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
-                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-chevron-right">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </span>{{ $studentData->pickup_address->address_2 }}
-            </p>
-            <p class="flex items-center">
-              <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
-                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-chevron-right">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </span>{{ $studentData->pickup_address->postal_code }} {{ $studentData->pickup_address->city }}
-            </p>
-            <p class="flex items-center">
-              <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
-                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-chevron-right">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </span>{{ $studentData->pickup_address->state }}
+              </span>{{ $studentData->pickup_address->address_1 }}, {{ $studentData->pickup_address->address_2 }},
+              {{ $studentData->pickup_address->postal_code }} {{ $studentData->pickup_address->city }},
+              {{ $studentData->pickup_address->state }}
             </p>
             <p class="flex items-center">
               <span
@@ -146,45 +118,17 @@
           <h2 class="mb-2 text-sm font-medium tracking-widest text-center text-gray-900 title-font sm:text-left">
             DROP-OFF ADDRESS</h2>
           <nav class="flex flex-col items-center -mb-1 text-center sm:items-start sm:text-left">
-            <p class="flex items-center">
+            <p class="flex">
               <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mt-1 mr-2 text-white bg-blue-500 rounded-full">
                 <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" class="lucide lucide-chevron-right">
                   <path d="m9 18 6-6-6-6" />
                 </svg>
-              </span>{{ $studentData->dropoff_address->address_1 }}
-            </p>
-            <p class="flex items-center">
-              <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
-                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-chevron-right">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </span>{{ $studentData->dropoff_address->address_2 }}
-            </p>
-            <p class="flex items-center">
-              <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
-                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-chevron-right">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </span>{{ $studentData->dropoff_address->postal_code }} {{ $studentData->dropoff_address->city }}
-            </p>
-            <p class="flex items-center">
-              <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
-                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-chevron-right">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </span>{{ $studentData->dropoff_address->state }}
+              </span>{{ $studentData->dropoff_address->address_1 }}, {{ $studentData->dropoff_address->address_2 }},
+              {{ $studentData->dropoff_address->postal_code }} {{ $studentData->dropoff_address->city }},
+              {{ $studentData->dropoff_address->state }}
             </p>
             <p class="flex items-center">
               <span

@@ -105,6 +105,7 @@ class TransportationController extends Controller
       }
 
       $busService = new BusService();
+      $busService->user_id = $request->user()->id;
       $busService->student_id = $selectedStudentId;
       $busService->start_date = Carbon::now();
       $busService->end_date = Carbon::create('2024-12-15');
@@ -113,6 +114,7 @@ class TransportationController extends Controller
 
       foreach ($month as $eachMonth) {
         $payment = new Payment();
+        $payment->user_id = $request->user()->id;
         $payment->bus_service_id = $busService->id;
         $payment->year = 2024;
         $payment->month = $eachMonth;

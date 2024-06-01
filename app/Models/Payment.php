@@ -15,6 +15,7 @@ class Payment extends Model
    * @var array<int, string>
    */
   protected $fillable = [
+    'user_id',
     'bus_service_id',
     'year',
     'month',
@@ -23,6 +24,11 @@ class Payment extends Model
     'method',
     'fee',
   ];
+
+  public function user()
+  {
+    return $this->belongsTo('App\Models\User', 'user_id');
+  }
 
   public function bus_service()
   {

@@ -22,7 +22,7 @@ class DrivingLicensesTableSeeder extends Seeder
         'user_id' => 2,
         'type' => 'Vocational Driving License (VDL)',
         'class' => 'E',
-        'expiry_date' => Carbon::create('2030', '02', '29'),
+        'expiry_date' => Carbon::create('2030-02-29'),
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],

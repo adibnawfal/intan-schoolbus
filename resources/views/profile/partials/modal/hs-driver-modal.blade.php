@@ -126,7 +126,7 @@
                       stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
                       <path d="m9 18 6-6-6-6" />
                     </svg>
-                  </span>{{ $drivingLicenseData->class }}
+                  </span>Class: {{ $drivingLicenseData->class }}
                 </p>
                 <p class="flex items-center">
                   <span

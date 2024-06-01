@@ -12,6 +12,8 @@ return new class extends Migration {
   {
     Schema::create('bus_services', function (Blueprint $table) {
       $table->id();
+      $table->bigInteger('user_id')->unsigned();
+      $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       $table->bigInteger('student_id')->unsigned();
       $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
       $table->date('start_date');

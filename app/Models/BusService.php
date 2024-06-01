@@ -15,11 +15,17 @@ class BusService extends Model
    * @var array<int, string>
    */
   protected $fillable = [
+    'user_id',
     'student_id',
     'start_date',
     'end_date',
     'status',
   ];
+
+  public function user()
+  {
+    return $this->belongsTo('App\Models\User', 'user_id');
+  }
 
   public function student()
   {

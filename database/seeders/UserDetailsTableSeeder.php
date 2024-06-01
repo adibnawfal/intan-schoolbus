@@ -25,6 +25,7 @@ class UserDetailsTableSeeder extends Seeder
         'status' => null,
         'phone_no' => null,
         'gender' => null,
+        'date_of_birth' => null,
         'default' => true,
         'created_at' => $datetime,
         'updated_at' => $datetime,
@@ -33,12 +34,27 @@ class UserDetailsTableSeeder extends Seeder
       // Driver
       [
         'user_id' => 2,
-        'first_name' => 'Driver',
-        'last_name' => null,
+        'first_name' => 'Syahir',
+        'last_name' => 'Nizam',
         'status' => null,
-        'phone_no' => null,
-        'gender' => null,
+        'phone_no' => '159085156',
+        'gender' => 'Male',
+        'date_of_birth' => Carbon::create('1980-02-14'),
         'default' => true,
+        'created_at' => $datetime,
+        'updated_at' => $datetime,
+      ],
+
+      // Driver - Emergency Contact
+      [
+        'user_id' => 2,
+        'first_name' => 'Taufiq',
+        'last_name' => 'Azmi',
+        'status' => null,
+        'phone_no' => '162112470',
+        'gender' => null,
+        'date_of_birth' => null,
+        'default' => false,
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],
@@ -46,37 +62,40 @@ class UserDetailsTableSeeder extends Seeder
       // Customer
       [
         'user_id' => 3,
-        'first_name' => 'Customer',
-        'last_name' => null,
+        'first_name' => 'Fatin',
+        'last_name' => 'Syafiqah',
         'status' => 'Parent',
         'phone_no' => null,
-        'gender' => 'Male',
+        'gender' => 'Female',
+        'date_of_birth' => null,
         'default' => true,
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],
 
-      // Customer 3 - Parent 1
+      // Customer - Parent
       [
         'user_id' => 3,
-        'first_name' => 'Fatin',
-        'last_name' => 'Syafiqah',
+        'first_name' => 'Amirul',
+        'last_name' => 'Sulaiman',
         'status' => 'Parent',
         'phone_no' => '1128565920',
-        'gender' => 'Female',
+        'gender' => 'Male',
+        'date_of_birth' => null,
         'default' => false,
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],
 
-      // Customer 3 - Guardian 1
+      // Customer - Guardian
       [
         'user_id' => 3,
-        'first_name' => 'Kim',
-        'last_name' => 'Taehyung',
+        'first_name' => 'Nur',
+        'last_name' => 'Hidayah',
         'status' => 'Guardian',
-        'phone_no' => '123456789',
-        'gender' => 'Male',
+        'phone_no' => '177749708',
+        'gender' => 'Female',
+        'date_of_birth' => null,
         'default' => false,
         'created_at' => $datetime,
         'updated_at' => $datetime,

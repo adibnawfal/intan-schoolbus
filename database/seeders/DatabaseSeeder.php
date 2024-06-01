@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
       UserDetailsTableSeeder::class,
       DrivingLicensesTableSeeder::class,
       AddressesTableSeeder::class,
+      StudentsTableSeeder::class,
     ]);
   }
 }

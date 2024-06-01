@@ -29,8 +29,8 @@ class UsersTableSeeder extends Seeder
 
       // Driver
       [
-        'email' => 'driver@gmail.com',
-        'password' => Hash::make('driver12345'),
+        'email' => 'syahir@gmail.com',
+        'password' => Hash::make('syahir12345'),
         'role' => 'driver',
         'created_at' => $datetime,
         'updated_at' => $datetime,
@@ -38,8 +38,8 @@ class UsersTableSeeder extends Seeder
 
       // Customer
       [
-        'email' => 'customer@gmail.com',
-        'password' => Hash::make('customer12345'),
+        'email' => 'nurfatinsyafiqah00@gmail.com',
+        'password' => Hash::make('fatin12345'),
         'role' => 'customer',
         'created_at' => $datetime,
         'updated_at' => $datetime,

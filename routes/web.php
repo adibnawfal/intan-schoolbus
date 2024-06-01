@@ -63,6 +63,9 @@ Route::middleware('auth')->group(function () {
   //Payment
   Route::get('/payment', [PaymentController::class, 'getPayment'])->name('payment.view');
   Route::get('/payment/record/{id}', [PaymentController::class, 'getRecord'])->name('payment.get-record');
+  Route::patch('/payment/record/{id}', [PaymentController::class, 'patchRecord'])->name('payment.patch-record');
+  Route::get('/payment/record/success/{id}/{selectedMonth}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+  Route::get('/payment/record/failure/{id}', [PaymentController::class, 'paymentFailure'])->name('payment.failure');
 });
 
 require __DIR__ . '/auth.php';
