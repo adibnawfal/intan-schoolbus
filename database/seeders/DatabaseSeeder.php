@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
       DrivingLicensesTableSeeder::class,
       AddressesTableSeeder::class,
       StudentsTableSeeder::class,
+      GPSTableSeeder::class,
     ]);
   }
 }

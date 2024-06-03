@@ -80,12 +80,26 @@
       </div>
       <div class="relative w-full h-[30rem] shadow sm:rounded">
         <div class="absolute inset-0">
-          <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-            src="https://maps.google.com/maps?width=100%25&amp;height=100%25&amp;hl=en&amp;q=Sekolah%20Kebangsaan%20Setiawangsa+(maps)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+          <iframe id="map" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
+            marginwidth="0">
           </iframe>
         </div>
       </div>
     </div>
-
   </div>
+
+  <script>
+    // Fetch GPS data from the server and update the map
+    setInterval(function() {
+      fetch('/dashboard/get-latest-gps') // Define a route to fetch the latest GPS data
+        .then(response => response.json())
+        .then(data => {
+          const {
+            lat,
+            lng
+          } = data;
+          document.getElementById('map').src = `https://maps.google.com/maps?q=${lat},${lng}&z=15&output=embed`;
+        });
+    }, 10000); // Update map every 10 seconds
+  </script>
 </x-app-layout>
