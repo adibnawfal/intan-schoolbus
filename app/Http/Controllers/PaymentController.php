@@ -24,9 +24,9 @@ class PaymentController extends Controller
       ->first();
 
     if ($request->user()->role == 'admin') {
-      $busService = BusService::all();
+      $busService = BusService::where('status', 'Success')->get();
     } elseif ($request->user()->role == 'customer') {
-      $busService = BusService::where('user_id', $request->user()->id)->get();
+      $busService = BusService::where('user_id', $request->user()->id)->where('status', 'Success')->get();
     }
 
     return view('payment.view', [
@@ -148,5 +148,40 @@ class PaymentController extends Controller
   public function paymentFailure(string $id)
   {
     return Redirect::route('payment.get-record', $id)->with('status', 'payment-failure');
+  }
+
+  /**
+   * Submit the update payment status.
+   */
+  public function patchUpdatePaymentStatus(Request $request, string $paymentId, string $busServiceId)
+  {
+    $paymentData = Payment::findOrFail($paymentId);
+
+    $this->validate($request, [
+      'payment_status' => ['required', 'string', 'max:255'],
+      'method' => ['nullable', 'string', 'max:255'],
+    ]);
+
+    if ($request['method'] == 'Cash' || $request['method'] == 'Debit/Credit Card') {
+      $methodVal = $request['method'];
+    } else {
+      $methodVal = null;
+    }
+
+    if ($request['payment_status'] === 'Paid') {
+      $paymentData->update([
+        'status' => $request['payment_status'],
+        'date' => Carbon::now()->toDateTimeString(),
+        'method' => $methodVal,
+      ]);
+    } else {
+      $paymentData->update([
+        'status' => $request['payment_status'],
+        'date' => null,
+        'method' => $methodVal,
+      ]);
+    }
+
+    return Redirect::route('payment.get-record', $busServiceId)->with('status', 'status-updated');
   }
 }

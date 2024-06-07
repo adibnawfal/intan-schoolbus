@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TransportationController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,17 +59,53 @@ Route::middleware('auth')->group(function () {
 
   // Transportation
   Route::get('/transportation', [TransportationController::class, 'getTransportation'])->name('transportation.view');
+  Route::get('/transportation/information', [TransportationController::class, 'getServiceInformation'])->name('transportation.service-information');
+  Route::get('/transportation/school/information', [TransportationController::class, 'getSchoolInformation'])->name('transportation.school-information');
+  Route::get('/transportation/school/new', [TransportationController::class, 'getNewSchool'])->name('transportation.get-new-school');
+  Route::post('/transportation/school/new', [TransportationController::class, 'postNewSchool'])->name('transportation.post-new-school');
+  Route::get('/transportation/school/update/{id}', [TransportationController::class, 'getUpdateSchool'])->name('transportation.get-update-school');
+  Route::patch('/transportation/school/update/{id}', [TransportationController::class, 'patchUpdateSchool'])->name('transportation.patch-update-school');
+  Route::get('/transportation/schedule/information', [TransportationController::class, 'getScheduleInformation'])->name('transportation.schedule-information');
+  Route::get('/transportation/schedule/new', [TransportationController::class, 'getNewSchedule'])->name('transportation.get-new-schedule');
+  Route::post('/transportation/schedule/new', [TransportationController::class, 'postNewSchedule'])->name('transportation.post-new-schedule');
+  Route::get('/transportation/schedule/update/{id}', [TransportationController::class, 'getUpdateSchedule'])->name('transportation.get-update-schedule');
+  Route::patch('/transportation/schedule/update/{id}', [TransportationController::class, 'patchUpdateSchedule'])->name('transportation.patch-update-schedule');
   Route::get('/transportation/request-bus', [TransportationController::class, 'getRequestBus'])->name('transportation.get-request-bus');
   Route::post('/transportation/request-bus', [TransportationController::class, 'postRequestBus'])->name('transportation.post-request-bus');
   Route::get('/transportation/request-submitted', [TransportationController::class, 'getRequestSubmitted'])->name('transportation.request-submitted');
   Route::get('/transportation/request-status', [TransportationController::class, 'getRequestStatus'])->name('transportation.request-status');
+  Route::patch('/transportation/update-status/{id}', [TransportationController::class, 'patchUpdateStatus'])->name('transportation.update-status');
 
-  //Payment
+  // Payment
   Route::get('/payment', [PaymentController::class, 'getPayment'])->name('payment.view');
   Route::get('/payment/record/{id}', [PaymentController::class, 'getRecord'])->name('payment.get-record');
   Route::patch('/payment/record/{id}', [PaymentController::class, 'patchRecord'])->name('payment.patch-record');
   Route::get('/payment/record/success/{id}/{selectedMonth}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
   Route::get('/payment/record/failure/{id}', [PaymentController::class, 'paymentFailure'])->name('payment.failure');
+  Route::patch('/payment/record/status/{paymentId}/{busServiceId}', [PaymentController::class, 'patchUpdatePaymentStatus'])->name('payment.update-payment-status');
+
+  // Report
+  Route::get('/report', [ReportController::class, 'getReport'])->name('report.view');
+  Route::get('/report/all-user', [ReportController::class, 'getAllUser'])->name('report.all-user');
+  Route::get('/report/all-user/export', [ReportController::class, 'exportAllUser'])->name('report.export-all-user');
+  Route::get('/report/admin', [ReportController::class, 'getAdmin'])->name('report.admin');
+  Route::get('/report/admin/export', [ReportController::class, 'exportAdmin'])->name('report.export-admin');
+  Route::get('/report/driver', [ReportController::class, 'getDriver'])->name('report.driver');
+  Route::get('/report/driver/export', [ReportController::class, 'exportDriver'])->name('report.export-driver');
+  Route::get('/report/customer', [ReportController::class, 'getCustomer'])->name('report.customer');
+  Route::get('/report/customer/export', [ReportController::class, 'exportCustomer'])->name('report.export-customer');
+  Route::get('/report/all-student', [ReportController::class, 'getAllStudent'])->name('report.all-student');
+  Route::get('/report/all-student/export', [ReportController::class, 'exportAllStudent'])->name('report.export-all-student');
+  Route::get('/report/taman-keramat-au1', [ReportController::class, 'getTamanKeramatAU1'])->name('report.taman-keramat-au1');
+  Route::get('/report/taman-keramat-au1/export', [ReportController::class, 'exportTamanKeramatAU1'])->name('report.export-taman-keramat-au1');
+  Route::get('/report/taman-keramat-au2', [ReportController::class, 'getTamanKeramatAU2'])->name('report.taman-keramat-au2');
+  Route::get('/report/taman-keramat-au2/export', [ReportController::class, 'exportTamanKeramatAU2'])->name('report.export-taman-keramat-au2');
+  Route::get('/report/taman-keramat-au3', [ReportController::class, 'getTamanKeramatAU3'])->name('report.taman-keramat-au3');
+  Route::get('/report/taman-keramat-au3/export', [ReportController::class, 'exportTamanKeramatAU3'])->name('report.export-taman-keramat-au3');
+  Route::get('/report/taman-keramat-au4', [ReportController::class, 'getTamanKeramatAU4'])->name('report.taman-keramat-au4');
+  Route::get('/report/taman-keramat-au4/export', [ReportController::class, 'exportTamanKeramatAU4'])->name('report.export-taman-keramat-au4');
+  Route::get('/report/all-school', [ReportController::class, 'getAllSchool'])->name('report.all-school');
+  Route::get('/report/all-school/export', [ReportController::class, 'exportAllSchool'])->name('report.export-all-school');
 });
 
 require __DIR__ . '/auth.php';

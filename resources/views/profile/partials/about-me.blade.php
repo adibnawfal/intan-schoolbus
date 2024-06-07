@@ -3,7 +3,7 @@
   <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 </div>
 
-<form id="send-verification" method="post" action="{{ route('verification.send') }}">
+<form id="send-verification" method="post" action="{{ route('verification.send') }}" class="-m-2">
   @csrf
 </form>
 

@@ -1,24 +1,9 @@
 <x-app-layout>
   <x-slot name="title">
-    {{ __('Transportation') }}
+    {{ __('Service Information') }}
   </x-slot>
 
   <div class="flex flex-col w-full px-6 py-8 gap-y-6">
-    <!-- Announcement -->
-    <div class="relative flex flex-wrap w-full px-10 py-24 bg-black shadow sm:rounded">
-      <img class="absolute inset-0 block object-cover object-center w-full h-full opacity-25"
-        src="https://images.unsplash.com/photo-1556504505-2ebcc8edf84a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="announcement">
-      <div class="relative z-10 w-full text-center text-white">
-        <h2 class="mb-2 text-5xl font-bold title-font">Welcome Back To School</h2>
-        <p class="mx-auto leading-relaxed">
-          We are open for student registration for Intan School Bus Service for 2024 School Session!
-        </p>
-      </div>
-    </div>
-    <!-- End Announcement -->
-
-    <!-- Information -->
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full">
         <h1 class="text-xl font-bold">School Name, Pickup and Dropoff Area Covered, and Fee Range</h1>
@@ -61,9 +46,9 @@
                 </td>
                 @foreach ($standard as $standardData)
                   @if ($loop->first)
-                    <td class="px-4 py-3 align-top">{{ $standardData }} to
+                    <td class="px-4 py-3 align-top">{{ $standardData }}
                     @elseif ($loop->last)
-                      {{ $standardData }}
+                      to {{ $standardData }}
                     </td>
                   @endif
                 @endforeach
@@ -72,6 +57,14 @@
           </tbody>
         </table>
       </div>
+      <div class="flex items-center mt-4 gap-x-4">
+        <a class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700"
+          href="{{ route('transportation.school-information') }}">
+          School Information
+        </a>
+      </div>
+    </div>
+    <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full mt-4">
         <h1 class="text-xl font-bold">Intan School Bus Operation Hour</h1>
         <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -116,11 +109,10 @@
       </div>
       <div class="flex items-center mt-4 gap-x-4">
         <a class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700"
-          href="{{ route('transportation.get-request-bus') }}">
-          Request Bus Service
+          href="{{ route('transportation.schedule-information') }}">
+          Update Bus Schedule
         </a>
       </div>
     </div>
-    <!-- End Information -->
   </div>
 </x-app-layout>

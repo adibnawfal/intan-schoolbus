@@ -14,13 +14,13 @@
           <label for="cash"
             class="has-[:checked]:text-white has-[:checked]:bg-blue-500 w-full px-4 py-1 text-center focus:outline-none">
             <input type="radio" name="method" id="cash" value="Cash" class="hidden"
-              @checked(old('method', true) == 'Cash')>
+              @checked(old('method', true) == 'Cash') form="main-form">
             <span>Cash</span>
           </label>
           <label for="card"
             class="has-[:checked]:text-white has-[:checked]:bg-blue-500 w-full px-4 py-1 text-center focus:outline-none">
             <input type="radio" name="method" id="card" value="Debit/Credit Card" class="hidden"
-              @checked(old('method') == 'Debit/Credit Card')>
+              @checked(old('method') == 'Debit/Credit Card') form="main-form">
             <span>Debit/Credit Card</span>
           </label>
         </div>
@@ -52,7 +52,8 @@
           </nav>
         </div>
         <button type="submit"
-          class="flex items-center w-full px-4 py-2 mt-6 text-white bg-blue-500 border-0 rounded focus:outline-none hover:bg-blue-600">
+          class="flex items-center w-full px-4 py-2 mt-6 text-white bg-blue-500 border-0 rounded focus:outline-none hover:bg-blue-600"
+          form="main-form">
           Make Payment
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             class="w-4 h-4 ml-auto" viewBox="0 0 24 24">

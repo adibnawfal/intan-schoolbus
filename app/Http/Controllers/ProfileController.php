@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\Address;
 use App\Models\DrivingLicense;
+use App\Models\School;
 use App\Models\Student;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -555,11 +556,14 @@ class ProfileController extends Controller
     $address = Address::where('user_id', $request->user()->id)
       ->get();
 
+    $school = School::all();
+
     return view('profile.new-student', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
       'parentGuardian' => $parentGuardian,
       'address' => $address,
+      'school' => $school,
     ]);
   }
 
@@ -574,6 +578,7 @@ class ProfileController extends Controller
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
+      'school' => ['required', 'string', 'max:255'],
       'standard' => ['required', 'integer', 'max:6', 'min:1'],
       'gender' => ['required', 'string', 'max:255'],
       'date_of_birth' => ['required', 'date'],
@@ -585,7 +590,7 @@ class ProfileController extends Controller
     $student->user_id = $userId;
     $student->first_name = $request['first_name'];
     $student->last_name = $request['last_name'];
-    $student->school = 'Sekolah Kebangsaan Setiawangsa';
+    $student->school = $request['school'];
     $student->standard = $request['standard'];
     $student->gender = $request['gender'];
     $student->date_of_birth = $request['date_of_birth'];
@@ -612,6 +617,8 @@ class ProfileController extends Controller
     $address = Address::where('user_id', $request->user()->id)
       ->get();
 
+    $school = School::all();
+
     $studentData = Student::findOrFail($id);
 
     return view('profile.update-student', [
@@ -619,6 +626,7 @@ class ProfileController extends Controller
       'userDetails' => $userDetails,
       'parentGuardian' => $parentGuardian,
       'address' => $address,
+      'school' => $school,
       'studentData' => $studentData,
     ]);
   }
@@ -633,6 +641,7 @@ class ProfileController extends Controller
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
+      'school' => ['required', 'string', 'max:255'],
       'standard' => ['required', 'integer', 'max:6', 'min:1'],
       'gender' => ['required', 'string', 'max:255'],
       'date_of_birth' => ['required', 'date'],
@@ -644,6 +653,7 @@ class ProfileController extends Controller
     $studentData->update([
       'first_name' => $request['first_name'],
       'last_name' => $request['last_name'],
+      'school' => $request['school'],
       'standard' => $request['standard'],
       'gender' => $request['gender'],
       'date_of_birth' => $request['date_of_birth'],

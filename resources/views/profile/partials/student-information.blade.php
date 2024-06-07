@@ -20,7 +20,7 @@
             <h2 class="font-medium line-clamp-1">
               {{ $studentData->first_name }} {{ $studentData->last_name }}
             </h2>
-            <p class="text-xs text-gray-500 uppercase">
+            <p class="text-xs text-gray-500">
               {{ $studentData->school }}
             </p>
           </div>

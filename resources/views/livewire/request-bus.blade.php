@@ -19,10 +19,11 @@
             class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
             <p class="self-start font-medium">{{ $count++ }}.</p>
             <div class="flex-grow">
-              <h2 class="font-medium line-clamp-1">
+              <button type="button" class="font-medium line-clamp-1 hover:underline"
+                data-hs-overlay="#hs-student-{{ $studentData->id }}-modal">
                 {{ $studentData->first_name }} {{ $studentData->last_name }}
-              </h2>
-              <p class="text-xs text-gray-500 uppercase">
+              </button>
+              <p class="text-xs text-gray-500">
                 {{ $studentData->school }}
               </p>
             </div>
@@ -31,6 +32,7 @@
               wire:model.live="selectedStudent">
           </label>
         </div>
+        @include('transportation.partials.modal.hs-student-modal')
       @endforeach
     </div>
 

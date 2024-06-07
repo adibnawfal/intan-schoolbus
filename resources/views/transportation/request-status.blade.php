@@ -27,10 +27,16 @@
             @endphp
             @foreach ($busService as $busServiceData)
               @if ($busServiceData->student->user_id === $user->id)
+                @php
+                  $studentData = App\Models\Student::findOrFail($busServiceData->student_id);
+                @endphp
                 <tr class="border-b-2 border-gray-200">
                   <td class="px-4 py-3 text-left">{{ $count++ }}.</td>
                   <td class="px-4 py-3">
-                    {{ $busServiceData->student->first_name }} {{ $busServiceData->student->last_name }}
+                    <button type="button" class="hover:underline"
+                      data-hs-overlay="#hs-student-{{ $studentData->id }}-modal">
+                      {{ $busServiceData->student->first_name }} {{ $busServiceData->student->last_name }}
+                    </button>
                   </td>
                   <td class="px-4 py-3">{{ Carbon\Carbon::parse($busServiceData->start_date)->format('d/m/Y') }}</td>
                   <td class="px-4 py-3">{{ Carbon\Carbon::parse($busServiceData->end_date)->format('d/m/Y') }}</td>
@@ -49,16 +55,34 @@
                       </span>
                     @endif
                   </td>
-                  <td class="flex justify-end px-4 py-3 text-right">
-                    <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" class="lucide lucide-ellipsis-vertical">
-                      <circle cx="12" cy="12" r="1" />
-                      <circle cx="12" cy="5" r="1" />
-                      <circle cx="12" cy="19" r="1" />
-                    </svg>
+                  <td class="flex justify-end px-4 py-3 text-right hs-dropdown">
+                    <button id="hs-dropdown-custom-icon-trigger">
+                      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-ellipsis-vertical">
+                        <circle cx="12" cy="12" r="1" />
+                        <circle cx="12" cy="5" r="1" />
+                        <circle cx="12" cy="19" r="1" />
+                      </svg>
+                    </button>
+                    <div type="button"
+                      class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded p-2 mt-2"
+                      aria-labelledby="hs-dropdown-custom-icon-trigger">
+                      <button type="button"
+                        class="flex items-center w-full px-3 py-2 text-sm rounded hover:bg-gray-100"
+                        data-hs-overlay="#hs-student-{{ $studentData->id }}-modal">
+                        Student Details
+                      </button>
+                      <button type="button"
+                        class="flex items-center w-full px-3 py-2 text-sm rounded hover:bg-gray-100"
+                        data-hs-overlay="#hs-update-status-{{ $busServiceData->id }}-modal">
+                        Update Status
+                      </button>
+                    </div>
                   </td>
                 </tr>
+                @include('transportation.partials.modal.hs-student-modal')
+                @include('transportation.partials.modal.hs-update-status-modal')
               @endif
             @endforeach
           </tbody>

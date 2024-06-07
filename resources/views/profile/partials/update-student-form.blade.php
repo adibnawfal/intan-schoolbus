@@ -22,9 +22,15 @@
     </div>
     <div class="w-1/2 p-2">
       <label for="school" class="text-sm leading-7">School</label>
-      <input type="text" id="school" name="school" value="{{ old('school', 'Sekolah Kebangsaan Setiawangsa') }}"
-        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
-        disabled>
+      <div class="relative">
+        <select id="school" name="school"
+          class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+          <option @selected(old('school', $studentData->school) == null) value=null disabled>Select your school</option>
+          @foreach ($school as $schoolData)
+            <option @selected(old('school', $studentData->school) == $schoolData->name) value="{{ $schoolData->name }}">{{ $schoolData->name }}</option>
+          @endforeach
+        </select>
+      </div>
       <x-input-error :messages="$errors->get('school')" class="mt-2" />
     </div>
     <div class="w-1/2 p-2">
