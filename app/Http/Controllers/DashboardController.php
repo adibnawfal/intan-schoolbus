@@ -51,5 +51,4 @@ class DashboardController extends Controller
     // Return the latest GPS data as JSON response
     return response()->json($latestGPS);
   }
-
 }
