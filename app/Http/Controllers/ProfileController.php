@@ -8,15 +8,18 @@ use App\Models\Address;
 use App\Models\DrivingLicense;
 use App\Models\School;
 use App\Models\Student;
+use App\Models\BusService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\File; // To handle file and directories
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
+use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -51,28 +54,60 @@ class ProfileController extends Controller
   {
     $userDetails = UserDetails::findOrFail($id);
 
-    $userDetailsData = $request->validate([
+    $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
       'last_name' => ['nullable', 'string', 'max:255'],
+      'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id)],
       'status' => ['nullable', 'string', 'max:255'],
       'phone_no' => ['nullable', 'string', 'max:255'],
       'gender' => ['nullable', 'string', 'max:255'],
+      'profile_img' => ['nullable', 'mimes:jpeg,jpg,png', 'max:10000'],
       'bio' => ['nullable', 'string', 'max:255'],
     ]);
 
-    $userDetails->update($userDetailsData);
+    // Save profile picture
+    if ($request->hasFile('profile_img')) {
+      $image = $request->file('profile_img');
+      $filename = 'user_' . $request->user()->id . '_' . time() . '.' . $image->getClientOriginalExtension();
 
-    $userData = $request->validate([
-      'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id)],
+      // Ensure the directory exists
+      $path = public_path('images/users');
+      if (!File::isDirectory($path)) {
+        File::makeDirectory($path, 0777, true, true);
+      }
+
+      Image::make($image)->resize(300, 300)->save($path . '/' . $filename);
+      $userDetails->update(['profile_img' => $filename]);
+    }
+
+    $userDetails->update([
+      'first_name' => $request['first_name'],
+      'last_name' => $request['last_name'],
+      'status' => $request['status'],
+      'phone_no' => $request['phone_no'],
+      'gender' => $request['gender'],
+      'bio' => $request['bio'],
     ]);
 
     if ($request->user()->isDirty('email')) {
       $request->user()->email_verified_at = null;
     }
 
-    $userDetails->user()->update($userData);
+    $userDetails->user()->update([
+      'email' => $request['email'],
+    ]);
 
     return Redirect::route('profile.my-profile')->with('status', 'profile-updated');
+  }
+
+  /**
+   * Delete profile image.
+   */
+  public function deleteProfileImage(string $id)
+  {
+    $userDetails = UserDetails::findOrFail($id);
+    $userDetails->update(['profile_img' => null]);
+    return Redirect::route('profile.my-profile')->with('status', 'profile-image-deleted');
   }
 
   /**
@@ -167,6 +202,24 @@ class ProfileController extends Controller
   }
 
   /**
+   * Delete parent/guradian.
+   */
+  public function deleteParentGuardian(string $id)
+  {
+    $studentID = Student::where('parent_guardian_id', $id)->pluck('id');
+    $isRequested = BusService::whereIn('student_id', $studentID)->get();
+
+    if ($isRequested->isEmpty()) {
+      $userDetailsData = UserDetails::findOrFail($id);
+      $userDetailsData->delete();
+
+      return Redirect::route('profile.my-profile')->with('status', 'parent-guardian-deleted');
+    } else {
+      return Redirect::route('profile.my-profile')->with('status', 'parent-guardian-deleted-failure');
+    }
+  }
+
+  /**
    * Display the new address.
    */
   public function getNewAddress(Request $request): View
@@ -254,7 +307,26 @@ class ProfileController extends Controller
       'area' => $request['area'],
     ]);
 
-    return Redirect::route('profile.my-profile')->with('status', 'parent-guardian-updated');
+    return Redirect::route('profile.my-profile')->with('status', 'address-updated');
+  }
+
+  /**
+   * Delete address.
+   */
+  public function deleteAddress(string $id)
+  {
+    $studentPickupID = Student::where('pickup_address_id', $id)->pluck('id');
+    $studentDropoffID = Student::where('dropoff_address_id', $id)->pluck('id');
+    $isRequested = BusService::whereIn('student_id', $studentPickupID)->orWhereIn('student_id', $studentDropoffID)->get();
+
+    if ($isRequested->isEmpty()) {
+      $addressData = Address::findOrFail($id);
+      $addressData->delete();
+
+      return Redirect::route('profile.my-profile')->with('status', 'address-deleted');
+    } else {
+      return Redirect::route('profile.my-profile')->with('status', 'address-deleted-failure');
+    }
   }
 
   /**
@@ -523,6 +595,17 @@ class ProfileController extends Controller
   }
 
   /**
+   * Delete driver.
+   */
+  public function deleteDriver(string $id)
+  {
+    $driverData = User::findOrFail($id);
+    $driverData->delete();
+
+    return Redirect::route('profile.driver-profile')->with('status', 'driver-deleted');
+  }
+
+  /**
    * Display the student's profile.
    */
   public function getStudentProfile(Request $request): View
@@ -599,7 +682,7 @@ class ProfileController extends Controller
     $student->dropoff_address_id = $request['dropoff_address_id'];
     $student->save();
 
-    return Redirect::route('profile.student-profile')->with('status', 'address-submitted');
+    return Redirect::route('profile.student-profile')->with('status', 'student-submitted');
   }
 
   /**
@@ -663,6 +746,24 @@ class ProfileController extends Controller
     ]);
 
     return Redirect::route('profile.student-profile')->with('status', 'student-updated');
+  }
+
+  /**
+   * Delete student's.
+   */
+  public function deleteStudent(string $id)
+  {
+    $isRequested = null;
+    $isRequested = BusService::where('student_id', $id)->first();
+
+    if (!$isRequested) {
+      $studentData = Student::findOrFail($id);
+      $studentData->delete();
+
+      return Redirect::route('profile.student-profile')->with('status', 'student-deleted');
+    } else {
+      return Redirect::route('profile.student-profile')->with('status', 'student-delete-failure');
+    }
   }
 
   /**

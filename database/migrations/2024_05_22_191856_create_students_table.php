@@ -20,12 +20,12 @@ return new class extends Migration {
       $table->integer('standard');
       $table->string('gender');
       $table->date('date_of_birth');
-      $table->bigInteger('parent_guardian_id')->unsigned();
-      $table->foreign('parent_guardian_id')->references('id')->on('user_details')->onDelete('cascade');
-      $table->bigInteger('pickup_address_id')->unsigned();
-      $table->foreign('pickup_address_id')->references('id')->on('addresses')->onDelete('cascade');
-      $table->bigInteger('dropoff_address_id')->unsigned();
-      $table->foreign('dropoff_address_id')->references('id')->on('addresses')->onDelete('cascade');
+      $table->bigInteger('parent_guardian_id')->unsigned()->nullable();
+      $table->foreign('parent_guardian_id')->references('id')->on('user_details')->onDelete('set null');
+      $table->bigInteger('pickup_address_id')->unsigned()->nullable();
+      $table->foreign('pickup_address_id')->references('id')->on('addresses')->onDelete('set null');
+      $table->bigInteger('dropoff_address_id')->unsigned()->nullable();
+      $table->foreign('dropoff_address_id')->references('id')->on('addresses')->onDelete('set null');
       $table->timestamps();
     });
   }

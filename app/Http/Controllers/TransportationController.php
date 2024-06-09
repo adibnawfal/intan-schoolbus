@@ -265,6 +265,17 @@ class TransportationController extends Controller
   }
 
   /**
+   * Delete school.
+   */
+  public function deleteSchool(string $id)
+  {
+    $schoolData = School::findOrFail($id);
+    $schoolData->delete();
+
+    return Redirect::route('transportation.school-information')->with('status', 'school-deleted');
+  }
+
+  /**
    * Display the schedule information.
    */
   public function getScheduleInformation(Request $request): View
@@ -355,6 +366,17 @@ class TransportationController extends Controller
   }
 
   /**
+   * Delete schedule.
+   */
+  public function deleteSchedule(string $id)
+  {
+    $busScheduleData = BusSchedule::findOrFail($id);
+    $busScheduleData->delete();
+
+    return Redirect::route('transportation.schedule-information')->with('status', 'schedule-deleted');
+  }
+
+  /**
    * Display the request bus service.
    */
   public function getRequestBus(Request $request): View
@@ -378,79 +400,101 @@ class TransportationController extends Controller
    */
   public function postRequestBus(Request $request)
   {
+    $isComplete = true;
     $month = [];
 
     $this->validate($request, [
       'student' => ['required', 'exists:students,id'],
     ]);
 
-    for ($m = 1; $m <= 12; $m++) {
-      $month[] = date('F', mktime(0, 0, 0, $m, 1, date('Y')));
+    $isRequested = BusService::whereIn('student_id', $request['student'])->get();
+    $student = Student::whereIn('id', $request['student'])->get();
+
+    foreach ($student as $studentData) {
+      if (!$studentData->parent_guardian_id || !$studentData->pickup_address_id || !$studentData->dropoff_address_id) {
+        $isComplete = false;
+      }
+
+      if (!$studentData->parent_guardian_id || !$studentData->pickup_address_id || !$studentData->dropoff_address_id) {
+        $isComplete = false;
+      }
     }
 
-    foreach ($request['student'] as $selectedStudentId) {
-      $studentData = Student::findOrFail($selectedStudentId);
-      $fee = 0;
-      $feePickUp = 0;
-      $feeDropOff = 0;
+    if ($isRequested->isEmpty()) {
+      if ($isComplete) {
+        for ($m = 1; $m <= 12; $m++) {
+          $month[] = date('F', mktime(0, 0, 0, $m, 1, date('Y')));
+        }
 
-      switch ($studentData->pickup_address->area) {
-        case 'Taman Keramat AU1':
-          $feePickUp = 50;
-          break;
-        case 'Taman Keramat AU2':
-          $feePickUp = 60;
-          break;
-        case 'Taman Keramat AU3':
-          $feePickUp = 70;
-          break;
-        case 'Taman Keramat AU4':
-          $feePickUp = 80;
-          break;
-      }
+        foreach ($request['student'] as $selectedStudentId) {
+          $studentData = Student::findOrFail($selectedStudentId);
+          $fee = 0;
+          $feePickUp = 0;
+          $feeDropOff = 0;
 
-      switch ($studentData->dropoff_address->area) {
-        case 'Taman Keramat AU1':
-          $feeDropOff = 50;
-          break;
-        case 'Taman Keramat AU2':
-          $feeDropOff = 60;
-          break;
-        case 'Taman Keramat AU3':
-          $feeDropOff = 70;
-          break;
-        case 'Taman Keramat AU4':
-          $feeDropOff = 80;
-          break;
-      }
+          switch ($studentData->pickup_address->area) {
+            case 'Taman Keramat AU1':
+              $feePickUp = 50;
+              break;
+            case 'Taman Keramat AU2':
+              $feePickUp = 60;
+              break;
+            case 'Taman Keramat AU3':
+              $feePickUp = 70;
+              break;
+            case 'Taman Keramat AU4':
+              $feePickUp = 80;
+              break;
+          }
 
-      if ($feePickUp > $feeDropOff) {
-        $fee = $feePickUp;
+          switch ($studentData->dropoff_address->area) {
+            case 'Taman Keramat AU1':
+              $feeDropOff = 50;
+              break;
+            case 'Taman Keramat AU2':
+              $feeDropOff = 60;
+              break;
+            case 'Taman Keramat AU3':
+              $feeDropOff = 70;
+              break;
+            case 'Taman Keramat AU4':
+              $feeDropOff = 80;
+              break;
+          }
+
+          if ($feePickUp > $feeDropOff) {
+            $fee = $feePickUp;
+          } else {
+            $fee = $feeDropOff;
+          }
+
+          $busService = new BusService();
+          $busService->user_id = $request->user()->id;
+          $busService->student_id = $selectedStudentId;
+          $busService->start_date = Carbon::now();
+          $busService->end_date = Carbon::create('2024-12-15');
+          $busService->status = 'Pending';
+          $busService->save();
+
+          foreach ($month as $eachMonth) {
+            $payment = new Payment();
+            $payment->user_id = $request->user()->id;
+            $payment->bus_service_id = $busService->id;
+            $payment->year = 2024;
+            $payment->month = $eachMonth;
+            $payment->status = 'Pending';
+            $payment->fee = $fee;
+            $payment->save();
+          }
+        }
+
+        return Redirect::route('transportation.request-submitted')->with('status', 'request-submitted');
       } else {
-        $fee = $feeDropOff;
+        return Redirect::route('transportation.get-request-bus')->with('status', 'student-not-completed');
       }
-
-      $busService = new BusService();
-      $busService->user_id = $request->user()->id;
-      $busService->student_id = $selectedStudentId;
-      $busService->start_date = Carbon::now();
-      $busService->end_date = Carbon::create('2024-12-15');
-      $busService->status = 'Pending';
-      $busService->save();
-
-      foreach ($month as $eachMonth) {
-        $payment = new Payment();
-        $payment->user_id = $request->user()->id;
-        $payment->bus_service_id = $busService->id;
-        $payment->year = 2024;
-        $payment->month = $eachMonth;
-        $payment->status = 'Pending';
-        $payment->fee = $fee;
-        $payment->save();
-      }
+    } else {
+      return Redirect::route('transportation.get-request-bus')->with('status', 'request-failure');
     }
-
-    return Redirect::route('transportation.request-submitted')->with('status', 'request-submitted');
   }
 
   /**

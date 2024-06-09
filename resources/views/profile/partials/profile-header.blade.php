@@ -1,9 +1,17 @@
 <div class="sm:flex lg:items-end group">
   <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
-    <img
-      class="object-cover w-[10rem] h-[10rem] rounded-md bg-gray-100 bg-opacity-50 border border-gray-300 outline-none"
-      src="https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      alt="Profile Picture">
+    @if ($userDetails->profile_img)
+      <img class="object-cover size-[10rem] rounded-md bg-gray-100 bg-opacity-50 border border-gray-300 outline-none"
+        src="{{ asset('images/users/' . $userDetails->profile_img) }}" alt="Profile Picture">
+    @else
+      <div>
+        <span class="inline-flex items-center justify-center size-[10rem] rounded-md bg-gray-300">
+          <span class="text-4xl font-medium leading-none text-gray-800 dark:text-gray-200">
+            {{ substr($userDetails->first_name, 0, 1) }}{{ substr($userDetails->last_name, 0, 1) }}
+          </span>
+        </span>
+      </div>
+    @endif
   </div>
   <div class="w-full">
     @if ($user->role == 'customer')

@@ -46,15 +46,31 @@
             @endif
           </nav>
         </div>
-        <a class="flex items-center w-full px-4 py-2 mt-6 text-white bg-blue-500 border-0 rounded focus:outline-none hover:bg-blue-600"
-          href="{{ route('profile.update-parent-guardian', $parentGuardianData->id) }}">
-          Update
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </a>
+        <div class="flex items-center mt-6 gap-x-2">
+          <a class="flex items-center w-full px-4 py-2 text-white bg-blue-500 border-0 rounded focus:outline-none hover:bg-blue-600"
+            href="{{ route('profile.update-parent-guardian', $parentGuardianData->id) }}">
+            Update
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <button type="button"
+            class="px-4 py-3 text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600"
+            data-hs-overlay="#hs-delete-parent-guardian-{{ $parentGuardianData->id }}-modal">
+            <svg class="w-4 h-4 ml-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="lucide lucide-trash-2">
+              <path d="M3 6h18" />
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+              <line x1="10" x2="10" y1="11" y2="17" />
+              <line x1="14" x2="14" y1="11" y2="17" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+@include('profile.partials.modal.hs-delete-parent-guardian-modal')

@@ -7,6 +7,12 @@
   @csrf
 </form>
 
+<form id="delete-profile-image" method="post" action="{{ route('profile.delete-profile-image', $userDetails->id) }}"
+  class="-m-2">
+  @csrf
+  @method('delete')
+</form>
+
 <form method="post" action="{{ route('profile.patch-about-me', $userDetails->id) }}" enctype="multipart/form-data"
   class="flex flex-wrap -m-2">
   @csrf
@@ -81,16 +87,26 @@
     </div>
     <x-input-error :messages="$errors->get('gender')" class="mt-2" />
   </div>
+  <div class="w-1/2 p-2">
+    <label for="profile_img" class="text-sm leading-7">Profile Picture</label>
+    <input type="file" id="profile_img" name="profile_img"
+      class="w-full text-base leading-8 text-gray-700 capitalize transition-colors duration-200 ease-in-out bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 file:bg-gray-50 file:border-0 file:me-4 file:py-1 file:px-3">
+    <x-input-error class="mt-2" :messages="$errors->get('profile_img')" />
+  </div>
   <div class="w-full p-2">
     <label for="bio" class="text-sm leading-7">Bio</label>
     <textarea id="bio" name="bio"
       class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">{{ old('bio', $userDetails->bio) }}</textarea>
     <x-input-error :messages="$errors->get('bio')" class="mt-2" />
   </div>
-  <div class="flex items-center p-2 mt-2 gap-x-4">
+  <div class="flex items-center p-2 mt-2 gap-x-4 bg">
     <button type="submit"
       class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
       Update Profile
+    </button>
+    <button form="delete-profile-image"
+      class="px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded w-max focus:outline-none hover:bg-gray-100">
+      Delete Profile Image
     </button>
   </div>
 </form>

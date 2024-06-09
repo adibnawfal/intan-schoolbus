@@ -32,14 +32,17 @@ Route::middleware('auth')->group(function () {
   // Profile
   Route::get('/profile/my-profile', [ProfileController::class, 'getMyProfile'])->name('profile.my-profile');
   Route::patch('/profile/my-profile/about-me/{id}', [ProfileController::class, 'patchAboutMe'])->name('profile.patch-about-me');
+  Route::delete('/profile/my-profile/profile-image/{id}', [ProfileController::class, 'deleteProfileImage'])->name('profile.delete-profile-image');
   Route::get('/profile/my-profile/new-parent-guardian', [ProfileController::class, 'getNewParentGuardian'])->name('profile.new-parent-guardian');
   Route::post('/profile/my-profile/new-parent-guardian', [ProfileController::class, 'postNewParentGuardian'])->name('profile.post-new-parent-guardian');
   Route::get('/profile/my-profile/update-parent-guardian/{id}', [ProfileController::class, 'getUpdateParentGuardian'])->name('profile.update-parent-guardian');
   Route::patch('/profile/my-profile/update-parent-guardian/{id}', [ProfileController::class, 'patchUpdateParentGuardian'])->name('profile.patch-update-parent-guardian');
+  Route::delete('/profile/my-profile/delete-parent-guardian/{id}', [ProfileController::class, 'deleteParentGuardian'])->name('profile.delete-parent-guardian');
   Route::get('/profile/my-profile/new-address', [ProfileController::class, 'getNewAddress'])->name('profile.new-address');
   Route::post('/profile/my-profile/new-address', [ProfileController::class, 'postNewAddress'])->name('profile.post-new-address');
   Route::get('/profile/my-profile/update-address/{id}', [ProfileController::class, 'getUpdateAddress'])->name('profile.update-address');
   Route::patch('/profile/my-profile/update-address/{id}', [ProfileController::class, 'patchUpdateAddress'])->name('profile.patch-update-address');
+  Route::delete('/profile/my-profile/delete-address/{id}', [ProfileController::class, 'deleteAddress'])->name('profile.delete-address');
   Route::get('/profile/driver-profile', [ProfileController::class, 'getDriverProfile'])->name('profile.driver-profile');
   Route::get('/profile/driver-profile/new-driver', [ProfileController::class, 'getNewDriver'])->name('profile.new-driver');
   Route::post('/profile/driver-profile/new-driver', [ProfileController::class, 'postNewDriver'])->name('profile.post-new-driver');
@@ -47,11 +50,13 @@ Route::middleware('auth')->group(function () {
   Route::patch('/profile/driver-profile/update-driver/{id}', [ProfileController::class, 'patchUpdateDriver'])->name('profile.patch-update-driver');
   Route::get('/profile/driver-profile/change-password/{id}', [ProfileController::class, 'getChangeDriverPassword'])->name('profile.change-driver-password');
   Route::put('/profile/driver-profile/change-password/{id}', [ProfileController::class, 'putChangeDriverPassword'])->name('profile.put-change-driver-password');
+  Route::delete('/profile/driver-profile/delete-driver/{id}', [ProfileController::class, 'deleteDriver'])->name('profile.delete-driver');
   Route::get('/profile/student-profile', [ProfileController::class, 'getStudentProfile'])->name('profile.student-profile');
   Route::get('/profile/student-profile/new-student', [ProfileController::class, 'getNewStudent'])->name('profile.new-student');
   Route::post('/profile/student-profile/new-student', [ProfileController::class, 'postNewStudent'])->name('profile.post-new-student');
   Route::get('/profile/student-profile/update-student/{id}', [ProfileController::class, 'getUpdateStudent'])->name('profile.update-student');
   Route::patch('/profile/student-profile/update-student/{id}', [ProfileController::class, 'patchUpdateStudent'])->name('profile.patch-update-student');
+  Route::delete('/profile/student-profile/delete-student/{id}', [ProfileController::class, 'deleteStudent'])->name('profile.delete-student');
   Route::get('/profile/change-password', [ProfileController::class, 'getChangePassword'])->name('profile.change-password');
   Route::get('/profile/delete-profile', [ProfileController::class, 'getDeleteProfile'])->name('profile.delete-profile');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -65,11 +70,13 @@ Route::middleware('auth')->group(function () {
   Route::post('/transportation/school/new', [TransportationController::class, 'postNewSchool'])->name('transportation.post-new-school');
   Route::get('/transportation/school/update/{id}', [TransportationController::class, 'getUpdateSchool'])->name('transportation.get-update-school');
   Route::patch('/transportation/school/update/{id}', [TransportationController::class, 'patchUpdateSchool'])->name('transportation.patch-update-school');
+  Route::delete('/transportation/school/delete/{id}', [TransportationController::class, 'deleteSchool'])->name('profile.delete-school');
   Route::get('/transportation/schedule/information', [TransportationController::class, 'getScheduleInformation'])->name('transportation.schedule-information');
   Route::get('/transportation/schedule/new', [TransportationController::class, 'getNewSchedule'])->name('transportation.get-new-schedule');
   Route::post('/transportation/schedule/new', [TransportationController::class, 'postNewSchedule'])->name('transportation.post-new-schedule');
   Route::get('/transportation/schedule/update/{id}', [TransportationController::class, 'getUpdateSchedule'])->name('transportation.get-update-schedule');
   Route::patch('/transportation/schedule/update/{id}', [TransportationController::class, 'patchUpdateSchedule'])->name('transportation.patch-update-schedule');
+  Route::delete('/transportation/schedule/delete/{id}', [TransportationController::class, 'deleteSchedule'])->name('profile.delete-schedule');
   Route::get('/transportation/request-bus', [TransportationController::class, 'getRequestBus'])->name('transportation.get-request-bus');
   Route::post('/transportation/request-bus', [TransportationController::class, 'postRequestBus'])->name('transportation.post-request-bus');
   Route::get('/transportation/request-submitted', [TransportationController::class, 'getRequestSubmitted'])->name('transportation.request-submitted');
