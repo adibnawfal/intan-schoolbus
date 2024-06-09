@@ -16,7 +16,7 @@
             <p>Are you sure you want to delete {{ $busScheduleData->session }} schedule session?</p>
           </div>
           <button type="submit"
-            class="flex items-center w-full px-4 py-2 mt-6 text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600">
+            class="flex items-center w-full px-4 py-2 mt-6 text-white bg-red-600 border-0 rounded focus:outline-none hover:bg-red-700">
             Delete
             <svg class="w-4 h-4 ml-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

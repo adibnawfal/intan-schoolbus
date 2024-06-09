@@ -58,7 +58,7 @@
         </table>
       </div>
       <div class="flex items-center mt-4 gap-x-4">
-        <a class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700"
+        <a class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]"
           href="{{ route('transportation.school-information') }}">
           School Information
         </a>
@@ -108,7 +108,7 @@
         </table>
       </div>
       <div class="flex items-center mt-4 gap-x-4">
-        <a class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700"
+        <a class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]"
           href="{{ route('transportation.schedule-information') }}">
           Update Bus Schedule
         </a>

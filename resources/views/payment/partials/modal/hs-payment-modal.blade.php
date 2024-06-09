@@ -5,20 +5,20 @@
     <div
       class="flex flex-col w-full bg-white rounded pointer-events-auto dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
       <div class="relative flex flex-col h-full p-6 overflow-hidden rounded">
-        <span class="absolute top-0 right-0 px-3 py-1 text-xs tracking-widest text-white bg-blue-500 rounded-bl">Year
+        <span class="absolute top-0 right-0 px-3 py-1 text-xs tracking-widest text-white bg-[#08183A] rounded-bl">Year
           {{ $payment[0]->year }}</span>
         <h1 class="flex items-center pb-4 mb-4 text-4xl leading-none text-gray-900 border-b border-gray-200">
           <span>Payment Summary</span>
         </h1>
-        <div class="flex w-full mx-auto mb-4 overflow-hidden border-2 border-blue-500 rounded">
+        <div class="flex w-full mx-auto mb-4 overflow-hidden border-2 border-[#08183A] rounded">
           <label for="cash"
-            class="has-[:checked]:text-white has-[:checked]:bg-blue-500 w-full px-4 py-1 text-center focus:outline-none">
+            class="has-[:checked]:text-white has-[:checked]:bg-[#08183A] w-full px-4 py-1 text-center focus:outline-none">
             <input type="radio" name="method" id="cash" value="Cash" class="hidden"
               @checked(old('method', true) == 'Cash') form="main-form">
             <span>Cash</span>
           </label>
           <label for="card"
-            class="has-[:checked]:text-white has-[:checked]:bg-blue-500 w-full px-4 py-1 text-center focus:outline-none">
+            class="has-[:checked]:text-white has-[:checked]:bg-[#08183A] w-full px-4 py-1 text-center focus:outline-none">
             <input type="radio" name="method" id="card" value="Debit/Credit Card" class="hidden"
               @checked(old('method') == 'Debit/Credit Card') form="main-form">
             <span>Debit/Credit Card</span>
@@ -52,7 +52,7 @@
           </nav>
         </div>
         <button type="submit"
-          class="flex items-center w-full px-4 py-2 mt-6 text-white bg-blue-500 border-0 rounded focus:outline-none hover:bg-blue-600"
+          class="flex items-center w-full px-4 py-2 mt-6 text-white bg-[#08183A] border-0 rounded focus:outline-none hover:bg-[#08183A]/[.8]"
           form="main-form">
           Make Payment
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

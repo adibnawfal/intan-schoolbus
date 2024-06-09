@@ -35,13 +35,13 @@
           <div class="grid gap-4 md:grid-cols-2 md:gap-8 xl:gap-20 md:items-center">
             <div>
               <h1 class="block font-bold text-gray-800 sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white">
-                Intan School Bus Management <span class="text-blue-600">System</span></h1>
+                Intan School Bus Management <span class="text-[#F2BA1D]">System</span></h1>
               <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Get financial aid to cater for your studies. We
                 provide a colletion of scholarships applications that suit your needs.</p>
 
               <!-- Buttons -->
               <div class="grid w-full gap-3 mt-7 sm:inline-flex">
-                <a class="inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                <a class="inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-[#08183A] rounded-lg gap-x-2 hover:bg-[#08183A]/[.8] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   href="#">
                   Get started
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"

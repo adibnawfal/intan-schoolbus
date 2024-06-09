@@ -53,18 +53,22 @@
       @endif
     </div>
   @endif
-  <div class="w-1/2 p-2">
-    <label for="status" class="text-sm leading-7">Role</label>
-    <div class="relative">
-      <select id="status" name="status"
-        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
-        <option @selected(old('status', $userDetails->status) == '') value="" disabled>Select your role</option>
-        <option @selected(old('status', $userDetails->status) == 'Parent') value="Parent">Parent</option>
-        <option @selected(old('status', $userDetails->status) == 'Guardian') value="Guardian">Guardian</option>
-      </select>
+
+  @if (Auth::user()->role === 'customer')
+    <div class="w-1/2 p-2">
+      <label for="status" class="text-sm leading-7">Role</label>
+      <div class="relative">
+        <select id="status" name="status"
+          class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+          <option @selected(old('status', $userDetails->status) == '') value="" disabled>Select your role</option>
+          <option @selected(old('status', $userDetails->status) == 'Parent') value="Parent">Parent</option>
+          <option @selected(old('status', $userDetails->status) == 'Guardian') value="Guardian">Guardian</option>
+        </select>
+      </div>
+      <x-input-error :messages="$errors->get('status')" class="mt-2" />
     </div>
-    <x-input-error :messages="$errors->get('status')" class="mt-2" />
-  </div>
+  @endif
+
   <div class="w-1/2 p-2">
     <label for="phone_no" class="text-sm leading-7">Phone Number</label>
     <div class="flex w-full rounded-lg shadow-sm">
@@ -101,7 +105,7 @@
   </div>
   <div class="flex items-center p-2 mt-2 gap-x-4 bg">
     <button type="submit"
-      class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
+      class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
       Update Profile
     </button>
     <button form="delete-profile-image"

@@ -32,7 +32,7 @@
   <div class="w-full p-2">
     <div class="flex items-center mt-2 gap-x-4">
       <button type="submit"
-        class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
+        class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
         Change Password
       </button>
       <a class="px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded focus:outline-none hover:bg-gray-100"

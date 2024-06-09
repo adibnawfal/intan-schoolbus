@@ -5,10 +5,10 @@
       <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
 
-    <div class="p-6 border-l-4 border-blue-600 rounded-r-xl bg-blue-50">
+    <div class="p-6 border-l-4 border-[#08183A] rounded-r-xl bg-indigo-50">
       <div class="flex">
         <div class="ml-3">
-          <div class="mt-2 text-sm text-blue-600">
+          <div class="mt-2 text-sm text-[#08183A]">
             <ul role="list" class="pl-5 space-y-1 list-disc">
               <li>Payment must made in the first week for every month.</li>
               <li>Total fee for every month will remain the same (full) despite of having school holidays in any
@@ -113,7 +113,7 @@
         @method('patch')
 
         <button type="button" data-hs-overlay="#hs-payment-modal"
-          class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
+          class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
           Pay Fee
         </button>
       </form>

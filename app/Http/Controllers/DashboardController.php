@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserDetails;
+use App\Models\School;
+use App\Models\Student;
+use App\Models\BusService;
+use App\Models\Payment;
 use App\Models\GPS;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -21,10 +26,32 @@ class DashboardController extends Controller
     // Fetch GPS data from the database
     $gpsData = GPS::latest()->first();
 
+    if ($request->user()->role === 'admin' || $request->user()->role === 'driver') {
+      $student = Student::all();
+    } elseif ($request->user()->role === 'customer') {
+      $student = Student::where('user_id', $request->user()->id);
+    }
+
+    $driver = User::where('role', 'driver');
+
+    $school = School::all();
+
+    if ($request->user()->role === 'admin' || $request->user()->role === 'driver') {
+      $busServiceId = BusService::where('status', 'Success')->pluck('id');
+      $payment = Payment::whereIn('bus_service_id', $busServiceId)->where('status', 'Pending')->get();
+    } elseif ($request->user()->role === 'customer') {
+      $busServiceId = BusService::where('status', 'Success')->pluck('id');
+      $payment = Payment::whereIn('bus_service_id', $busServiceId)->where('status', 'Pending')->where('user_id', $request->user()->id)->get();
+    }
+
     return view('dashboard.view', [
       'user' => $request->user(),
       'userDetails' => $userDetails,
       'gpsData' => $gpsData,
+      'student' => $student,
+      'driver' => $driver,
+      'school' => $school,
+      'payment' => $payment,
     ]);
   }
 

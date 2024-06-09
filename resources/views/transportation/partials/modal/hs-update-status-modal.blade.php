@@ -25,7 +25,7 @@
             <x-input-error :messages="$errors->get('status')" class="mt-2" />
           </div>
           <button type="submit"
-            class="flex items-center w-full px-4 py-2 mt-4 text-white bg-blue-500 border-0 rounded focus:outline-none hover:bg-blue-600">
+            class="flex items-center w-full px-4 py-2 mt-4 text-white bg-[#08183A] border-0 rounded focus:outline-none hover:bg-[#08183A]/[.8]">
             Update
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               class="w-4 h-4 ml-auto" viewBox="0 0 24 24">

@@ -14,8 +14,10 @@
     @endif
   </div>
   <div class="w-full">
-    @if ($user->role == 'customer')
+    @if (Auth::user()->role === 'customer')
       <span class="text-sm text-gray-500 uppercase">{{ $userDetails->status }}</span>
+    @elseif (Auth::user()->role === 'driver')
+      <span class="text-sm text-gray-500 uppercase">{{ $userDetails->user->role }}</span>
     @endif
     <p class="mt-3 mb-1 text-3xl font-bold leading-6 text-gray-800">
       {{ $userDetails->first_name }} {{ $userDetails->last_name }}
@@ -34,45 +36,52 @@
             My Profile
           </a>
         </li>
-        <li class="flex items-center gap-x-3">
-          <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="lucide lucide-bus">
-            <path d="M8 6v6" />
-            <path d="M15 6v6" />
-            <path d="M2 12h19.6" />
-            <path
-              d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
-            <circle cx="7" cy="18" r="2" />
-            <path d="M9 18h5" />
-            <circle cx="16" cy="18" r="2" />
-          </svg>
-          <a href="{{ route('profile.driver-profile') }}" @class([
-              'text-sm',
-              'hover:underline',
-              'underline' => $isDriverProfile,
-          ])>
-            Driver Profile
-          </a>
-        </li>
-        <li class="flex items-center gap-x-3">
-          <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="lucide lucide-contact">
-            <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2" />
-            <rect width="18" height="18" x="3" y="4" rx="2" />
-            <circle cx="12" cy="10" r="2" />
-            <line x1="8" x2="8" y1="2" y2="4" />
-            <line x1="16" x2="16" y1="2" y2="4" />
-          </svg>
-          <a href="{{ route('profile.student-profile') }}" @class([
-              'text-sm',
-              'hover:underline',
-              'underline' => $isStudentProfile,
-          ])>
-            Student Profile
-          </a>
-        </li>
+
+        @if (Auth::user()->role === 'admin')
+          <li class="flex items-center gap-x-3">
+            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="lucide lucide-bus">
+              <path d="M8 6v6" />
+              <path d="M15 6v6" />
+              <path d="M2 12h19.6" />
+              <path
+                d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
+              <circle cx="7" cy="18" r="2" />
+              <path d="M9 18h5" />
+              <circle cx="16" cy="18" r="2" />
+            </svg>
+            <a href="{{ route('profile.driver-profile') }}" @class([
+                'text-sm',
+                'hover:underline',
+                'underline' => $isDriverProfile,
+            ])>
+              Driver Profile
+            </a>
+          </li>
+        @endif
+
+        @if (Auth::user()->role === 'admin' || Auth::user()->role === 'customer')
+          <li class="flex items-center gap-x-3">
+            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="lucide lucide-contact">
+              <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2" />
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <circle cx="12" cy="10" r="2" />
+              <line x1="8" x2="8" y1="2" y2="4" />
+              <line x1="16" x2="16" y1="2" y2="4" />
+            </svg>
+            <a href="{{ route('profile.student-profile') }}" @class([
+                'text-sm',
+                'hover:underline',
+                'underline' => $isStudentProfile,
+            ])>
+              Student Profile
+            </a>
+          </li>
+        @endif
+
         <li class="flex items-center gap-x-3">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

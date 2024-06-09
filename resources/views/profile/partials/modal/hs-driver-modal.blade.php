@@ -14,7 +14,7 @@
           <nav class="flex flex-col items-center -mb-1 text-center sm:items-start sm:text-left">
             <p class="flex items-center">
               <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                 <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -24,7 +24,7 @@
             </p>
             <p class="flex items-center">
               <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                 <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -34,7 +34,7 @@
             </p>
             <p class="flex items-center">
               <span
-                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                 <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -45,7 +45,7 @@
             @if ($driverDetailsData->bio)
               <p class="flex">
                 <span
-                  class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mt-1 mr-2 text-white bg-blue-500 rounded-full">
+                  class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mt-1 mr-2 text-white bg-[#08183A] rounded-full">
                   <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -64,7 +64,7 @@
               @if ($ecDetailsData->user_id === $driverDetailsData->user_id && $ecDetailsData->default === 0)
                 <p class="flex items-center">
                   <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                       stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -76,7 +76,7 @@
                   @if ($ecAddressData->user_id === $driverDetailsData->user_id && $ecAddressData->default === 0)
                     <p class="flex">
                       <span
-                        class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mt-1 mr-2 text-white bg-blue-500 rounded-full">
+                        class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mt-1 mr-2 text-white bg-[#08183A] rounded-full">
                         <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                           stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -90,7 +90,7 @@
                 @endforeach
                 <p class="flex items-center">
                   <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                       stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -110,7 +110,7 @@
               @if ($drivingLicenseData->user_id === $driverDetailsData->user_id)
                 <p class="flex items-center">
                   <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -120,7 +120,7 @@
                 </p>
                 <p class="flex items-center">
                   <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -130,7 +130,7 @@
                 </p>
                 <p class="flex items-center">
                   <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -150,7 +150,7 @@
               @if ($driverData->id === $driverDetailsData->user_id)
                 <p class="flex items-center">
                   <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-blue-500 rounded-full">
+                    class="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 mr-2 text-white bg-[#08183A] rounded-full">
                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
@@ -163,7 +163,7 @@
           </nav>
         </div>
         <div class="flex items-center -mt-2 gap-x-2">
-          <a class="flex items-center w-full px-4 py-2 text-white bg-blue-500 border-0 rounded focus:outline-none hover:bg-blue-600"
+          <a class="flex items-center w-full px-4 py-2 text-white bg-[#08183A] border-0 rounded focus:outline-none hover:bg-[#08183A]/[.8]"
             href="{{ route('profile.update-driver', $driverDetailsData->user_id) }}">
             Update
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -172,7 +172,7 @@
             </svg>
           </a>
           <button type="button"
-            class="px-4 py-3 text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600"
+            class="px-4 py-3 text-white bg-red-600 border-0 rounded focus:outline-none hover:bg-red-700"
             data-hs-overlay="#hs-delete-driver-{{ $driverDetailsData->user_id }}-modal">
             <svg class="w-4 h-4 ml-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

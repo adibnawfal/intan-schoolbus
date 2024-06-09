@@ -114,12 +114,15 @@
           </tbody>
         </table>
       </div>
-      <div class="flex items-center mt-4 gap-x-4">
-        <a class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700"
-          href="{{ route('transportation.get-request-bus') }}">
-          Request Bus Service
-        </a>
-      </div>
+
+      @if (Auth::user()->role === 'customer')
+        <div class="flex items-center mt-4 gap-x-4">
+          <a class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]"
+            href="{{ route('transportation.get-request-bus') }}">
+            Request Bus Service
+          </a>
+        </div>
+      @endif
     </div>
     <!-- End Information -->
   </div>

@@ -32,12 +32,27 @@ class ProfileController extends Controller
       ->where('default', 1)
       ->first();
 
-    $parentGuardian = UserDetails::where('user_id', $request->user()->id)
-      ->where('default', 0)
-      ->get();
+    if ($request->user()->role === 'admin') {
+      $userId = User::where('role', 'customer')->pluck('id');
+      $parentGuardian = UserDetails::whereIn('user_id', $userId)
+        ->where('default', 0)
+        ->get();
+    } elseif ($request->user()->role === 'customer') {
+      $parentGuardian = UserDetails::where('user_id', $request->user()->id)
+        ->where('default', 0)
+        ->get();
+    } else {
+      $parentGuardian = null;
+    }
 
-    $address = Address::where('user_id', $request->user()->id)
-      ->get();
+    if ($request->user()->role === 'admin') {
+      $userId = User::where('role', 'customer')->pluck('id');
+      $address = Address::whereIn('user_id', $userId)->get();
+    } elseif ($request->user()->role === 'customer') {
+      $address = Address::where('user_id', $request->user()->id)->get();
+    } else {
+      $address = null;
+    }
 
     return view('profile.my-profile', [
       'user' => $request->user(),
@@ -614,8 +629,12 @@ class ProfileController extends Controller
       ->where('default', 1)
       ->first();
 
-    $student = Student::where('user_id', $request->user()->id)
-      ->get();
+    if ($request->user()->role === 'admin') {
+      $student = Student::all();
+    } elseif ($request->user()->role === 'customer') {
+      $student = Student::where('user_id', $request->user()->id)
+        ->get();
+    }
 
     return view('profile.student-profile', [
       'user' => $request->user(),

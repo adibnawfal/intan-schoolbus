@@ -13,7 +13,7 @@
           Your request is being processed. The system will notify request status in 1-3 working days.
         </p>
         <div class="flex items-center justify-center mt-8 gap-x-4">
-          <a class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700"
+          <a class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]"
             href="{{ route('transportation.request-status') }}">
             Service Request Status
           </a>

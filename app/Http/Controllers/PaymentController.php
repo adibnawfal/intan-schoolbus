@@ -23,9 +23,9 @@ class PaymentController extends Controller
       ->where('default', 1)
       ->first();
 
-    if ($request->user()->role == 'admin') {
+    if ($request->user()->role === 'admin') {
       $busService = BusService::where('status', 'Success')->get();
-    } elseif ($request->user()->role == 'customer') {
+    } elseif ($request->user()->role === 'customer') {
       $busService = BusService::where('user_id', $request->user()->id)->where('status', 'Success')->get();
     }
 

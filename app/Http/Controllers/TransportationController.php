@@ -521,7 +521,11 @@ class TransportationController extends Controller
       ->where('default', 1)
       ->first();
 
-    $busService = BusService::all();
+    if ($request->user()->role === 'admin') {
+      $busService = BusService::all();
+    } elseif ($request->user()->role === 'customer') {
+      $busService = BusService::where('user_id', $request->user()->id)->get();
+    }
 
     return view('transportation.request-status', [
       'user' => $request->user(),

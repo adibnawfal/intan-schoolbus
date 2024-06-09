@@ -1,9 +1,9 @@
 <x-guest-layout>
   <!-- Left Section -->
-  <div class="flex flex-col items-end justify-center w-full basis-1/2">
+  <div class="flex flex-col items-end justify-center w-full basis-1/2 bg-[#08183A]">
     <div class="max-w-[41rem] w-full pr-[15rem]">
       <div class="text-center">
-        <h1 class="block text-3xl font-bold text-gray-800 dark:text-white">Sign In</h1>
+        <h1 class="block text-3xl font-bold text-[#F2BA1D] dark:text-white">Sign In</h1>
       </div>
 
       <!-- Session Status -->
@@ -17,10 +17,11 @@
           <div class="grid gap-y-4">
             <!-- Email Address -->
             <div>
-              <label for="email" class="block mb-2 text-sm dark:text-white">Email Address</label>
+              <label for="email" class="block mb-2 font-medium text-sm text-[#F2BA1D] dark:text-white">Email
+                Address</label>
               <div class="relative">
                 <input type="email" id="email" name="email" placeholder="Enter your email address"
-                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#F2BA1D] focus:ring-[#F2BA1D] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                   autocomplete="email" value="{{ old('email') }}" autofocus>
                 <div class="absolute inset-y-0 hidden pointer-events-none end-0 pe-3">
                   <svg class="text-red-500 size-5" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
@@ -36,10 +37,11 @@
 
             <!-- Password -->
             <div>
-              <label for="password" class="block mb-2 text-sm dark:text-white">Password</label>
+              <label for="password"
+                class="block mb-2 font-medium text-sm text-[#F2BA1D] dark:text-white">Password</label>
               <div class="relative">
                 <input type="password" id="password" name="password" placeholder="Enter your password"
-                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#F2BA1D] focus:ring-[#F2BA1D] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                   autocomplete="current-password">
                 <div class="absolute inset-y-0 hidden pointer-events-none end-0 pe-3">
                   <svg class="text-red-500 size-5" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
@@ -57,15 +59,15 @@
             <div class="flex items-center">
               <div class="flex items-center">
                 <input type="checkbox" id="remember_me" name="remember" @checked(old('remember'))
-                  class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
-                <label for="remember_me" class="text-sm ms-3 dark:text-white">Remember Me</label>
+                  class="shrink-0 mt-0.5 border-gray-200 rounded text-[#F2BA1D] focus:ring-[#F2BA1D] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                <label for="remember_me" class="text-sm text-white ms-3 dark:text-white">Remember Me</label>
               </div>
             </div>
             <!-- End Remember Me -->
 
             <!-- Submit -->
             <button type="submit"
-              class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Sign
+              class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-[#08183A] bg-[#F2BA1D] border border-transparent rounded-lg gap-x-2 hover:bg-[#F2BA1D]/[.8] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Sign
               In</button>
             <!-- End Submit -->
           </div>
@@ -74,10 +76,10 @@
 
         <!-- Forgot Password -->
         <div class="mt-5 text-center">
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p class="mt-2 text-sm text-white dark:text-gray-400">
             Forgot Password?
             @if (Route::has('password.request'))
-              <a class="font-medium text-blue-600 decoration-2 hover:underline dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              <a class="font-medium text-[#F2BA1D] decoration-2 hover:underline dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="{{ route('password.request') }}">
                 Help
               </a>
@@ -93,7 +95,7 @@
 
   <!-- Right Section -->
   <div
-    class="hidden md:block md:absolute md:top-0 md:start-1/2 md:end-0 h-full bg-[url('https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1981&q=80')] bg-no-repeat bg-center bg-cover">
+    class="hidden md:block md:absolute md:top-0 md:start-1/2 md:end-0 h-full bg-[url('https://cdn.dribbble.com/users/85685/screenshots/4964889/media/b563d8368d3d99c7c7173f5895d75395.png')] bg-no-repeat bg-center bg-cover">
   </div>
   <!-- End Right Section -->
 </x-guest-layout>
@@ -145,4 +147,4 @@
       </x-primary-button>
     </div>
   </form>
-</x-guest-layout> --}}s
+</x-guest-layout> --}}

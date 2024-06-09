@@ -6,7 +6,7 @@
   <div class="flex flex-col w-full px-6 py-8 gap-y-6">
     <h1 class="text-4xl font-bold leading-none tracking-tighter">
       It’s Good to See You Again,
-      <span class="text-blue-600">
+      <span class="text-[#F2BA1D]">
         {{ $userDetails->first_name }} {{ $userDetails->last_name }}!
       </span>
     </h1>
@@ -14,7 +14,7 @@
     <div class="flex w-full text-center gap-x-4">
       <div class="w-full bg-white shadow sm:rounded md:w-1/4 sm:w-1/2">
         <div class="flex flex-col items-center justify-center px-4 py-6">
-          <svg class="flex-shrink-0 mb-2 text-blue-600 size-14" xmlns="http://www.w3.org/2000/svg" width="24"
+          <svg class="flex-shrink-0 mb-2 text-[#F2BA1D] size-14" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users">
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -22,13 +22,13 @@
             <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
           </svg>
-          <h2 class="text-3xl font-bold">1.3K</h2>
+          <h2 class="text-3xl font-bold">{{ $student->count() }}</h2>
           <p class="text-sm leading-relaxed">Students</p>
         </div>
       </div>
       <div class="w-full bg-white shadow sm:rounded md:w-1/4 sm:w-1/2">
         <div class="flex flex-col items-center justify-center px-4 py-6">
-          <svg class="flex-shrink-0 mb-2 text-blue-600 size-14" xmlns="http://www.w3.org/2000/svg" width="24"
+          <svg class="flex-shrink-0 mb-2 text-[#F2BA1D] size-14" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bus-front">
             <path d="M4 6 2 7" />
@@ -41,13 +41,13 @@
             <path d="M6 19v2" />
             <path d="M18 21v-2" />
           </svg>
-          <h2 class="text-3xl font-bold">3</h2>
+          <h2 class="text-3xl font-bold">{{ $driver->count() }}</h2>
           <p class="text-sm leading-relaxed">Driver</p>
         </div>
       </div>
       <div class="w-full bg-white shadow sm:rounded md:w-1/4 sm:w-1/2">
         <div class="flex flex-col items-center justify-center px-4 py-6">
-          <svg class="flex-shrink-0 mb-2 text-blue-600 size-14" xmlns="http://www.w3.org/2000/svg" width="24"
+          <svg class="flex-shrink-0 mb-2 text-[#F2BA1D] size-14" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap">
             <path
@@ -55,19 +55,19 @@
             <path d="M22 10v6" />
             <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
           </svg>
-          <h2 class="text-3xl font-bold">2</h2>
+          <h2 class="text-3xl font-bold">{{ $school->count() }}</h2>
           <p class="text-sm leading-relaxed">School</p>
         </div>
       </div>
       <div class="w-full bg-white shadow sm:rounded md:w-1/4 sm:w-1/2">
         <div class="flex flex-col items-center justify-center px-4 py-6">
-          <svg class="flex-shrink-0 mb-2 text-blue-600 size-14" xmlns="http://www.w3.org/2000/svg" width="24"
+          <svg class="flex-shrink-0 mb-2 text-[#F2BA1D] size-14" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card">
             <rect width="20" height="14" x="2" y="5" rx="2" />
             <line x1="2" x2="22" y1="10" y2="10" />
           </svg>
-          <h2 class="text-3xl font-bold">64</h2>
+          <h2 class="text-3xl font-bold">{{ $payment->count() }}</h2>
           <p class="text-sm leading-relaxed">Pending Fee</p>
         </div>
       </div>

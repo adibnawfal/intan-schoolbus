@@ -28,7 +28,7 @@
   </div>
   <div class="w-full p-2">
     <button type="submit"
-      class="px-8 py-2 mt-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
+      class="px-8 py-2 mt-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
       Change Password
     </button>
   </div>

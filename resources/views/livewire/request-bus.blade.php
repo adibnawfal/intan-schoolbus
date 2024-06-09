@@ -16,7 +16,7 @@
             class="absolute px-3 py-1 text-xs tracking-widest border border-gray-300 rounded-tr rounded-bl top-2 right-2">Standard
             {{ $studentData->standard }}</span>
           <label for="student{{ $studentData->id }}"
-            class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
+            class="flex items-center p-6 border border-gray-300 rounded gap-x-4 hover:shadow has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-200">
             <p class="self-start font-medium">{{ $count++ }}.</p>
             <div class="flex-grow">
               <button type="button" class="font-medium line-clamp-1 hover:underline"
@@ -28,7 +28,7 @@
               </p>
             </div>
             <input type="checkbox" name="student[]" id="student{{ $studentData->id }}" value="{{ $studentData->id }}"
-              class="text-blue-600 mt-0.5 border-gray-300 rounded shrink-0 ms-auto focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+              class="text-indigo-600 mt-0.5 border-gray-300 rounded shrink-0 ms-auto focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
               wire:model.live="selectedStudent">
           </label>
         </div>
@@ -134,7 +134,7 @@
 
     <div class="flex items-center mt-4 gap-x-4">
       <button type="submit"
-        class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
+        class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
         Confirm
       </button>
       <a class="px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded focus:outline-none hover:bg-gray-100"

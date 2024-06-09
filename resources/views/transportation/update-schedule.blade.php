@@ -27,45 +27,45 @@
             <label for="standard" class="text-sm leading-7">Standard</label>
             <div class="flex w-full gap-x-4">
               <label for="standard1"
-                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
+                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-200">
                 Standard 1
                 <input type="checkbox" name="standard[]" id="standard1" value=1
-                  class="text-blue-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                  class="text-indigo-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
                   @if (is_array(old('standard', $standard)) && in_array(1, old('standard', $standard))) checked @endif>
               </label>
               <label for="standard2"
-                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
+                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-200">
                 Standard 2
                 <input type="checkbox" name="standard[]" id="standard2" value=2 @selected(old('standard') == 2)
-                  class="text-blue-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                  class="text-indigo-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
                   @if (is_array(old('standard', $standard)) && in_array(2, old('standard', $standard))) checked @endif>
               </label>
               <label for="standard3"
-                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
+                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-200">
                 Standard 3
                 <input type="checkbox" name="standard[]" id="standard3" value=3 @selected(old('standard') == 3)
-                  class="text-blue-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                  class="text-indigo-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
                   @if (is_array(old('standard', $standard)) && in_array(3, old('standard', $standard))) checked @endif>
               </label>
               <label for="standard4"
-                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
+                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-200">
                 Standard 4
                 <input type="checkbox" name="standard[]" id="standard4" value=4 @selected(old('standard') == 4)
-                  class="text-blue-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                  class="text-indigo-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
                   @if (is_array(old('standard', $standard)) && in_array(4, old('standard', $standard))) checked @endif>
               </label>
               <label for="standard5"
-                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
+                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-200">
                 Standard 5
                 <input type="checkbox" name="standard[]" id="standard5" value=5 @selected(old('standard') == 5)
-                  class="text-blue-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                  class="text-indigo-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
                   @if (is_array(old('standard', $standard)) && in_array(5, old('standard', $standard))) checked @endif>
               </label>
               <label for="standard6"
-                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-blue-50 has-[:checked]:border-blue-200">
+                class="flex items-center w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-200">
                 Standard 6
                 <input type="checkbox" name="standard[]" id="standard6" value=6 @selected(old('standard') == 6)
-                  class="text-blue-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                  class="text-indigo-600 border-gray-300 rounded shrink-0 ms-auto focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
                   @if (is_array(old('standard', $standard)) && in_array(6, old('standard', $standard))) checked @endif>
               </label>
             </div>
@@ -113,7 +113,7 @@
           </div>
           <div class="flex items-center p-2 mt-4 gap-x-4">
             <button type="submit"
-              class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
+              class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
               Update Schedule
             </button>
             <a class="px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded focus:outline-none hover:bg-gray-100"

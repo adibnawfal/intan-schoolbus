@@ -182,7 +182,7 @@
   <div class="flex items-center justify-between mt-8">
     <div class="flex items-center gap-x-4">
       <button type="submit"
-        class="px-8 py-2 text-sm text-white bg-blue-600 rounded w-max focus:outline-none hover:bg-blue-700">
+        class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
         Update Driver
       </button>
       <a class="px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded focus:outline-none hover:bg-gray-100"
@@ -190,7 +190,7 @@
         Cancel
       </a>
     </div>
-    <a class="flex items-center gap-x-2 focus:outline-none hover:text-blue-600 hover:underline"
+    <a class="flex items-center gap-x-2 focus:outline-none hover:underline"
       href="{{ route('profile.change-driver-password', $driverDetailsData->user_id) }}">
       Change Driver Password
       <svg class="w-4 h-4 ml-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"

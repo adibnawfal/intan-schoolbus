@@ -1,9 +1,9 @@
 <x-guest-layout>
   <!-- Left Section -->
-  <div class="flex flex-col items-end justify-center w-full basis-1/2">
+  <div class="flex flex-col items-end justify-center w-full basis-1/2 bg-[#08183A]">
     <div class="max-w-[41rem] w-full pr-[15rem]">
       <div class="text-center">
-        <p class="block font-bold text-gray-800 dark:text-white">This is a secure area of the application.
+        <p class="block font-bold text-[#F2BA1D] dark:text-white">This is a secure area of the application.
           Please confirm your password before continuing.</p>
       </div>
 
@@ -15,10 +15,10 @@
           <div class="grid gap-y-4">
             <!-- Password -->
             <div>
-              <label for="password" class="block mb-2 text-sm dark:text-white">Password</label>
+              <label for="password" class="block mb-2 font-medium text-sm text-[#F2BA1D] dark:text-white">Password</label>
               <div class="relative">
                 <input type="password" id="password" name="password" placeholder="Enter your password"
-                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#F2BA1D] focus:ring-[#F2BA1D] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                   autocomplete="current-password">
                 <div class="absolute inset-y-0 hidden pointer-events-none end-0 pe-3">
                   <svg class="text-red-500 size-5" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
@@ -34,7 +34,7 @@
 
             <!-- Submit -->
             <button type="submit"
-              class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Confirm</button>
+              class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-[#08183A] bg-[#F2BA1D] border border-transparent rounded-lg gap-x-2 hover:bg-[#F2BA1D]/[.8] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Confirm</button>
             <!-- End Submit -->
           </div>
         </form>
@@ -45,7 +45,10 @@
   <!-- End Left Section -->
 
   <!-- Right Section -->
-  <div class="w-full bg-blue-600 basis-1/2"></div>
+  <div
+    class="hidden md:block md:absolute md:top-0 md:start-1/2 md:end-0 h-full bg-[url('https://cdn.dribbble.com/users/85685/screenshots/4964889/media/b563d8368d3d99c7c7173f5895d75395.png')] bg-no-repeat bg-center bg-cover">
+  </div>
+  <!-- End Right Section -->
 </x-guest-layout>
 
 {{-- <x-guest-layout>
