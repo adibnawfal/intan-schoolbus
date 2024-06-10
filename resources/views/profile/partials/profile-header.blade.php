@@ -61,6 +61,42 @@
           </li>
         @endif
 
+        @if (Auth::user()->role === 'driver')
+          <li class="flex items-center gap-x-3">
+            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="lucide lucide-contact">
+              <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2" />
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <circle cx="12" cy="10" r="2" />
+              <line x1="8" x2="8" y1="2" y2="4" />
+              <line x1="16" x2="16" y1="2" y2="4" />
+            </svg>
+            <a href="{{ route('profile.emergency-contact') }}" @class([
+                'text-sm',
+                'hover:underline',
+                'underline' => $isEmergencyContact,
+            ])>
+              Emergency Contact
+            </a>
+          </li>
+
+          <li class="flex items-center gap-x-3"> <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card">
+              <rect width="20" height="14" x="2" y="5" rx="2" />
+              <line x1="2" x2="22" y1="10" y2="10" />
+            </svg>
+            <a href="{{ route('profile.driving-license') }}" @class([
+                'text-sm',
+                'hover:underline',
+                'underline' => $isDrivingLicense,
+            ])>
+              Driving License
+            </a>
+          </li>
+        @endif
+
         @if (Auth::user()->role === 'admin' || Auth::user()->role === 'customer')
           <li class="flex items-center gap-x-3">
             <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -97,24 +133,27 @@
             Change Password
           </a>
         </li>
-        <li class="flex items-center text-red-700 gap-x-3">
-          <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="lucide lucide-trash-2">
-            <path d="M3 6h18" />
-            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-            <line x1="10" x2="10" y1="11" y2="17" />
-            <line x1="14" x2="14" y1="11" y2="17" />
-          </svg>
-          <a href="{{ route('profile.delete-profile') }}" @class([
-              'text-sm',
-              'hover:underline',
-              'underline' => $isDeleteProfile,
-          ])>
-            Delete Profile
-          </a>
-        </li>
+
+        @if (Auth::user()->role === 'admin' || Auth::user()->role === 'customer')
+          <li class="flex items-center text-red-700 gap-x-3">
+            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="lucide lucide-trash-2">
+              <path d="M3 6h18" />
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+              <line x1="10" x2="10" y1="11" y2="17" />
+              <line x1="14" x2="14" y1="11" y2="17" />
+            </svg>
+            <a href="{{ route('profile.delete-profile') }}" @class([
+                'text-sm',
+                'hover:underline',
+                'underline' => $isDeleteProfile,
+            ])>
+              Delete Profile
+            </a>
+          </li>
+        @endif
       </ul>
     </nav>
   </div>

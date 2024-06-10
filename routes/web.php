@@ -52,7 +52,9 @@ Route::middleware('auth')->group(function () {
   Route::put('/profile/driver-profile/change-password/{id}', [ProfileController::class, 'putChangeDriverPassword'])->name('profile.put-change-driver-password');
   Route::delete('/profile/driver-profile/delete-driver/{id}', [ProfileController::class, 'deleteDriver'])->name('profile.delete-driver');
   Route::get('/profile/emergency-contact', [ProfileController::class, 'getEmergencyContact'])->name('profile.emergency-contact');
-  Route::get('/profile/driving-licence', [ProfileController::class, 'getDrivingLicence'])->name('profile.driving-licence');
+  Route::patch('/profile/emergency-contact/{id}', [ProfileController::class, 'patchEmergencyContact'])->name('profile.patch-emergency-contact');
+  Route::get('/profile/driving-license', [ProfileController::class, 'getDrivingLicense'])->name('profile.driving-license');
+  Route::patch('/profile/driving-license/{id}', [ProfileController::class, 'patchDrivingLicense'])->name('profile.patch-driving-license');
   Route::get('/profile/student-profile', [ProfileController::class, 'getStudentProfile'])->name('profile.student-profile');
   Route::get('/profile/student-profile/new-student', [ProfileController::class, 'getNewStudent'])->name('profile.new-student');
   Route::post('/profile/student-profile/new-student', [ProfileController::class, 'postNewStudent'])->name('profile.post-new-student');

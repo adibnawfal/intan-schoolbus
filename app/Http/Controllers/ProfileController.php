@@ -621,6 +621,112 @@ class ProfileController extends Controller
   }
 
   /**
+   * Display the driver's emergency contact.
+   */
+  public function getEmergencyContact(Request $request): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $driverDetailsData = UserDetails::where('user_id', $request->user()->id)->where('default', 1)->first();
+
+    $ecDetailsData = UserDetails::where('user_id', $request->user()->id)->where('default', 0)->first();
+
+    $ecAddressData = Address::where('user_id', $request->user()->id)->where('default', 0)->first();
+
+    return view('profile.emergency-contact', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'driverDetailsData' => $driverDetailsData,
+      'ecDetailsData' => $ecDetailsData,
+      'ecAddressData' => $ecAddressData,
+    ]);
+  }
+
+  /**
+   * Submit the driver's emergency contact.
+   */
+  public function patchEmergencyContact(Request $request, string $id)
+  {
+    $ecDetailsData = UserDetails::where('user_id', $id)
+      ->where('default', 0)
+      ->first();
+
+    $ecAddressData = Address::where('user_id', $id)
+      ->where('default', 0)
+      ->first();
+
+    $this->validate($request, [
+      'ec_first_name' => ['required', 'string', 'max:255'],
+      'ec_last_name' => ['nullable', 'string', 'max:255'],
+      'ec_address_1' => ['required', 'string', 'max:255'],
+      'ec_address_2' => ['nullable', 'string', 'max:255'],
+      'ec_postal_code' => ['required', 'integer', 'digits:5'],
+      'ec_city' => ['required', 'string', 'max:255'],
+      'ec_state' => ['required', 'string', 'max:255'],
+      'ec_phone_no' => ['required', 'string', 'max:255'],
+    ]);
+
+    $ecDetailsData->update([
+      'first_name' => $request['ec_first_name'],
+      'last_name' => $request['ec_last_name'],
+      'phone_no' => $request['ec_phone_no'],
+    ]);
+
+    $ecAddressData->update([
+      'address_1' => $request['ec_address_1'],
+      'address_2' => $request['ec_address_2'],
+      'postal_code' => $request['ec_postal_code'],
+      'city' => $request['ec_city'],
+      'state' => $request['ec_state'],
+    ]);
+
+    return Redirect::route('profile.emergency-contact')->with('status', 'emergency-contact-updated');
+  }
+
+  /**
+   * Display the driver's driving licence.
+   */
+  public function getDrivingLicense(Request $request): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $driverDetailsData = UserDetails::where('user_id', $request->user()->id)->where('default', 1)->first();
+
+    $drivingLicenseData = DrivingLicense::where('user_id', $request->user()->id)->first();
+
+    return view('profile.driving-license', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'driverDetailsData' => $driverDetailsData,
+      'drivingLicenseData' => $drivingLicenseData,
+    ]);
+  }
+
+  /**
+   * Submit the driver's driving licence.
+   */
+  public function patchDrivingLicense(Request $request, string $id)
+  {
+    $drivingLicenseData = DrivingLicense::where('user_id', $id)->first();
+
+    $this->validate($request, [
+      'class' => ['required', 'string', 'max:255'],
+      'expiry_date' => ['required', 'date'],
+    ]);
+
+    $drivingLicenseData->update([
+      'class' => $request['class'],
+      'expiry_date' => $request['expiry_date'],
+    ]);
+
+    return Redirect::route('profile.driving-license')->with('status', 'driving-license-updated');
+  }
+
+  /**
    * Display the student's profile.
    */
   public function getStudentProfile(Request $request): View

@@ -103,7 +103,7 @@
       class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">{{ old('bio', $userDetails->bio) }}</textarea>
     <x-input-error :messages="$errors->get('bio')" class="mt-2" />
   </div>
-  <div class="flex items-center p-2 mt-2 gap-x-4 bg">
+  <div class="flex items-center p-2 mt-2 gap-x-4">
     <button type="submit"
       class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
       Update Profile

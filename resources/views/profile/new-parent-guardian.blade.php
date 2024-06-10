@@ -1,6 +1,8 @@
 @php
   $isMyProfile = true;
   $isDriverProfile = false;
+  $isEmergencyContact = false;
+  $isDrivingLicense = false;
   $isStudentProfile = false;
   $isChangePassword = false;
   $isDeleteProfile = false;

@@ -26,7 +26,7 @@
     @include('layouts.navigation-guest')
 
     <!-- Content -->
-    <main class="flex flex-grow">
+    <main class="flex flex-grow bg-[#08183A]">
       <div class="flex flex-col items-center justify-center w-full p-20">
 
         <!-- Hero Component Page 1 -->
@@ -34,14 +34,14 @@
           <!-- Grid -->
           <div class="grid gap-4 md:grid-cols-2 md:gap-8 xl:gap-20 md:items-center">
             <div>
-              <h1 class="block font-bold text-gray-800 sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white">
+              <h1 class="block font-bold text-white sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white">
                 Intan School Bus Management <span class="text-[#F2BA1D]">System</span></h1>
-              <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Get financial aid to cater for your studies. We
+              <p class="mt-3 text-lg text-gray-200 dark:text-gray-400">Get financial aid to cater for your studies. We
                 provide a colletion of scholarships applications that suit your needs.</p>
 
               <!-- Buttons -->
               <div class="grid w-full gap-3 mt-7 sm:inline-flex">
-                <a class="inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-[#08183A] rounded-lg gap-x-2 hover:bg-[#08183A]/[.8] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                <a class="inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-[#08183A] bg-[#F2BA1D] rounded-lg gap-x-2 hover:bg-[#F2BA1D]/[.8] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   href="#">
                   Get started
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -50,7 +50,7 @@
                     <path d="m9 18 6-6-6-6" />
                   </svg>
                 </a>
-                <a class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                <a class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-[#08183A] bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   href="#">
                   Contact sales team
                 </a>
@@ -62,31 +62,31 @@
                 <!-- Review -->
                 <div class="py-5">
                   <div class="flex space-x-1">
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
                         fill="currentColor" />
                     </svg>
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
                         fill="currentColor" />
                     </svg>
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
                         fill="currentColor" />
                     </svg>
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
                         fill="currentColor" />
                     </svg>
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
@@ -94,13 +94,13 @@
                     </svg>
                   </div>
 
-                  <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
+                  <p class="mt-3 text-sm text-white dark:text-gray-200">
                     <span class="font-bold">4.6</span> /5 - from 12k reviews
                   </p>
 
                   <div class="mt-5">
                     <!-- Star -->
-                    <svg class="w-16 h-auto text-gray-800 dark:text-white" width="80" height="27"
+                    <svg class="w-16 h-auto text-white dark:text-white" width="80" height="27"
                       viewBox="0 0 80 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M20.558 9.74046H11.576V12.3752H17.9632C17.6438 16.0878 14.5301 17.7245 11.6159 17.7245C7.86341 17.7245 4.58995 14.7704 4.58995 10.6586C4.58995 6.62669 7.70373 3.51291 11.6159 3.51291C14.6498 3.51291 16.4063 5.42908 16.4063 5.42908L18.2426 3.51291C18.2426 3.51291 15.8474 0.878184 11.4961 0.878184C5.94724 0.838264 1.67578 5.50892 1.67578 10.5788C1.67578 15.5289 5.70772 20.3592 11.6558 20.3592C16.8854 20.3592 20.7177 16.8063 20.7177 11.4969C20.7177 10.3792 20.558 9.74046 20.558 9.74046Z"
@@ -127,31 +127,31 @@
                 <!-- Review -->
                 <div class="py-5">
                   <div class="flex space-x-1">
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
                         fill="currentColor" />
                     </svg>
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
                         fill="currentColor" />
                     </svg>
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
                         fill="currentColor" />
                     </svg>
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
                         fill="currentColor" />
                     </svg>
-                    <svg class="text-gray-800 size-4 dark:text-gray-200" width="51" height="51"
+                    <svg class="text-[#F2BA1D] size-4 dark:text-gray-200" width="51" height="51"
                       viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M49.6867 20.0305C50.2889 19.3946 49.9878 18.1228 49.0846 18.1228L33.7306 15.8972C33.4296 15.8972 33.1285 15.8972 32.8275 15.2613L25.9032 0.317944C25.6021 0 25.3011 0 25 0V42.6046C25 42.6046 25.3011 42.6046 25.6021 42.6046L39.7518 49.9173C40.3539 50.2352 41.5581 49.5994 41.2571 48.6455L38.5476 32.4303C38.5476 32.1124 38.5476 31.7944 38.8486 31.4765L49.6867 20.0305Z"
@@ -162,13 +162,13 @@
                     </svg>
                   </div>
 
-                  <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
+                  <p class="mt-3 text-sm text-white dark:text-gray-200">
                     <span class="font-bold">4.8</span> /5 - from 5k reviews
                   </p>
 
                   <div class="mt-5">
                     <!-- Star -->
-                    <svg class="w-16 h-auto text-gray-800 dark:text-white" width="110" height="28"
+                    <svg class="w-16 h-auto text-white dark:text-white" width="110" height="28"
                       viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M66.6601 8.35107C64.8995 8.35107 63.5167 8.72875 62.1331 9.48265C62.1331 5.4582 62.1331 1.81143 62.2594 0.554199L53.8321 2.06273V2.81736L54.7124 2.94301C55.8433 3.19431 56.2224 3.82257 56.4715 5.33255C56.725 8.35107 56.5979 24.4496 56.4715 27.0912C58.7354 27.5945 61.1257 27.9722 63.5159 27.9722C70.1819 27.9722 74.2064 23.8213 74.2064 17.281C74.2064 12.1249 70.9366 8.35107 66.6601 8.35107ZM63.7672 26.5878C63.2639 26.5878 62.6342 26.5878 62.258 26.4629C62.1316 24.7023 62.0067 17.281 62.1316 10.7413C62.8862 10.4893 63.3888 10.3637 64.0185 10.3637C66.7872 10.3637 68.2965 13.6335 68.2965 17.6572C68.2957 22.6898 66.4088 26.5878 63.7672 26.5878ZM22.1363 1.0568H0V2.18838L1.25796 2.31403C2.89214 2.56533 3.52184 3.57127 3.77242 5.9608C4.15082 10.4886 4.02445 18.6646 3.77242 22.5619C3.52112 24.9522 2.89287 26.0845 1.25796 26.2087L0 26.4615V27.4674H14.2123V26.4615L12.703 26.2087C11.0681 26.0838 10.4392 24.9522 10.1879 22.5619C10.0615 20.9263 9.93583 18.2847 9.93583 15.0156L12.9543 15.1413C14.8413 15.1413 15.7208 16.6505 16.0985 18.7881H17.2308V9.86106H16.0985C15.7201 11.9993 14.8413 13.5078 12.9543 13.5078L9.93655 13.6342C9.93655 9.35773 10.0622 5.33328 10.1886 2.94374H14.59C17.9869 2.94374 19.7475 5.08125 21.0047 8.85513L22.2626 8.47745L22.1363 1.0568Z"

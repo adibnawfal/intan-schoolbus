@@ -1,6 +1,8 @@
 @php
-  $isMyProfile = true;
+  $isMyProfile = false;
   $isDriverProfile = false;
+  $isEmergencyContact = false;
+  $isDrivingLicense = true;
   $isStudentProfile = false;
   $isChangePassword = false;
   $isDeleteProfile = false;
@@ -20,13 +22,13 @@
 
     <!-- Emergency Contact -->
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
-      <form method="post" action="{{ route('profile.patch-update-driving-licence', $driverDetailsData->user_id) }}"
+      <form method="post" action="{{ route('profile.patch-driving-license', $driverDetailsData->user_id) }}"
         class="flex flex-col gap-y-4">
         @csrf
         @method('patch')
 
         <div class="flex flex-col w-full">
-          <h1 class="text-xl font-bold">Driving License Details</h1>
+          <h1 class="text-xl font-bold">Driving License</h1>
           <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div class="flex flex-wrap -m-2">
@@ -57,16 +59,10 @@
             <x-input-error :messages="$errors->get('expiry_date')" class="mt-2" />
           </div>
         </div>
-        <div class="flex items-center mt-8 gap-x-4">
-          <button type="submit"
-            class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
-            Update Driving Licence
-          </button>
-          <a class="px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded focus:outline-none hover:bg-gray-100"
-            href="{{ route('profile.driving-licence') }}">
-            Cancel
-          </a>
-        </div>
+        <button type="submit"
+          class="px-8 py-2 text-sm mt-2 text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
+          Update Driving License
+        </button>
       </form>
     </div>
     <!-- End About Me -->

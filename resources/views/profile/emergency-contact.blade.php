@@ -1,6 +1,8 @@
 @php
-  $isMyProfile = true;
+  $isMyProfile = false;
   $isDriverProfile = false;
+  $isEmergencyContact = true;
+  $isDrivingLicense = false;
   $isStudentProfile = false;
   $isChangePassword = false;
   $isDeleteProfile = false;
@@ -20,7 +22,7 @@
 
     <!-- Emergency Contact -->
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
-      <form method="post" action="{{ route('profile.patch-update-emergency-contact', $driverDetailsData->user_id) }}"
+      <form method="post" action="{{ route('profile.patch-emergency-contact', $driverDetailsData->user_id) }}"
         class="flex flex-col gap-y-4">
         @csrf
         @method('patch')
@@ -108,16 +110,10 @@
             <x-input-error :messages="$errors->get('ec_phone_no')" class="mt-2" />
           </div>
         </div>
-        <div class="flex items-center mt-8 gap-x-4">
-          <button type="submit"
-            class="px-8 py-2 text-sm text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
-            Update Emergency Contact
-          </button>
-          <a class="px-8 py-2 text-sm text-gray-800 border border-gray-300 rounded focus:outline-none hover:bg-gray-100"
-            href="{{ route('profile.driving-licence') }}">
-            Cancel
-          </a>
-        </div>
+        <button type="submit"
+          class="px-8 py-2 text-sm mt-2 text-white bg-[#08183A] rounded w-max focus:outline-none hover:bg-[#08183A]/[.8]">
+          Update Emergency Contact
+        </button>
       </form>
     </div>
     <!-- End About Me -->
