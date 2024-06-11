@@ -551,4 +551,73 @@ class TransportationController extends Controller
 
     return Redirect::route('transportation.request-status')->with('status', 'status-updated');
   }
+
+  /**
+   * Display the student details.
+   */
+  public function getStudentDetails(Request $request): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    return view('transportation.student-details', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+    ]);
+  }
+
+  /**
+   * Display the all student.
+   */
+  public function getAllStudent(Request $request): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $busService = BusService::where('status', 'Success')->get();
+
+    return view('transportation.all-student', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'busService' => $busService,
+    ]);
+  }
+
+  /**
+   * Display the morning session.
+   */
+  public function getMorningSession(Request $request): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $busService = BusService::where('status', 'Success')->get();
+
+    return view('transportation.morning-session', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'busService' => $busService,
+    ]);
+  }
+
+  /**
+   * Display the evening session.
+   */
+  public function getEveningSession(Request $request): View
+  {
+    $userDetails = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 1)
+      ->first();
+
+    $busService = BusService::where('status', 'Success')->get();
+
+    return view('transportation.evening-session', [
+      'user' => $request->user(),
+      'userDetails' => $userDetails,
+      'busService' => $busService,
+    ]);
+  }
 }

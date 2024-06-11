@@ -46,49 +46,50 @@
         </a>
       </li>
 
-      @if (Auth::user()->role === 'admin' || Auth::user()->role === 'customer')
-        <li class="hs-accordion" id="account-accordion">
-          <button type="button"
-            class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-white hs-accordion-active:hover:bg-transparent font-semibold text-sm text-white rounded-lg hover:bg-[#F2BA1D] hover:text-[#08183A]">
-            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" class="lucide lucide-bus-front">
-              <path d="M4 6 2 7" />
-              <path d="M10 6h4" />
-              <path d="m22 7-2-1" />
-              <rect width="16" height="16" x="4" y="3" rx="2" />
-              <path d="M4 11h16" />
-              <path d="M8 15h.01" />
-              <path d="M16 15h.01" />
-              <path d="M6 19v2" />
-              <path d="M18 21v-2" />
-            </svg>
-            Transportation
+      <li class="hs-accordion" id="account-accordion">
+        <button type="button"
+          class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-white hs-accordion-active:hover:bg-transparent font-semibold text-sm text-white rounded-lg hover:bg-[#F2BA1D] hover:text-[#08183A]">
+          <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-bus-front">
+            <path d="M4 6 2 7" />
+            <path d="M10 6h4" />
+            <path d="m22 7-2-1" />
+            <rect width="16" height="16" x="4" y="3" rx="2" />
+            <path d="M4 11h16" />
+            <path d="M8 15h.01" />
+            <path d="M16 15h.01" />
+            <path d="M6 19v2" />
+            <path d="M18 21v-2" />
+          </svg>
+          Transportation
 
-            <svg class="hidden hs-accordion-active:block ms-auto size-4" xmlns="http://www.w3.org/2000/svg"
-              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="m18 15-6-6-6 6" />
-            </svg>
+          <svg class="hidden hs-accordion-active:block ms-auto size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6" />
+          </svg>
 
-            <svg class="block hs-accordion-active:hidden ms-auto size-4" xmlns="http://www.w3.org/2000/svg"
-              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </button>
+          <svg class="block hs-accordion-active:hidden ms-auto size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
 
-          <div id="account-accordion-child"
-            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
-            <ul class="pt-2 ps-2">
-              @if (Auth::user()->role === 'admin')
-                <li>
-                  <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg hover:bg-[#F2BA1D] hover:text-[#08183A]"
-                    href="{{ route('transportation.service-information') }}">
-                    Service Information
-                  </a>
-                </li>
-              @endif
+        <div id="account-accordion-child"
+          class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
+          <ul class="pt-2 ps-2">
+            @if (Auth::user()->role === 'admin')
+              <li>
+                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg hover:bg-[#F2BA1D] hover:text-[#08183A]"
+                  href="{{ route('transportation.service-information') }}">
+                  Service Information
+                </a>
+              </li>
+            @endif
+
+            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'customer')
               <li>
                 <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg hover:bg-[#F2BA1D] hover:text-[#08183A]"
                   href="{{ route('transportation.view') }}">
@@ -101,10 +102,19 @@
                   Request Status
                 </a>
               </li>
-            </ul>
-          </div>
-        </li>
-      @endif
+            @endif
+
+            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'driver')
+              <li>
+                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg hover:bg-[#F2BA1D] hover:text-[#08183A]"
+                  href="{{ route('transportation.student-details') }}">
+                  Student Details
+                </a>
+              </li>
+            @endif
+          </ul>
+        </div>
+      </li>
 
       @if (Auth::user()->role === 'admin' || Auth::user()->role === 'customer')
         <li>

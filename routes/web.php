@@ -86,6 +86,10 @@ Route::middleware('auth')->group(function () {
   Route::get('/transportation/request-submitted', [TransportationController::class, 'getRequestSubmitted'])->name('transportation.request-submitted');
   Route::get('/transportation/request-status', [TransportationController::class, 'getRequestStatus'])->name('transportation.request-status');
   Route::patch('/transportation/update-status/{id}', [TransportationController::class, 'patchUpdateStatus'])->name('transportation.update-status');
+  Route::get('/transportation/student-details', [TransportationController::class, 'getStudentDetails'])->name('transportation.student-details');
+  Route::get('/transportation/student-details/all-student', [TransportationController::class, 'getAllStudent'])->name('transportation.all-student');
+  Route::get('/transportation/student-details/morning-session', [TransportationController::class, 'getMorningSession'])->name('transportation.morning-session');
+  Route::get('/transportation/student-details/evening-session', [TransportationController::class, 'getEveningSession'])->name('transportation.evening-session');
 
   // Payment
   Route::get('/payment', [PaymentController::class, 'getPayment'])->name('payment.view');
