@@ -23,11 +23,13 @@ Route::get('/', function () {
   return view('welcome');
 })->name('welcome');
 
+// GPS
+Route::post('/dashboard/store-gps/{lat}/{lng}', [DashboardController::class, 'storeGPS']);
+Route::get('/dashboard/get-latest-gps', [DashboardController::class, 'getLatestGPS']);
+
 Route::middleware('auth')->group(function () {
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');
-  Route::get('/dashboard/store-gps', [DashboardController::class, 'storeGPS']);
-  Route::get('/dashboard/get-latest-gps', [DashboardController::class, 'getLatestGPS']);
 
   // Profile
   Route::get('/profile/my-profile', [ProfileController::class, 'getMyProfile'])->name('profile.my-profile');
