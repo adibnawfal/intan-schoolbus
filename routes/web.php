@@ -24,7 +24,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 // GPS
-Route::post('/dashboard/store-gps/{lat}/{lng}', [DashboardController::class, 'storeGPS']);
+Route::get('/dashboard/store-gps', [DashboardController::class, 'storeGPS']);
 Route::get('/dashboard/get-latest-gps', [DashboardController::class, 'getLatestGPS']);
 
 Route::middleware('auth')->group(function () {

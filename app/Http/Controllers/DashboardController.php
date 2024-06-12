@@ -55,16 +55,16 @@ class DashboardController extends Controller
     ]);
   }
 
-  public function storeGPS(Request $request, $lat, $lng)
+  public function storeGPS(Request $request)
   {
-    // $request->validate([
-    //   'lat' => ['required', 'numeric'],
-    //   'lng' => ['required', 'numeric'],
-    // ]);
+    $request->validate([
+      'lat' => ['required', 'numeric'],
+      'lng' => ['required', 'numeric'],
+    ]);
 
     $gpsData = new GPS();
-    $gpsData->lat = $lat;
-    $gpsData->lng = $lng;
+    $gpsData->lat = $request->lat;
+    $gpsData->lng = $request->lng;
     $gpsData->save();
 
     return response()->json(['message' => 'GPS data saved successfully'], 200);
