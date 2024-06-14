@@ -3,5 +3,5 @@
     {{ __('Payment Record') }}
   </x-slot>
 
-  <livewire:record :busServiceData="$busServiceData" :payment="$payment" />
+  <livewire:Record :busServiceData="$busServiceData" :payment="$payment" />
 </x-app-layout>
