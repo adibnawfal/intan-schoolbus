@@ -7,7 +7,7 @@
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full">
         <h1 class="text-xl font-bold">Request Bus Service Status</h1>
-        <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="text-sm leading-relaxed">Manage the status of bus service request's here.</p>
       </div>
       <div class="w-full mt-2 overflow-auto">
         <table class="w-full text-sm text-center whitespace-no-wrap table-auto">
@@ -77,12 +77,18 @@
                         data-hs-overlay="#hs-update-status-{{ $busServiceData->id }}-modal">
                         Update Status
                       </button>
+                      <button type="button"
+                        class="flex items-center w-full px-3 py-2 text-sm text-red-800 rounded hover:bg-gray-100"
+                        data-hs-overlay="#hs-delete-request-{{ $busServiceData->id }}-modal">
+                        Delete Request
+                      </button>
                     @endif
                   </div>
                 </td>
               </tr>
               @include('transportation.partials.modal.hs-student-modal')
               @include('transportation.partials.modal.hs-update-status-modal')
+              @include('transportation.partials.modal.hs-delete-request-modal')
             @endforeach
           </tbody>
         </table>

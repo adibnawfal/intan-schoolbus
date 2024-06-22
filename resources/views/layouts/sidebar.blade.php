@@ -93,13 +93,13 @@
               <li>
                 <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg hover:bg-[#F2BA1D] hover:text-[#08183A]"
                   href="{{ route('transportation.view') }}">
-                  Request Bus Service
+                  School Bus Service
                 </a>
               </li>
               <li>
                 <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg hover:bg-[#F2BA1D] hover:text-[#08183A]"
                   href="{{ route('transportation.request-status') }}">
-                  Request Status
+                  Service Request Status
                 </a>
               </li>
             @endif

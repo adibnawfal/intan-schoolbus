@@ -7,7 +7,7 @@
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full mt-4">
         <h1 class="text-xl font-bold">Student Details</h1>
-        <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="text-sm leading-relaxed">View successful registered student details here.</p>
       </div>
       <div class="flex flex-wrap -m-2">
         @php
@@ -22,7 +22,7 @@
                   All Student
                 </h2>
                 <p class="text-xs text-gray-500 line-clamp-1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Student details from all area.
                 </p>
               </div>
             </div>
@@ -42,7 +42,7 @@
                   Morning Session
                 </h2>
                 <p class="text-xs text-gray-500 line-clamp-1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Student details from morning session only.
                 </p>
               </div>
             </div>
@@ -62,7 +62,7 @@
                   Evening Session
                 </h2>
                 <p class="text-xs text-gray-500 line-clamp-1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Student details from evening session only.
                 </p>
               </div>
             </div>

@@ -1,8 +1,8 @@
-<form method="post" action="{{ route('transportation.delete-schedule', $busScheduleData->id) }}">
+<form method="post" action="{{ route('transportation.delete-request', $busServiceData->id) }}">
   @csrf
   @method('delete')
 
-  <div id="hs-delete-schedule-{{ $busScheduleData->id }}-modal"
+  <div id="hs-delete-request-{{ $busServiceData->id }}-modal"
     class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
     <div
       class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
@@ -10,10 +10,11 @@
         class="flex flex-col w-full bg-white rounded pointer-events-auto dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
         <div class="relative flex flex-col h-full p-6 overflow-hidden rounded">
           <h1 class="flex items-center pb-4 mb-4 text-4xl leading-none text-gray-900 border-b border-gray-200">
-            <span>Delete Bus Schedule</span>
+            <span>Delete Request</span>
           </h1>
           <div class="w-full">
-            <p>Are you sure you want to delete {{ $busScheduleData->session }} schedule session?</p>
+            <p>Are you sure you want to delete {{ $busServiceData->student->first_name }}
+              {{ $busServiceData->student->last_name }} bus request?</p>
           </div>
           <button type="submit"
             class="flex items-center w-full px-4 py-2 mt-6 text-white bg-red-600 border-0 rounded focus:outline-none hover:bg-red-700">

@@ -73,19 +73,34 @@
       </div>
     </div>
 
-    <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
-      <div class="flex flex-col w-full">
-        <h1 class="text-xl font-bold">School Bus Live Location</h1>
-        <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="relative w-full h-[30rem] shadow sm:rounded">
-        <div class="absolute inset-0">
-          <iframe id="map" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
-            marginwidth="0">
-          </iframe>
+    @if ($payment->count() > 0)
+      <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
+        <div class="flex flex-col w-full">
+          <h1 class="text-xl font-bold">School Bus Live Location</h1>
+          <p class="text-sm leading-relaxed">Stay updated with the current location of the school bus!</p>
+        </div>
+        <div class="relative w-full h-[30rem] shadow sm:rounded">
+          <div class="absolute inset-0">
+            <iframe id="map" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
+              marginwidth="0">
+            </iframe>
+          </div>
         </div>
       </div>
-    </div>
+    @else
+      <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
+        <div class="flex flex-col w-full">
+          <h1 class="text-xl font-bold">School Bus Live Location</h1>
+          <p class="text-sm leading-relaxed">
+            Did not see the school bus live-location?
+            <a class="font-semibold underline" href="{{ route('profile.student-profile') }}">
+              Register student
+            </a>
+            to the school bus service first.
+          </p>
+        </div>
+      </div>
+    @endif
   </div>
 
   <script>

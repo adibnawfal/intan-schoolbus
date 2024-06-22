@@ -1,11 +1,11 @@
 <div class="flex flex-col w-full">
   <h1 class="text-xl font-bold">About Me</h1>
-  <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <p class="text-sm leading-relaxed lg:w-2/3">Manage your personal details and keep your profile up to date.</p>
 </div>
 
-<form id="send-verification" method="post" action="{{ route('verification.send') }}" class="-m-2">
+{{-- <form id="send-verification" method="post" action="{{ route('verification.send') }}" class="-m-2">
   @csrf
-</form>
+</form> --}}
 
 <form id="delete-profile-image" method="post" action="{{ route('profile.delete-profile-image', $userDetails->id) }}"
   class="-m-2">
@@ -36,7 +36,8 @@
       class="w-full px-3 py-1 text-base leading-8 text-gray-700 lowercase transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
     <x-input-error class="mt-2" :messages="$errors->get('email')" />
   </div>
-  @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+
+  {{-- @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
     <div>
       <p class="mt-2 text-sm text-gray-800">
         {{ __('Your email address is unverified.') }}
@@ -52,7 +53,7 @@
         </p>
       @endif
     </div>
-  @endif
+  @endif --}}
 
   @if (Auth::user()->role === 'customer')
     <div class="w-1/2 p-2">

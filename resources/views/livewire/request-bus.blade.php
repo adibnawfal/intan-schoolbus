@@ -4,7 +4,7 @@
   <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
     <div class="flex flex-col w-full">
       <h1 class="text-xl font-bold">Select Student Profile</h1>
-      <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="text-sm leading-relaxed">Please select which student to be registered for school bus service.</p>
     </div>
     <div class="flex flex-wrap -m-2">
       @php
@@ -38,7 +38,8 @@
 
     <div class="flex flex-col w-full mt-4">
       <h1 class="text-xl font-bold">Monthly Fee Summary</h1>
-      <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="text-sm leading-relaxed">Below are the summary of corresponding student's monthly school bus service
+        fee.</p>
     </div>
 
     <div class="w-full mt-2 overflow-auto">
@@ -143,6 +144,14 @@
       </a>
     </div>
 
+    <p class="mt-4 text-sm leading-relaxed">
+      Did not see student’s profile?
+      <a class="font-semibold underline" href="{{ route('profile.student-profile') }}">
+        Create student profile's
+      </a>
+      first.
+    </p>
+
     @if (session('status') === 'request-failure')
       <div id="dismiss-alert"
         class="fixed bottom-0 m-8 transition duration-300 max-w-[550px] end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
@@ -200,8 +209,8 @@
                   data-hs-remove-element="#dismiss-alert">
                   <span class="sr-only">Close</span>
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 6 6 18"></path>
                     <path d="m6 6 12 12"></path>
                   </svg>

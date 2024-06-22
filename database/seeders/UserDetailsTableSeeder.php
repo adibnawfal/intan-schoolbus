@@ -20,8 +20,8 @@ class UserDetailsTableSeeder extends Seeder
       // Admin
       [
         'user_id' => 1,
-        'first_name' => 'Admin',
-        'last_name' => null,
+        'first_name' => 'Ahmad',
+        'last_name' => 'Khaharuddin',
         'status' => null,
         'phone_no' => null,
         'gender' => null,

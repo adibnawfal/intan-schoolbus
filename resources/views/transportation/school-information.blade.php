@@ -7,7 +7,7 @@
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full">
         <h1 class="text-xl font-bold">School Information</h1>
-        <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="text-sm leading-relaxed lg:w-2/3">Manage or add school details here.</p>
       </div>
       <div class="flex flex-wrap -m-2">
         @php

@@ -148,7 +148,7 @@
             <!-- End Confirm Password -->
 
             <!-- Terms and Conditions -->
-            <div class="flex flex-col justify-center">
+            {{-- <div class="flex flex-col justify-center">
               <div class="flex items-center">
                 <input type="checkbox" id="terms_and_conditions" name="terms_and_conditions"
                   class="shrink-0 mt-0.5 border-gray-200 rounded text-[#F2BA1D] focus:ring-[#F2BA1D] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
@@ -158,12 +158,12 @@
                     href="#">Terms and Conditions</a></label>
               </div>
               <x-input-error :messages="$errors->get('terms_and_conditions')" class="mt-2" />
-            </div>
+            </div> --}}
             <!-- End Terms and Conditions -->
 
             <!-- Submit -->
             <button type="submit"
-              class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-[#08183A] bg-[#F2BA1D] border border-transparent rounded-lg gap-x-2 hover:bg-[#F2BA1D]/[.8] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Sign
+              class="inline-flex mt-2 items-center justify-center w-full px-4 py-3 text-sm font-semibold text-[#08183A] bg-[#F2BA1D] border border-transparent rounded-lg gap-x-2 hover:bg-[#F2BA1D]/[.8] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Sign
               Up</button>
             <!-- End Submit -->
           </div>

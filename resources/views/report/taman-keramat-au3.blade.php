@@ -7,7 +7,7 @@
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full">
         <h1 class="text-xl font-bold">Taman Keramat AU3</h1>
-        <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="text-sm leading-relaxed">Taman Keramat AU3 student's details.</p>
       </div>
       <div class="w-full mt-2 overflow-auto">
         <table class="w-full text-sm text-center whitespace-no-wrap table-auto">

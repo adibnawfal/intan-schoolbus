@@ -5,7 +5,7 @@
 
   <div class="flex flex-col w-full">
     <h1 class="text-xl font-bold">About Driver</h1>
-    <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p class="text-sm leading-relaxed lg:w-2/3">Please update driver's personal details.</p>
   </div>
   <div class="flex flex-wrap -m-2">
     <div class="w-1/2 p-2">
@@ -16,7 +16,7 @@
       <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
     </div>
     <div class="w-1/2 p-2">
-      <label for="last_name" class="text-sm leading-7">Last Name (Optional)</label>
+      <label for="last_name" class="text-sm leading-7">Last Name</label>
       <input type="text" id="last_name" name="last_name"
         value="{{ old('last_name', $driverDetailsData->last_name) }}"
         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
@@ -54,7 +54,7 @@
   </div>
   <div class="flex flex-col w-full mt-8">
     <h1 class="text-xl font-bold">Emergency Contact</h1>
-    <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p class="text-sm leading-relaxed lg:w-2/3">Please update driver's personal emergency contact person details.</p>
   </div>
   <div class="flex flex-wrap -m-2">
     <div class="w-1/2 p-2">
@@ -65,7 +65,7 @@
       <x-input-error :messages="$errors->get('ec_first_name')" class="mt-2" />
     </div>
     <div class="w-1/2 p-2">
-      <label for="ec_last_name" class="text-sm leading-7">Last Name (Optional)</label>
+      <label for="ec_last_name" class="text-sm leading-7">Last Name</label>
       <input type="text" id="ec_last_name" name="ec_last_name"
         value="{{ old('ec_last_name', $ecDetailsData->last_name) }}"
         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
@@ -137,7 +137,7 @@
   </div>
   <div class="flex flex-col w-full mt-8">
     <h1 class="text-xl font-bold">Driving License Details</h1>
-    <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p class="text-sm leading-relaxed lg:w-2/3">Please update driver's license details.</p>
   </div>
   <div class="flex flex-wrap -m-2">
     <div class="w-1/2 p-2">
@@ -169,7 +169,8 @@
   </div>
   <div class="flex flex-col w-full mt-8">
     <h1 class="text-xl font-bold">Driver Login Credentials</h1>
-    <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p class="text-sm leading-relaxed lg:w-2/3">Please update driver's email and password for driver's login purpose.
+    </p>
   </div>
   <div class="flex flex-wrap -m-2">
     <div class="w-full p-2">

@@ -26,7 +26,7 @@
     </div>
     <!-- End About Me -->
 
-    @if (Auth::user()->role === 'admin' || Auth::user()->role === 'customer')
+    @if (Auth::user()->role === 'customer')
       <!-- Parent/Guardian Information -->
       <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
         @include('profile.partials.parent-guardian-information')

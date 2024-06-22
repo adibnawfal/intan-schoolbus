@@ -37,9 +37,8 @@
       <div
         class="flex flex-col mt-5 gap-y-4 gap-x-0 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:ps-7">
         <a class="font-semibold text-[#08183A] sm:py-6" href="{{ route('welcome') }}" aria-current="page">Home</a>
-        <a class="font-semibold text-[#08183A] sm:py-6" href="#">Service</a>
-        <a class="font-semibold text-[#08183A] sm:py-6" href="#">About Us</a>
-        <a class="font-semibold text-[#08183A] sm:py-6" href="#">Contact Us</a>
+        <a class="font-semibold text-[#08183A] sm:py-6" href="{{ url('/#aboutus') }}">About Us</a>
+        <a class="font-semibold text-[#08183A] sm:py-6" href="{{ url('/#contactus') }}">Contact Us</a>
         @if (Route::has('login'))
           @auth
             <a class="inline-flex items-center px-6 py-2 text-sm font-semibold text-[#F2BA1D] bg-[#08183A] border border-transparent rounded-lg gap-x-2 hover:bg-[#08183A]/[.8] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"

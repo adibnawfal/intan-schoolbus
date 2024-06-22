@@ -10,7 +10,7 @@
       <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
         <div class="flex flex-col w-full">
           <h1 class="text-xl font-bold">New Schedule Information</h1>
-          <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p class="text-sm leading-relaxed lg:w-2/3">Please insert new bus schedule here.</p>
         </div>
         <div class="flex flex-wrap -m-2">
           <div class="w-full p-2">
@@ -70,7 +70,7 @@
         </div>
         <div class="flex flex-col w-full mt-4">
           <h1 class="text-xl font-bold">Pick-Up Time</h1>
-          <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p class="text-sm leading-relaxed lg:w-2/3">Please insert new pick-up time here.</p>
         </div>
         <div class="flex flex-wrap -m-2">
           <div class="w-1/2 p-2">
@@ -88,7 +88,7 @@
         </div>
         <div class="flex flex-col w-full mt-4">
           <h1 class="text-xl font-bold">Drop-Off Time</h1>
-          <p class="text-sm leading-relaxed lg:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p class="text-sm leading-relaxed lg:w-2/3">Please insert new drop-off time here.</p>
         </div>
         <div class="flex flex-wrap -m-2">
           <div class="w-1/2 p-2">

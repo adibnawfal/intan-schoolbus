@@ -7,7 +7,8 @@
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full">
         <h1 class="text-xl font-bold">School Name, Pickup and Dropoff Area Covered, and Fee Range</h1>
-        <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="text-sm leading-relaxed">Please find the details of school names, pickup and dropoff areas covered, and
+          the respective fee range below.</p>
       </div>
       <div class="w-full mt-2 overflow-auto">
         <table class="w-full text-sm text-center whitespace-no-wrap table-auto">
@@ -67,7 +68,8 @@
     <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
       <div class="flex flex-col w-full mt-4">
         <h1 class="text-xl font-bold">Intan School Bus Operation Hour</h1>
-        <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="text-sm leading-relaxed">Below are the details of the school bus service schedule for morning and
+          evening session.</p>
       </div>
       <div class="w-full mt-2 overflow-auto">
         <table class="w-full text-sm text-center whitespace-no-wrap table-fixed">

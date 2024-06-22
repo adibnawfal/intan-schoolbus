@@ -40,16 +40,29 @@
               <label for="password"
                 class="block mb-2 font-medium text-sm text-[#F2BA1D] dark:text-white">Password</label>
               <div class="relative">
-                <input type="password" id="password" name="password" placeholder="Enter your password"
+                <input type="password" id="hs-toggle-password" name="password" placeholder="Enter your password"
                   class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#F2BA1D] focus:ring-[#F2BA1D] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                   autocomplete="current-password">
-                <div class="absolute inset-y-0 hidden pointer-events-none end-0 pe-3">
-                  <svg class="text-red-500 size-5" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
-                    aria-hidden="true">
-                    <path
-                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                  </svg>
-                </div>
+                {{-- <div class="absolute inset-y-0 pointer-events-none end-0 pe-3">
+                  <button type="button" data-hs-toggle-password='{"target": "#hs-toggle-password"}'
+                    class="absolute top-0 end-0 p-3.5 rounded-e-md">
+                    <svg class="flex-shrink-0 size-3.5 text-gray-400 dark:text-neutral-600" width="24"
+                      height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path class="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                      <path class="hs-password-active:hidden"
+                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                      <path class="hs-password-active:hidden"
+                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                      <line class="hs-password-active:hidden" x1="2" x2="22" y1="2"
+                        y2="22">
+                      </line>
+                      <path class="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z">
+                      </path>
+                      <circle class="hidden hs-password-active:block" cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div> --}}
               </div>
               <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
@@ -98,6 +111,21 @@
     class="hidden md:block md:absolute md:top-0 md:start-1/2 md:end-0 h-full bg-[url('https://cdn.dribbble.com/users/85685/screenshots/4964889/media/b563d8368d3d99c7c7173f5895d75395.png')] bg-no-repeat bg-center bg-cover">
   </div>
   <!-- End Right Section -->
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+      const togglePassword = document.querySelector("#togglePassword");
+
+      togglePassword.addEventListener("click", function(e) {
+        // toggle the type attribute
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        // toggle the eye / eye slash icon
+        this.classList.toggle("bi-eye");
+      });
+    });
+  </script>
 </x-guest-layout>
 
 {{-- <x-guest-layout>

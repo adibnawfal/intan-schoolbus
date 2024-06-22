@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('profile.delete-school', $schoolData->id) }}">
+<form method="post" action="{{ route('transportation.delete-school', $schoolData->id) }}">
   @csrf
   @method('delete')
 

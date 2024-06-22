@@ -71,7 +71,7 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
-      'last_name' => ['nullable', 'string', 'max:255'],
+      'last_name' => ['required', 'string', 'max:255'],
       'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id)],
       'status' => ['nullable', 'string', 'max:255'],
       'phone_no' => ['nullable', 'string', 'max:255'],
@@ -150,7 +150,7 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
-      'last_name' => ['nullable', 'string', 'max:255'],
+      'last_name' => ['required', 'string', 'max:255'],
       'status' => ['required', 'string', 'max:255'],
       'phone_no' => ['required', 'string', 'max:255'],
       'gender' => ['required', 'string', 'max:255'],
@@ -197,7 +197,7 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
-      'last_name' => ['nullable', 'string', 'max:255'],
+      'last_name' => ['required', 'string', 'max:255'],
       'status' => ['required', 'string', 'max:255'],
       'phone_no' => ['required', 'string', 'max:255'],
       'gender' => ['required', 'string', 'max:255'],
@@ -396,12 +396,12 @@ class ProfileController extends Controller
   {
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
-      'last_name' => ['nullable', 'string', 'max:255'],
+      'last_name' => ['required', 'string', 'max:255'],
       'phone_no' => ['required', 'string', 'max:255'],
       'gender' => ['required', 'string', 'max:255'],
       'date_of_birth' => ['required', 'date'],
       'ec_first_name' => ['required', 'string', 'max:255'],
-      'ec_last_name' => ['nullable', 'string', 'max:255'],
+      'ec_last_name' => ['required', 'string', 'max:255'],
       'ec_address_1' => ['required', 'string', 'max:255'],
       'ec_address_2' => ['nullable', 'string', 'max:255'],
       'ec_postal_code' => ['required', 'integer', 'digits:5'],
@@ -515,12 +515,12 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
-      'last_name' => ['nullable', 'string', 'max:255'],
+      'last_name' => ['required', 'string', 'max:255'],
       'phone_no' => ['required', 'string', 'max:255'],
       'gender' => ['required', 'string', 'max:255'],
       'date_of_birth' => ['required', 'date'],
       'ec_first_name' => ['required', 'string', 'max:255'],
-      'ec_last_name' => ['nullable', 'string', 'max:255'],
+      'ec_last_name' => ['required', 'string', 'max:255'],
       'ec_address_1' => ['required', 'string', 'max:255'],
       'ec_address_2' => ['nullable', 'string', 'max:255'],
       'ec_postal_code' => ['required', 'integer', 'digits:5'],
@@ -659,7 +659,7 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'ec_first_name' => ['required', 'string', 'max:255'],
-      'ec_last_name' => ['nullable', 'string', 'max:255'],
+      'ec_last_name' => ['required', 'string', 'max:255'],
       'ec_address_1' => ['required', 'string', 'max:255'],
       'ec_address_2' => ['nullable', 'string', 'max:255'],
       'ec_postal_code' => ['required', 'integer', 'digits:5'],
@@ -759,6 +759,7 @@ class ProfileController extends Controller
       ->first();
 
     $parentGuardian = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 0)
       ->get();
 
     $address = Address::where('user_id', $request->user()->id)
@@ -785,12 +786,12 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
-      'last_name' => ['nullable', 'string', 'max:255'],
+      'last_name' => ['required', 'string', 'max:255'],
       'school' => ['required', 'string', 'max:255'],
       'standard' => ['required', 'integer', 'max:6', 'min:1'],
       'gender' => ['required', 'string', 'max:255'],
       'date_of_birth' => ['required', 'date'],
-      'parent_guardian_id' => ['required', 'exists:user_details,id'],
+      'parent_guardian_id' => ['nullable', 'exists:user_details,id'],
       'pickup_address_id' => ['required', 'exists:addresses,id'],
       'dropoff_address_id' => ['required', 'exists:addresses,id'],
     ]);
@@ -820,6 +821,7 @@ class ProfileController extends Controller
       ->first();
 
     $parentGuardian = UserDetails::where('user_id', $request->user()->id)
+      ->where('default', 0)
       ->get();
 
     $address = Address::where('user_id', $request->user()->id)
@@ -848,29 +850,36 @@ class ProfileController extends Controller
 
     $this->validate($request, [
       'first_name' => ['required', 'string', 'max:255'],
-      'last_name' => ['nullable', 'string', 'max:255'],
+      'last_name' => ['required', 'string', 'max:255'],
       'school' => ['required', 'string', 'max:255'],
       'standard' => ['required', 'integer', 'max:6', 'min:1'],
       'gender' => ['required', 'string', 'max:255'],
       'date_of_birth' => ['required', 'date'],
-      'parent_guardian_id' => ['required', 'exists:user_details,id'],
+      'parent_guardian_id' => ['nullable', 'exists:user_details,id'],
       'pickup_address_id' => ['required', 'exists:addresses,id'],
       'dropoff_address_id' => ['required', 'exists:addresses,id'],
     ]);
 
-    $studentData->update([
-      'first_name' => $request['first_name'],
-      'last_name' => $request['last_name'],
-      'school' => $request['school'],
-      'standard' => $request['standard'],
-      'gender' => $request['gender'],
-      'date_of_birth' => $request['date_of_birth'],
-      'parent_guardian_id' => $request['parent_guardian_id'],
-      'pickup_address_id' => $request['pickup_address_id'],
-      'dropoff_address_id' => $request['dropoff_address_id'],
-    ]);
+    $isRequested = null;
+    $isRequested = BusService::where('student_id', $id)->first();
 
-    return Redirect::route('profile.student-profile')->with('status', 'student-updated');
+    if (!$isRequested) {
+      $studentData->update([
+        'first_name' => $request['first_name'],
+        'last_name' => $request['last_name'],
+        'school' => $request['school'],
+        'standard' => $request['standard'],
+        'gender' => $request['gender'],
+        'date_of_birth' => $request['date_of_birth'],
+        'parent_guardian_id' => $request['parent_guardian_id'],
+        'pickup_address_id' => $request['pickup_address_id'],
+        'dropoff_address_id' => $request['dropoff_address_id'],
+      ]);
+
+      return Redirect::route('profile.student-profile')->with('status', 'student-updated');
+    } else {
+      return Redirect::route('profile.student-profile')->with('status', 'student-update-failure');
+    }
   }
 
   /**
@@ -946,15 +955,22 @@ class ProfileController extends Controller
       'password' => ['required', 'current_password'],
     ]);
 
-    $user = $request->user();
+    $isRequested = null;
+    $isRequested = BusService::where('user_id', $request->user()->id)->first();
 
-    Auth::logout();
+    if (!$isRequested) {
+      $user = $request->user();
 
-    $user->delete();
+      Auth::logout();
 
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
+      $user->delete();
 
-    return Redirect::to('/');
+      $request->session()->invalidate();
+      $request->session()->regenerateToken();
+
+      return Redirect::to('/');
+    } else {
+      return Redirect::route('profile.delete-profile')->with('status', 'delete-profile-failure');
+    }
   }
 }

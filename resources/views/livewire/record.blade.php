@@ -2,7 +2,7 @@
   <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
     <div class="flex flex-col w-full">
       <h1 class="text-xl font-bold">Friendly Reminder to All Parent/Guardian</h1>
-      <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="text-sm leading-relaxed">Please read and adhere to the monthly payment rules.</p>
     </div>
 
     <div class="p-6 border-l-4 border-[#08183A] rounded-r-xl bg-indigo-50">
@@ -10,12 +10,10 @@
         <div class="ml-3">
           <div class="mt-2 text-sm text-[#08183A]">
             <ul role="list" class="pl-5 space-y-1 list-disc">
-              <li>Payment must made in the first week for every month.</li>
-              <li>Total fee for every month will remain the same (full) despite of having school holidays in any
-                month.</li>
+              <li>Total fee for every month will remain the same (full) despite of having school holidays in any month.
+              </li>
               <li>This website only accept credit or debit card payment.</li>
-              <li>For cash payment, the fee must be given directly to the bus driver.</li>
-              <li>User will receive warning if payment of each month past its due.</li>
+              <li>For cash payment, the fee must be given directly to the bus driver or directly to the owner.</li>
             </ul>
           </div>
         </div>
@@ -26,7 +24,7 @@
       <h1 class="text-xl font-bold">
         {{ $busServiceData->student->first_name }} {{ $busServiceData->student->last_name }} Payment Record
       </h1>
-      <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="text-sm leading-relaxed">Select months to pay or update payment.</p>
     </div>
 
     <div class="w-full mt-2 overflow-auto">

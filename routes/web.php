@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TransportationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportController;
@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-})->name('welcome');
+// Welcome
+Route::get('/', [WelcomeController::class, 'getWelcome'])->name('welcome');
+Route::post('/contact-us', [WelcomeController::class, 'submitContactUs'])->name('welcome.submit-contact-us');
 
 // GPS
 Route::get('/dashboard/store-gps', [DashboardController::class, 'storeGPS']);
@@ -76,18 +76,19 @@ Route::middleware('auth')->group(function () {
   Route::post('/transportation/school/new', [TransportationController::class, 'postNewSchool'])->name('transportation.post-new-school');
   Route::get('/transportation/school/update/{id}', [TransportationController::class, 'getUpdateSchool'])->name('transportation.get-update-school');
   Route::patch('/transportation/school/update/{id}', [TransportationController::class, 'patchUpdateSchool'])->name('transportation.patch-update-school');
-  Route::delete('/transportation/school/delete/{id}', [TransportationController::class, 'deleteSchool'])->name('profile.delete-school');
+  Route::delete('/transportation/school/delete/{id}', [TransportationController::class, 'deleteSchool'])->name('transportation.delete-school');
   Route::get('/transportation/schedule/information', [TransportationController::class, 'getScheduleInformation'])->name('transportation.schedule-information');
   Route::get('/transportation/schedule/new', [TransportationController::class, 'getNewSchedule'])->name('transportation.get-new-schedule');
   Route::post('/transportation/schedule/new', [TransportationController::class, 'postNewSchedule'])->name('transportation.post-new-schedule');
   Route::get('/transportation/schedule/update/{id}', [TransportationController::class, 'getUpdateSchedule'])->name('transportation.get-update-schedule');
   Route::patch('/transportation/schedule/update/{id}', [TransportationController::class, 'patchUpdateSchedule'])->name('transportation.patch-update-schedule');
-  Route::delete('/transportation/schedule/delete/{id}', [TransportationController::class, 'deleteSchedule'])->name('profile.delete-schedule');
+  Route::delete('/transportation/schedule/delete/{id}', [TransportationController::class, 'deleteSchedule'])->name('transportation.delete-schedule');
   Route::get('/transportation/request-bus', [TransportationController::class, 'getRequestBus'])->name('transportation.get-request-bus');
   Route::post('/transportation/request-bus', [TransportationController::class, 'postRequestBus'])->name('transportation.post-request-bus');
   Route::get('/transportation/request-submitted', [TransportationController::class, 'getRequestSubmitted'])->name('transportation.request-submitted');
   Route::get('/transportation/request-status', [TransportationController::class, 'getRequestStatus'])->name('transportation.request-status');
   Route::patch('/transportation/update-status/{id}', [TransportationController::class, 'patchUpdateStatus'])->name('transportation.update-status');
+  Route::delete('/transportation/delete-request/{id}', [TransportationController::class, 'deleteRequest'])->name('transportation.delete-request');
   Route::get('/transportation/student-details', [TransportationController::class, 'getStudentDetails'])->name('transportation.student-details');
   Route::get('/transportation/student-details/all-student', [TransportationController::class, 'getAllStudent'])->name('transportation.all-student');
   Route::get('/transportation/student-details/morning-session', [TransportationController::class, 'getMorningSession'])->name('transportation.morning-session');

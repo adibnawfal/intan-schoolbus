@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
+use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\BusService;
 use App\Models\Payment;
+use App\Notifications\PaymentNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -135,6 +137,13 @@ class PaymentController extends Controller
             'date' => Carbon::now()->toDateTimeString(),
             'method' => 'Debit/Credit Card',
           ]);
+
+          $user = User::findOrFail($paymentData->user_id);
+          $userDetails = UserDetails::where('user_id', $user->id)
+            ->where('default', 1)
+            ->first();
+
+          $user->notify(new PaymentNotification($userDetails, $paymentData));
         }
       }
     }
@@ -174,6 +183,13 @@ class PaymentController extends Controller
         'date' => Carbon::now()->toDateTimeString(),
         'method' => $methodVal,
       ]);
+
+      $user = User::findOrFail($paymentData->user_id);
+      $userDetails = UserDetails::where('user_id', $user->id)
+        ->where('default', 1)
+        ->first();
+
+      $user->notify(new PaymentNotification($userDetails, $paymentData));
     } else {
       $paymentData->update([
         'status' => $request['payment_status'],

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\School;
 use App\Models\BusSchedule;
 use App\Models\Student;
 use App\Models\BusService;
 use App\Models\Payment;
+use App\Notifications\BusServiceNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -411,11 +413,7 @@ class TransportationController extends Controller
     $student = Student::whereIn('id', $request['student'])->get();
 
     foreach ($student as $studentData) {
-      if (!$studentData->parent_guardian_id || !$studentData->pickup_address_id || !$studentData->dropoff_address_id) {
-        $isComplete = false;
-      }
-
-      if (!$studentData->parent_guardian_id || !$studentData->pickup_address_id || !$studentData->dropoff_address_id) {
+      if (!$studentData->pickup_address_id || !$studentData->dropoff_address_id) {
         $isComplete = false;
       }
     }
@@ -549,7 +547,27 @@ class TransportationController extends Controller
       'status' => $request['status'],
     ]);
 
+    if ($request['status'] === 'Success' || $request['status'] === 'Rejected') {
+      $user = User::findOrFail($busServiceData->user_id);
+      $userDetails = UserDetails::where('user_id', $user->id)
+        ->where('default', 1)
+        ->first();
+
+      $user->notify(new BusServiceNotification($userDetails, $busServiceData));
+    }
+
     return Redirect::route('transportation.request-status')->with('status', 'status-updated');
+  }
+
+  /**
+   * Delete bus service request.
+   */
+  public function deleteRequest(string $id)
+  {
+    $busServiceData = BusService::findOrFail($id);
+    $busServiceData->delete();
+
+    return Redirect::route('transportation.request-status')->with('status', 'request-deleted');
   }
 
   /**
