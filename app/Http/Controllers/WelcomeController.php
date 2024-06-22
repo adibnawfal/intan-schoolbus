@@ -27,8 +27,8 @@ class WelcomeController extends Controller
       'message' => ['required', 'string', 'max:255'],
     ]);
 
-    // $user = User::where('role', 'admin')->first();
-    $user = User::findOrFail(3);
+    $user = User::where('role', 'admin')->first();
+    // $user = User::findOrFail(3);
     $userDetails = UserDetails::where('user_id', $user->id)
       ->where('default', 1)
       ->first();
